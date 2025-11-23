@@ -5,25 +5,23 @@ public class PickUpSkull : MonoBehaviour
 {
 	public bool inRange = false;
 	public bool isHolding = false;
-	[SerializeField]float throwForce = 300f;
-	[SerializeField]float maxDistance = 10f;
-	private float distance;
+	public float throwForce;
 
 	private Rigidbody rb;
 	private Collider cuan;
 	private Rigidbody skullRb;//this is a reference for when we pick up the skull
 	public Transform objectPosition;
+	private SphereCollider pickUpTrigger;
 
 	private PlayerControls playerControls;
 
 void Start()
 {
 	rb = GetComponent<Rigidbody>();
+	pickUpTrigger = GetComponent<SphereCollider>();
 	playerControls = new PlayerControls();
 	SetUpControls();
 }
-
-
 
 void OnTriggerEnter(Collider other)
 {
@@ -47,6 +45,7 @@ void PickUp()
 {
 	if(cuan != null)
 	{
+		pickUpTrigger.enabled = false;
 		isHolding = true;
 		skullRb = cuan.GetComponent<Rigidbody>();
 		skullRb.linearVelocity = Vector3.zero;
@@ -56,24 +55,47 @@ void PickUp()
 		skullRb.transform.localPosition = Vector3.zero;
 		skullRb.transform.localRotation = Quaternion.identity;
 	}
-	
-
 }
 
-void ThrowSkull()
+void Drop()
 {
-
+	if(cuan != null && isHolding)
+	{
+	skullRb.transform.parent = null;
+	skullRb.isKinematic = false;
+	isHolding = false;
+	skullRb = null;
+	pickUpTrigger.enabled = true;
+	}
 }
+
+void Throw()
+{
+		if(cuan != null && isHolding)
+	{
+	skullRb.transform.parent = null;
+	skullRb.isKinematic = false;
+	skullRb.AddForce(objectPosition.transform.forward * throwForce, ForceMode.Impulse);
+	isHolding = false;
+	skullRb = null;
+	pickUpTrigger.enabled = true;
+	}
+}
+
 void SetUpControls()
 {
 	playerControls.Enable();
 	playerControls.Skull.Interact.performed += HandleSkull;
+	playerControls.Skull.Throw.performed += ThrowSkull;
+	playerControls.Skull.Drop.performed += DropSkull;
 }
 
 void OnDisable()
 {
 	playerControls.Disable();
 	playerControls.Skull.Interact.performed -= HandleSkull;
+	playerControls.Skull.Throw.performed -= ThrowSkull;
+	playerControls.Skull.Drop.performed -= DropSkull;
 }
 
 void HandleSkull(InputAction.CallbackContext context)
@@ -82,9 +104,20 @@ void HandleSkull(InputAction.CallbackContext context)
 	{
 		PickUp();
 	}
+}
+void ThrowSkull(InputAction.CallbackContext context)
+{
 	if(isHolding)
 	{
-		ThrowSkull();
+		Throw();
+	}
+}
+
+void DropSkull(InputAction.CallbackContext context)
+{
+	if(isHolding)
+	{
+		Drop();
 	}
 }
 }
