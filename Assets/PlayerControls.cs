@@ -89,7 +89,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Skull"",
+            ""name"": ""Phiast"",
             ""id"": ""618a546c-aee8-41e1-9c8e-0ab296471fed"",
             ""actions"": [
                 {
@@ -102,18 +102,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Throw"",
-                    ""type"": ""Button"",
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
                     ""id"": ""b783ba31-1811-4e3a-b14c-d2ca54601643"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""960f0cde-3781-4137-875d-48f95bf9af9a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Drop"",
+                    ""name"": ""Throw"",
                     ""type"": ""Button"",
-                    ""id"": ""960f0cde-3781-4137-875d-48f95bf9af9a"",
+                    ""id"": ""1f9acc0a-9eec-40b0-838e-f321f05fbcf7"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -150,18 +159,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""e9759982-7490-41e6-a5e4-8d03836c7845"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -175,22 +184,45 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""535a5ee0-d5ff-488c-a8a2-a34e84ad9f7c"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87ac7924-7d6a-40fe-b150-b3a00effa565"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Skull
-        m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
-        m_Skull_Interact = m_Skull.FindAction("Interact", throwIfNotFound: true);
-        m_Skull_Throw = m_Skull.FindAction("Throw", throwIfNotFound: true);
-        m_Skull_Drop = m_Skull.FindAction("Drop", throwIfNotFound: true);
+        // Phiast
+        m_Phiast = asset.FindActionMap("Phiast", throwIfNotFound: true);
+        m_Phiast_Interact = m_Phiast.FindAction("Interact", throwIfNotFound: true);
+        m_Phiast_Aim = m_Phiast.FindAction("Aim", throwIfNotFound: true);
+        m_Phiast_Drop = m_Phiast.FindAction("Drop", throwIfNotFound: true);
+        m_Phiast_Throw = m_Phiast.FindAction("Throw", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
     {
-        UnityEngine.Debug.Assert(!m_Skull.enabled, "This will cause a leak and performance issues, PlayerControls.Skull.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Phiast.enabled, "This will cause a leak and performance issues, PlayerControls.Phiast.Disable() has not been called.");
     }
 
     /// <summary>
@@ -263,39 +295,44 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Skull
-    private readonly InputActionMap m_Skull;
-    private List<ISkullActions> m_SkullActionsCallbackInterfaces = new List<ISkullActions>();
-    private readonly InputAction m_Skull_Interact;
-    private readonly InputAction m_Skull_Throw;
-    private readonly InputAction m_Skull_Drop;
+    // Phiast
+    private readonly InputActionMap m_Phiast;
+    private List<IPhiastActions> m_PhiastActionsCallbackInterfaces = new List<IPhiastActions>();
+    private readonly InputAction m_Phiast_Interact;
+    private readonly InputAction m_Phiast_Aim;
+    private readonly InputAction m_Phiast_Drop;
+    private readonly InputAction m_Phiast_Throw;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Skull".
+    /// Provides access to input actions defined in input action map "Phiast".
     /// </summary>
-    public struct SkullActions
+    public struct PhiastActions
     {
         private @PlayerControls m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public SkullActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public PhiastActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Skull/Interact".
+        /// Provides access to the underlying input action "Phiast/Interact".
         /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Skull_Interact;
+        public InputAction @Interact => m_Wrapper.m_Phiast_Interact;
         /// <summary>
-        /// Provides access to the underlying input action "Skull/Throw".
+        /// Provides access to the underlying input action "Phiast/Aim".
         /// </summary>
-        public InputAction @Throw => m_Wrapper.m_Skull_Throw;
+        public InputAction @Aim => m_Wrapper.m_Phiast_Aim;
         /// <summary>
-        /// Provides access to the underlying input action "Skull/Drop".
+        /// Provides access to the underlying input action "Phiast/Drop".
         /// </summary>
-        public InputAction @Drop => m_Wrapper.m_Skull_Drop;
+        public InputAction @Drop => m_Wrapper.m_Phiast_Drop;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Throw".
+        /// </summary>
+        public InputAction @Throw => m_Wrapper.m_Phiast_Throw;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Skull; }
+        public InputActionMap Get() { return m_Wrapper.m_Phiast; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -303,9 +340,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="SkullActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PhiastActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(SkullActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PhiastActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -313,20 +350,23 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="SkullActions" />
-        public void AddCallbacks(ISkullActions instance)
+        /// <seealso cref="PhiastActions" />
+        public void AddCallbacks(IPhiastActions instance)
         {
-            if (instance == null || m_Wrapper.m_SkullActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_SkullActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PhiastActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PhiastActionsCallbackInterfaces.Add(instance);
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Throw.started += instance.OnThrow;
-            @Throw.performed += instance.OnThrow;
-            @Throw.canceled += instance.OnThrow;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
         }
 
         /// <summary>
@@ -335,27 +375,30 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="SkullActions" />
-        private void UnregisterCallbacks(ISkullActions instance)
+        /// <seealso cref="PhiastActions" />
+        private void UnregisterCallbacks(IPhiastActions instance)
         {
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Throw.started -= instance.OnThrow;
-            @Throw.performed -= instance.OnThrow;
-            @Throw.canceled -= instance.OnThrow;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SkullActions.UnregisterCallbacks(ISkullActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PhiastActions.UnregisterCallbacks(IPhiastActions)" />.
         /// </summary>
-        /// <seealso cref="SkullActions.UnregisterCallbacks(ISkullActions)" />
-        public void RemoveCallbacks(ISkullActions instance)
+        /// <seealso cref="PhiastActions.UnregisterCallbacks(IPhiastActions)" />
+        public void RemoveCallbacks(IPhiastActions instance)
         {
-            if (m_Wrapper.m_SkullActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PhiastActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -365,27 +408,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="SkullActions.AddCallbacks(ISkullActions)" />
-        /// <seealso cref="SkullActions.RemoveCallbacks(ISkullActions)" />
-        /// <seealso cref="SkullActions.UnregisterCallbacks(ISkullActions)" />
-        public void SetCallbacks(ISkullActions instance)
+        /// <seealso cref="PhiastActions.AddCallbacks(IPhiastActions)" />
+        /// <seealso cref="PhiastActions.RemoveCallbacks(IPhiastActions)" />
+        /// <seealso cref="PhiastActions.UnregisterCallbacks(IPhiastActions)" />
+        public void SetCallbacks(IPhiastActions instance)
         {
-            foreach (var item in m_Wrapper.m_SkullActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PhiastActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_SkullActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PhiastActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="SkullActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PhiastActions" /> instance referencing this action map.
     /// </summary>
-    public SkullActions @Skull => new SkullActions(this);
+    public PhiastActions @Phiast => new PhiastActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Phiast" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="SkullActions.AddCallbacks(ISkullActions)" />
-    /// <seealso cref="SkullActions.RemoveCallbacks(ISkullActions)" />
-    public interface ISkullActions
+    /// <seealso cref="PhiastActions.AddCallbacks(IPhiastActions)" />
+    /// <seealso cref="PhiastActions.RemoveCallbacks(IPhiastActions)" />
+    public interface IPhiastActions
     {
         /// <summary>
         /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -395,12 +438,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Throw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnThrow(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Drop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -408,5 +451,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Throw" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnThrow(InputAction.CallbackContext context);
     }
 }

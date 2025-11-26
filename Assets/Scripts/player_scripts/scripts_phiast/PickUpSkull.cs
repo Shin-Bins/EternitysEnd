@@ -5,21 +5,27 @@ public class PickUpSkull : MonoBehaviour
 {
 	public bool inRange = false;
 	public bool isHolding = false;
+	private bool isAiming = false;
 	public float throwForce;
+	public float upForce;
+	public int trajectSegments = 50;
+	public float trajectTimestep = 0.1f;
 
 	private Rigidbody rb;
 	private Collider cuan;
 	private Rigidbody skullRb;//this is a reference for when we pick up the skull
 	public Transform objectPosition;
 	private SphereCollider pickUpTrigger;
-
+	private LineRenderer trajectLine;
 	private PlayerControls playerControls;
 
 void Start()
 {
 	rb = GetComponent<Rigidbody>();
 	pickUpTrigger = GetComponent<SphereCollider>();
+	trajectLine = GetComponent<LineRenderer>();
 	playerControls = new PlayerControls();
+	trajectLine.enabled = false;
 	SetUpControls();
 }
 
@@ -40,6 +46,31 @@ void OnTriggerExit(Collider other)
 		cuan = null;
 	}
 }
+
+void ShowTrajectory()
+{
+	if(!isHolding || skullRb == null)
+		{
+			trajectLine.enabled = false;
+			return;
+		}
+	isAiming = true;
+	Vector3[] positions = new Vector3[trajectSegments];
+	Vector3 currentPos = objectPosition.position;
+	Vector3 throwDirection = objectPosition.transform.forward * throwForce + objectPosition.transform.up * upForce;
+	Vector3 currentVel = throwDirection / skullRb.mass;
+		
+	for(int i = 0; i < trajectSegments; i++)
+		{
+			positions[i] = currentPos;
+			currentVel += Physics.gravity * trajectTimestep;
+			currentPos += currentVel * trajectTimestep;
+		}
+
+	trajectLine.positionCount = trajectSegments;
+	trajectLine.SetPositions(positions);
+	trajectLine.enabled = true;
+	}
 
 void PickUp()
 {
@@ -71,31 +102,36 @@ void Drop()
 
 void Throw()
 {
-		if(cuan != null && isHolding)
+	if(cuan != null && isHolding)
 	{
 	skullRb.transform.parent = null;
 	skullRb.isKinematic = false;
-	skullRb.AddForce(objectPosition.transform.forward * throwForce, ForceMode.Impulse);
+	Vector3 throwDirection = objectPosition.transform.forward * throwForce + objectPosition.transform.up * upForce;
+	skullRb.AddForce(throwDirection, ForceMode.Impulse);
 	isHolding = false;
 	skullRb = null;
 	pickUpTrigger.enabled = true;
+	isAiming = false;
+	trajectLine.enabled = false;
 	}
 }
 
 void SetUpControls()
 {
 	playerControls.Enable();
-	playerControls.Skull.Interact.performed += HandleSkull;
-	playerControls.Skull.Throw.performed += ThrowSkull;
-	playerControls.Skull.Drop.performed += DropSkull;
+	playerControls.Phiast.Interact.performed += HandleSkull;
+	playerControls.Phiast.Aim.performed += StartAim;
+	playerControls.Phiast.Throw.performed += ThrowSkull;
+	playerControls.Phiast.Aim.canceled += StopAim;
 }
 
 void OnDisable()
 {
 	playerControls.Disable();
-	playerControls.Skull.Interact.performed -= HandleSkull;
-	playerControls.Skull.Throw.performed -= ThrowSkull;
-	playerControls.Skull.Drop.performed -= DropSkull;
+	playerControls.Phiast.Interact.performed -= HandleSkull;
+	playerControls.Phiast.Throw.performed -= ThrowSkull;
+	playerControls.Phiast.Aim.performed -= StartAim;
+	playerControls.Phiast.Aim.canceled -= StopAim;
 }
 
 void HandleSkull(InputAction.CallbackContext context)
@@ -104,6 +140,10 @@ void HandleSkull(InputAction.CallbackContext context)
 	{
 		PickUp();
 	}
+	else{
+		Drop();//fixed an issue, now E will drop the skull if we're holding it'
+	}
+	
 }
 void ThrowSkull(InputAction.CallbackContext context)
 {
@@ -113,11 +153,14 @@ void ThrowSkull(InputAction.CallbackContext context)
 	}
 }
 
-void DropSkull(InputAction.CallbackContext context)
-{
-	if(isHolding)
+void StartAim(InputAction.CallbackContext context)
 	{
-		Drop();
+		ShowTrajectory();
 	}
-}
+
+void StopAim(InputAction.CallbackContext context)
+	{
+		trajectLine.enabled = false;
+		isAiming = false;
+	}
 }

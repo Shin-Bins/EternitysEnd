@@ -3,7 +3,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Skull",
+            "name": "Phiast",
             "id": "618a546c-aee8-41e1-9c8e-0ab296471fed",
             "actions": [
                 {
@@ -16,18 +16,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
-                    "type": "Button",
+                    "name": "Aim",
+                    "type": "Value",
                     "id": "b783ba31-1811-4e3a-b14c-d2ca54601643",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "960f0cde-3781-4137-875d-48f95bf9af9a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
+                    "name": "Throw",
                     "type": "Button",
-                    "id": "960f0cde-3781-4137-875d-48f95bf9af9a",
+                    "id": "1f9acc0a-9eec-40b0-838e-f321f05fbcf7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -64,18 +73,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "e9759982-7490-41e6-a5e4-8d03836c7845",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -87,6 +96,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "535a5ee0-d5ff-488c-a8a2-a34e84ad9f7c",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87ac7924-7d6a-40fe-b150-b3a00effa565",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
