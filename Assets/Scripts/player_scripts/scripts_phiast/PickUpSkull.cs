@@ -108,6 +108,8 @@ void Throw()
 	skullRb.isKinematic = false;
 	Vector3 throwDirection = objectPosition.transform.forward * throwForce + objectPosition.transform.up * upForce;
 	skullRb.AddForce(throwDirection, ForceMode.Impulse);
+
+
 	isHolding = false;
 	skullRb = null;
 	pickUpTrigger.enabled = true;

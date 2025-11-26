@@ -122,6 +122,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Skull",
+            "id": "e8042e64-7c5b-46c1-8934-2dc22eeba145",
+            "actions": [
+                {
+                    "name": "RotateLeft",
+                    "type": "Value",
+                    "id": "a17e09a5-6ccb-4959-aace-21f0a4220305",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateRight",
+                    "type": "Value",
+                    "id": "c22cc7f5-54a6-458f-ad15-7d6e87cd8753",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Slam",
+                    "type": "Button",
+                    "id": "80aed6c1-bbf7-4e31-bc0e-89b65c326104",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FindPhiast",
+                    "type": "Button",
+                    "id": "5c990b16-7701-45e5-9d8d-ceb9fc2faf35",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c35b063b-b233-41be-b39f-ab8eae5108e3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "477b5ad6-3aaa-4b6d-b970-45adb5476704",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce7737fe-77b7-4fde-9df9-1b3e5ad1e0ab",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44531738-e597-4a8e-8420-ff70a5731ddb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FindPhiast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

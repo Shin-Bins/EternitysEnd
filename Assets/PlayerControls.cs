@@ -208,6 +208,94 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Skull"",
+            ""id"": ""e8042e64-7c5b-46c1-8934-2dc22eeba145"",
+            ""actions"": [
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Value"",
+                    ""id"": ""a17e09a5-6ccb-4959-aace-21f0a4220305"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""c22cc7f5-54a6-458f-ad15-7d6e87cd8753"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Slam"",
+                    ""type"": ""Button"",
+                    ""id"": ""80aed6c1-bbf7-4e31-bc0e-89b65c326104"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FindPhiast"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c990b16-7701-45e5-9d8d-ceb9fc2faf35"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c35b063b-b233-41be-b39f-ab8eae5108e3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""477b5ad6-3aaa-4b6d-b970-45adb5476704"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce7737fe-77b7-4fde-9df9-1b3e5ad1e0ab"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Slam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44531738-e597-4a8e-8420-ff70a5731ddb"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FindPhiast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -218,11 +306,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Phiast_Aim = m_Phiast.FindAction("Aim", throwIfNotFound: true);
         m_Phiast_Drop = m_Phiast.FindAction("Drop", throwIfNotFound: true);
         m_Phiast_Throw = m_Phiast.FindAction("Throw", throwIfNotFound: true);
+        // Skull
+        m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
+        m_Skull_RotateLeft = m_Skull.FindAction("RotateLeft", throwIfNotFound: true);
+        m_Skull_RotateRight = m_Skull.FindAction("RotateRight", throwIfNotFound: true);
+        m_Skull_Slam = m_Skull.FindAction("Slam", throwIfNotFound: true);
+        m_Skull_FindPhiast = m_Skull.FindAction("FindPhiast", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
     {
         UnityEngine.Debug.Assert(!m_Phiast.enabled, "This will cause a leak and performance issues, PlayerControls.Phiast.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Skull.enabled, "This will cause a leak and performance issues, PlayerControls.Skull.Disable() has not been called.");
     }
 
     /// <summary>
@@ -423,6 +518,135 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PhiastActions" /> instance referencing this action map.
     /// </summary>
     public PhiastActions @Phiast => new PhiastActions(this);
+
+    // Skull
+    private readonly InputActionMap m_Skull;
+    private List<ISkullActions> m_SkullActionsCallbackInterfaces = new List<ISkullActions>();
+    private readonly InputAction m_Skull_RotateLeft;
+    private readonly InputAction m_Skull_RotateRight;
+    private readonly InputAction m_Skull_Slam;
+    private readonly InputAction m_Skull_FindPhiast;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Skull".
+    /// </summary>
+    public struct SkullActions
+    {
+        private @PlayerControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public SkullActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Skull/RotateLeft".
+        /// </summary>
+        public InputAction @RotateLeft => m_Wrapper.m_Skull_RotateLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Skull/RotateRight".
+        /// </summary>
+        public InputAction @RotateRight => m_Wrapper.m_Skull_RotateRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Skull/Slam".
+        /// </summary>
+        public InputAction @Slam => m_Wrapper.m_Skull_Slam;
+        /// <summary>
+        /// Provides access to the underlying input action "Skull/FindPhiast".
+        /// </summary>
+        public InputAction @FindPhiast => m_Wrapper.m_Skull_FindPhiast;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Skull; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="SkullActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(SkullActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="SkullActions" />
+        public void AddCallbacks(ISkullActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SkullActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SkullActionsCallbackInterfaces.Add(instance);
+            @RotateLeft.started += instance.OnRotateLeft;
+            @RotateLeft.performed += instance.OnRotateLeft;
+            @RotateLeft.canceled += instance.OnRotateLeft;
+            @RotateRight.started += instance.OnRotateRight;
+            @RotateRight.performed += instance.OnRotateRight;
+            @RotateRight.canceled += instance.OnRotateRight;
+            @Slam.started += instance.OnSlam;
+            @Slam.performed += instance.OnSlam;
+            @Slam.canceled += instance.OnSlam;
+            @FindPhiast.started += instance.OnFindPhiast;
+            @FindPhiast.performed += instance.OnFindPhiast;
+            @FindPhiast.canceled += instance.OnFindPhiast;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="SkullActions" />
+        private void UnregisterCallbacks(ISkullActions instance)
+        {
+            @RotateLeft.started -= instance.OnRotateLeft;
+            @RotateLeft.performed -= instance.OnRotateLeft;
+            @RotateLeft.canceled -= instance.OnRotateLeft;
+            @RotateRight.started -= instance.OnRotateRight;
+            @RotateRight.performed -= instance.OnRotateRight;
+            @RotateRight.canceled -= instance.OnRotateRight;
+            @Slam.started -= instance.OnSlam;
+            @Slam.performed -= instance.OnSlam;
+            @Slam.canceled -= instance.OnSlam;
+            @FindPhiast.started -= instance.OnFindPhiast;
+            @FindPhiast.performed -= instance.OnFindPhiast;
+            @FindPhiast.canceled -= instance.OnFindPhiast;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="SkullActions.UnregisterCallbacks(ISkullActions)" />.
+        /// </summary>
+        /// <seealso cref="SkullActions.UnregisterCallbacks(ISkullActions)" />
+        public void RemoveCallbacks(ISkullActions instance)
+        {
+            if (m_Wrapper.m_SkullActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="SkullActions.AddCallbacks(ISkullActions)" />
+        /// <seealso cref="SkullActions.RemoveCallbacks(ISkullActions)" />
+        /// <seealso cref="SkullActions.UnregisterCallbacks(ISkullActions)" />
+        public void SetCallbacks(ISkullActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SkullActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SkullActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="SkullActions" /> instance referencing this action map.
+    /// </summary>
+    public SkullActions @Skull => new SkullActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Phiast" which allows adding and removing callbacks.
     /// </summary>
@@ -458,5 +682,41 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThrow(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="SkullActions.AddCallbacks(ISkullActions)" />
+    /// <seealso cref="SkullActions.RemoveCallbacks(ISkullActions)" />
+    public interface ISkullActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "RotateLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRotateLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RotateRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRotateRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Slam" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSlam(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "FindPhiast" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFindPhiast(InputAction.CallbackContext context);
     }
 }
