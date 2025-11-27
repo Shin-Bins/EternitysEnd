@@ -1,10 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class tankmove : MonoBehaviour
 {
 
     private Tankcon _tankcon;
+    bool rotateright;
+    bool rotateleft;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +24,15 @@ public class tankmove : MonoBehaviour
             * Time.deltaTime;
 
         transform.position += positionChange;
+
+        if (rotateleft )
+        {
+            transform.Rotate(new Vector3(0, -1, 0));
+        }
+        if (rotateright )
+        {
+            transform.Rotate(new Vector3(0, 1, 0));
+        }
     }
 
     private void Awake()
@@ -28,5 +40,25 @@ public class tankmove : MonoBehaviour
         _tankcon = GetComponent<Tankcon>();
     }
 
-    
+    public void OnRotateleft(InputValue val)
+    {
+        Debug.Log("Left " + val.Get<float>());
+        switch (val.Get<float>())
+        {
+            case 0: rotateleft = false; break;
+            case 1: rotateleft = true; break;
+            default: rotateleft = false; break;
+        }
+    }
+    public void OnRotateright(InputValue val)
+    {
+        Debug.Log("Right " + val.Get<float>());
+        switch (val.Get<float>())
+        {
+            case 0: rotateright = false; break;
+            case 1: rotateright = true; break;
+            default: rotateright = false; break;
+        }
+    }
+
 }
