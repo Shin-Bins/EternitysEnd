@@ -138,13 +138,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Rotate"",
-                    ""type"": ""Button"",
-                    ""id"": ""abd7eebc-c0e1-4048-9f81-e49ee1478ba6"",
+                    ""name"": ""Rotateleft"",
+                    ""type"": ""Value"",
+                    ""id"": ""1671a6c7-fe34-4b7b-937f-5e85e12e7fb4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Rotateright"",
+                    ""type"": ""Value"",
+                    ""id"": ""e1e9dd20-8877-4e8e-8fb2-8778177da38c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -281,37 +290,26 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""rotate"",
-                    ""id"": ""975d5584-57fe-4ed0-ab79-dc8f8dde3049"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""5dad60a2-cc77-4543-940d-1bda4c07c04a"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""2143e2cf-f174-4543-91f7-68031a03169c"",
+                    ""name"": """",
+                    ""id"": ""87708998-bdf6-4575-a882-84abce61d2bd"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""Rotateleft"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffa1bd0c-d147-434c-b498-3e2a0bccbf26"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotateright"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -413,7 +411,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Phiast_Drop = m_Phiast.FindAction("Drop", throwIfNotFound: true);
         m_Phiast_Throw = m_Phiast.FindAction("Throw", throwIfNotFound: true);
         m_Phiast_Move = m_Phiast.FindAction("Move", throwIfNotFound: true);
-        m_Phiast_Rotate = m_Phiast.FindAction("Rotate", throwIfNotFound: true);
+        m_Phiast_Rotateleft = m_Phiast.FindAction("Rotateleft", throwIfNotFound: true);
+        m_Phiast_Rotateright = m_Phiast.FindAction("Rotateright", throwIfNotFound: true);
         // Skull
         m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
         m_Skull_RotateLeft = m_Skull.FindAction("RotateLeft", throwIfNotFound: true);
@@ -506,7 +505,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Phiast_Drop;
     private readonly InputAction m_Phiast_Throw;
     private readonly InputAction m_Phiast_Move;
-    private readonly InputAction m_Phiast_Rotate;
+    private readonly InputAction m_Phiast_Rotateleft;
+    private readonly InputAction m_Phiast_Rotateright;
     /// <summary>
     /// Provides access to input actions defined in input action map "Phiast".
     /// </summary>
@@ -539,9 +539,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Phiast_Move;
         /// <summary>
-        /// Provides access to the underlying input action "Phiast/Rotate".
+        /// Provides access to the underlying input action "Phiast/Rotateleft".
         /// </summary>
-        public InputAction @Rotate => m_Wrapper.m_Phiast_Rotate;
+        public InputAction @Rotateleft => m_Wrapper.m_Phiast_Rotateleft;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Rotateright".
+        /// </summary>
+        public InputAction @Rotateright => m_Wrapper.m_Phiast_Rotateright;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -583,9 +587,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Rotate.started += instance.OnRotate;
-            @Rotate.performed += instance.OnRotate;
-            @Rotate.canceled += instance.OnRotate;
+            @Rotateleft.started += instance.OnRotateleft;
+            @Rotateleft.performed += instance.OnRotateleft;
+            @Rotateleft.canceled += instance.OnRotateleft;
+            @Rotateright.started += instance.OnRotateright;
+            @Rotateright.performed += instance.OnRotateright;
+            @Rotateright.canceled += instance.OnRotateright;
         }
 
         /// <summary>
@@ -612,9 +619,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Rotate.started -= instance.OnRotate;
-            @Rotate.performed -= instance.OnRotate;
-            @Rotate.canceled -= instance.OnRotate;
+            @Rotateleft.started -= instance.OnRotateleft;
+            @Rotateleft.performed -= instance.OnRotateleft;
+            @Rotateleft.canceled -= instance.OnRotateleft;
+            @Rotateright.started -= instance.OnRotateright;
+            @Rotateright.performed -= instance.OnRotateright;
+            @Rotateright.canceled -= instance.OnRotateright;
         }
 
         /// <summary>
@@ -820,12 +830,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Rotate" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Rotateleft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRotate(InputAction.CallbackContext context);
+        void OnRotateleft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Rotateright" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRotateright(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.
