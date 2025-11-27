@@ -24,9 +24,7 @@ void Start()
 	rb = GetComponent<Rigidbody>();
 	pickUpTrigger = GetComponent<SphereCollider>();
 	trajectLine = GetComponent<LineRenderer>();
-	playerControls = new PlayerControls();
 	trajectLine.enabled = false;
-	SetUpControls();
 }
 
 void OnTriggerEnter(Collider other)
@@ -47,7 +45,7 @@ void OnTriggerExit(Collider other)
 	}
 }
 
-void ShowTrajectory()
+public void OnAim()
 {
 	if(!isHolding || skullRb == null)
 		{
@@ -100,7 +98,7 @@ void Drop()
 	}
 }
 
-void Throw()
+public void OnThrow()
 {
 	if(cuan != null && isHolding)
 	{
@@ -118,25 +116,8 @@ void Throw()
 	}
 }
 
-void SetUpControls()
-{
-	playerControls.Enable();
-	playerControls.Phiast.Interact.performed += HandleSkull;
-	playerControls.Phiast.Aim.performed += StartAim;
-	playerControls.Phiast.Throw.performed += ThrowSkull;
-	playerControls.Phiast.Aim.canceled += StopAim;
-}
 
-void OnDisable()
-{
-	playerControls.Disable();
-	playerControls.Phiast.Interact.performed -= HandleSkull;
-	playerControls.Phiast.Throw.performed -= ThrowSkull;
-	playerControls.Phiast.Aim.performed -= StartAim;
-	playerControls.Phiast.Aim.canceled -= StopAim;
-}
-
-void HandleSkull(InputAction.CallbackContext context)
+void OnInteract()
 {
 	if(inRange && !isHolding)
 	{
@@ -147,22 +128,5 @@ void HandleSkull(InputAction.CallbackContext context)
 	}
 	
 }
-void ThrowSkull(InputAction.CallbackContext context)
-{
-	if(isHolding)
-	{
-		Throw();
-	}
-}
 
-void StartAim(InputAction.CallbackContext context)
-	{
-		ShowTrajectory();
-	}
-
-void StopAim(InputAction.CallbackContext context)
-	{
-		trajectLine.enabled = false;
-		isAiming = false;
-	}
 }
