@@ -154,6 +154,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Forwards"",
+                    ""type"": ""Value"",
+                    ""id"": ""f4742d4c-56cb-473c-92c2-1c0e3ae0a4a1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Backwards"",
+                    ""type"": ""Value"",
+                    ""id"": ""7eec103b-f6b3-4b63-bb97-074c9acd095f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -310,6 +328,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Rotateright"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efcd08b3-0e00-401e-90ca-381d2c0d0fd2"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c155513-2b19-4fe2-826c-11e5e3f116e4"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Forwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b027dffa-f954-4923-b848-ad5623a2d67a"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Backwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c3600df-9b13-4792-a1e9-c30284342454"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Backwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -413,6 +475,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Phiast_Move = m_Phiast.FindAction("Move", throwIfNotFound: true);
         m_Phiast_Rotateleft = m_Phiast.FindAction("Rotateleft", throwIfNotFound: true);
         m_Phiast_Rotateright = m_Phiast.FindAction("Rotateright", throwIfNotFound: true);
+        m_Phiast_Forwards = m_Phiast.FindAction("Forwards", throwIfNotFound: true);
+        m_Phiast_Backwards = m_Phiast.FindAction("Backwards", throwIfNotFound: true);
         // Skull
         m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
         m_Skull_RotateLeft = m_Skull.FindAction("RotateLeft", throwIfNotFound: true);
@@ -507,6 +571,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Phiast_Move;
     private readonly InputAction m_Phiast_Rotateleft;
     private readonly InputAction m_Phiast_Rotateright;
+    private readonly InputAction m_Phiast_Forwards;
+    private readonly InputAction m_Phiast_Backwards;
     /// <summary>
     /// Provides access to input actions defined in input action map "Phiast".
     /// </summary>
@@ -546,6 +612,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Phiast/Rotateright".
         /// </summary>
         public InputAction @Rotateright => m_Wrapper.m_Phiast_Rotateright;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Forwards".
+        /// </summary>
+        public InputAction @Forwards => m_Wrapper.m_Phiast_Forwards;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Backwards".
+        /// </summary>
+        public InputAction @Backwards => m_Wrapper.m_Phiast_Backwards;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -593,6 +667,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotateright.started += instance.OnRotateright;
             @Rotateright.performed += instance.OnRotateright;
             @Rotateright.canceled += instance.OnRotateright;
+            @Forwards.started += instance.OnForwards;
+            @Forwards.performed += instance.OnForwards;
+            @Forwards.canceled += instance.OnForwards;
+            @Backwards.started += instance.OnBackwards;
+            @Backwards.performed += instance.OnBackwards;
+            @Backwards.canceled += instance.OnBackwards;
         }
 
         /// <summary>
@@ -625,6 +705,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotateright.started -= instance.OnRotateright;
             @Rotateright.performed -= instance.OnRotateright;
             @Rotateright.canceled -= instance.OnRotateright;
+            @Forwards.started -= instance.OnForwards;
+            @Forwards.performed -= instance.OnForwards;
+            @Forwards.canceled -= instance.OnForwards;
+            @Backwards.started -= instance.OnBackwards;
+            @Backwards.performed -= instance.OnBackwards;
+            @Backwards.canceled -= instance.OnBackwards;
         }
 
         /// <summary>
@@ -843,6 +929,20 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRotateright(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Forwards" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnForwards(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Backwards" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBackwards(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.

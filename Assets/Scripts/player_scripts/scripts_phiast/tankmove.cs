@@ -5,33 +5,54 @@ using UnityEngine.InputSystem;
 public class tankmove : MonoBehaviour
 {
 
+    public float _speed;
+    public float acceleration;
+
     private Tankcon _tankcon;
     bool rotateright;
     bool rotateleft;
+    bool Forwards;
+    bool Backwards;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Vector3 positionChange = new Vector3(
-            _tankcon.InputVector.x,
-            0,
-            _tankcon.InputVector.y)
-            * Time.deltaTime;
+        //Vector3 positionChange = new Vector3(
+        //_tankcon.InputVector.x,
+        // 0,
+        //_tankcon.InputVector.y)
+        // * Time.deltaTime
+        //* _speed;
 
-        transform.position += positionChange;
 
-        if (rotateleft )
+        //transform.position += positionChange;
+
+
+
+        if (rotateleft)
         {
-            transform.Rotate(new Vector3(0, -1, 0));
+            transform.Rotate(transform.up, -100.0f * Time.deltaTime, Space.World);
         }
-        if (rotateright )
+        if (rotateright)
         {
-            transform.Rotate(new Vector3(0, 1, 0));
+            transform.Rotate(transform.up, 100.0f * Time.deltaTime, Space.World);
+        }
+
+        if (Forwards)
+        {
+            transform.Translate(transform.forward * acceleration * Time.deltaTime, Space.World);
+            acceleration = 5;
+        }
+
+        if (Backwards)
+        {
+            transform.Translate(transform.forward * acceleration * Time.deltaTime, Space.World);
+            acceleration = -5;
         }
     }
 
@@ -60,5 +81,31 @@ public class tankmove : MonoBehaviour
             default: rotateright = false; break;
         }
     }
+
+    void OnForwards(InputValue val)
+    {
+       Debug.Log("Forward" + val.Get<float>());
+        switch (val.Get<float>())
+        {
+            case 0: Forwards = false; break;
+            case 1: Forwards = true; break;
+            default: Forwards = false; break;
+                acceleration = 5f;
+        }
+    }
+
+
+    void OnBackwards(InputValue val)
+    {
+        Debug.Log("Backwards" + val.Get<float>());
+        switch (val.Get<float>())
+        {
+            case 0: Backwards = false; break;
+            case 1: Backwards = true; break;
+            default: Backwards = false; break;
+                acceleration = -5f;
+        }
+    }
+
 
 }
