@@ -491,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 743292944}
   serializedVersion: 2
   m_LocalRotation: {x: 0.028136613, y: -0, z: -0, w: 0.9996041}
-  m_LocalPosition: {x: -1.2183418, y: 3.3736653, z: -7.5061088}
+  m_LocalPosition: {x: -1.2183418, y: 5.6300864, z: -7.3789816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -524,7 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
   Damping: {x: 0.1, y: 0.5, z: 0.3}
   ShoulderOffset: {x: 0, y: 0, z: 0}
-  VerticalArmLength: -2.31
+  VerticalArmLength: -0.05
   CameraSide: 1
   CameraDistance: 8
   AvoidObstacles:
@@ -668,7 +668,7 @@ Transform:
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
   m_LocalRotation: {x: 0.028136613, y: 0, z: 0, w: 0.9996041}
-  m_LocalPosition: {x: -1.2183418, y: 3.3736653, z: -7.5061088}
+  m_LocalPosition: {x: -1.2183418, y: 5.6300864, z: -7.3789816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -942,61 +942,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf58e6ac82a2b7f47b59fbe4deae6af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkullControls_PlayerInput
-  windup:
-    m_Target: 2
-    speed: 0.2
-    m_Value: 0
   windupCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.8922145
-      value: 0.9820828
-      inSlope: 1.8993123
-      outSlope: 1.8993123
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.2273158
-      value: 0.9838758
-      inSlope: -0.65439683
-      outSlope: -0.65439683
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.3240367
-      value: 0.9912238
-      inSlope: 0.5267031
-      outSlope: 0.5267031
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.4730426
+      time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  maxRotationSpeed: 180
+  rotationAcceleration: 2
   groundCheck: {fileID: 156637138}
   groundCheckRadius: 0.2
   groundLayer:
@@ -1309,5 +1280,5 @@ SceneRoots:
   - {fileID: 961739753}
   - {fileID: 170889923}
   - {fileID: 1384719108}
-  - {fileID: 1880045450}
   - {fileID: 743292948}
+  - {fileID: 1880045450}

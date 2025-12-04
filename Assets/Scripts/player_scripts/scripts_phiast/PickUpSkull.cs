@@ -8,6 +8,8 @@ public class PickUpSkull : MonoBehaviour
 	private bool isAiming = false;
 	public float throwForce;
 	public float upForce;
+	public float aimThrowForce;
+	public float aimUpForce;
 	public int trajectSegments = 50;
 	public float trajectTimestep = 0.1f;
 
