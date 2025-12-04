@@ -9,8 +9,15 @@ public class PickUpSkull : MonoBehaviour
 
 	public float throwForce;
 	public float upForce;
-	public float aimThrowForce;//voming soon in the throw update
+
+	public float aimThrowForce;//coming soon in the throw update
 	public float aimUpForce;
+	public float throwForceStep = 1f; // how much to increase/decrease per scroll
+	public float upForceStep = 0.5f;
+	public float minThrowForce = 5f; // min values
+	public float maxThrowForce = 30f; // max values
+	public float minUpForce = 1f;
+	public float maxUpForce = 15f;
 
 	private int trajectSegments = 50;
 	private float trajectTimestep = 0.1f;
@@ -18,9 +25,9 @@ public class PickUpSkull : MonoBehaviour
 	[SerializeField]private LayerMask collisionLayers;
 
 	private Rigidbody rb;
-	private Collider cuan;
-	private Rigidbody skullRb;//this is a reference for when we pick up the skull
-	private BoxCollider skullColl;//turn off collision with skull when carried. Was having some funky effects on phiast
+	private Collider obj;
+	private Rigidbody objRb;//this is a reference for when we pick up the obj
+	private BoxCollider objColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform objectPosition;//this is where cuan is held
 	private SphereCollider pickUpTrigger;//checks to see if phiast is in range. Probably another way to do this but it works
 	private LineRenderer trajectLine;
@@ -44,25 +51,25 @@ void Update()
 
 void OnTriggerEnter(Collider other)
 {
-	if(other.CompareTag("skull"))
+	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
 	{
 		inRange = true;
-		cuan = other;
+		obj = other;
 	}
 }
 
 void OnTriggerExit(Collider other)
 {
-	if(other.CompareTag("skull"))
+	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
 	{
 		inRange = false;
-		cuan = null;
+		obj = null;
 	}
 }
 
    public void OnAim()
     {
-        if(!isHolding || skullRb == null)
+        if(!isHolding || objRb == null)
         {
             trajectLine.enabled = false;
             if(endMarker != null) endMarker.gameObject.SetActive(false);
@@ -82,30 +89,30 @@ void OnTriggerExit(Collider other)
 
 void PickUp()
 {
-	if(cuan != null)
+	if(obj != null)
 	{
 		pickUpTrigger.enabled = false;
 		isHolding = true;
-		skullColl = cuan.GetComponent<BoxCollider>();
-		skullRb = cuan.GetComponent<Rigidbody>();
-		skullRb.linearVelocity = Vector3.zero;
-		skullRb.isKinematic = true;
-		skullColl.enabled = false;
-		skullRb.transform.parent = objectPosition;
-		skullRb.transform.localPosition = Vector3.zero;
-		skullRb.transform.localRotation = Quaternion.identity;
+		objColl = obj.GetComponent<BoxCollider>();
+		objRb = obj.GetComponent<Rigidbody>();
+		objRb.linearVelocity = Vector3.zero;
+		objRb.isKinematic = true;
+		objColl.enabled = false;
+		objRb.transform.parent = objectPosition;
+		objRb.transform.localPosition = Vector3.zero;
+		objRb.transform.localRotation = Quaternion.identity;
 	}
 }
 
 void Drop()
 {
-	if(cuan != null && isHolding)
+	if(obj != null && isHolding)
 	{
-	skullRb.transform.parent = null;
-	skullRb.isKinematic = false;
-	skullColl.enabled = true;
+	objRb.transform.parent = null;
+	objRb.isKinematic = false;
+	objColl.enabled = true;
 	isHolding = false;
-	skullRb = null;
+	objRb = null;
 	pickUpTrigger.enabled = true;
 	endMarker.gameObject.SetActive(false);
 	}
@@ -113,17 +120,21 @@ void Drop()
 
 public void OnThrow()
 {
-	if(cuan != null && isHolding)
+	if(obj != null && isHolding)
 	{
-		skullRb.transform.parent = null;
-		skullRb.isKinematic = false;
-		skullColl.enabled = true;
-		Vector3 throwDirection = objectPosition.transform.forward * throwForce + objectPosition.transform.up * upForce;
-		skullRb.AddForce(throwDirection, ForceMode.Impulse);
+		objRb.transform.parent = null;
+		objRb.isKinematic = false;
+		objColl.enabled = true;
+
+		float currentThrowForce = isAiming ? aimThrowForce : throwForce;
+		float currentUpForce = isAiming ? aimUpForce : upForce;
+		
+		Vector3 throwDirection = objectPosition.transform.forward * currentThrowForce + objectPosition.transform.up * currentUpForce;
+		objRb.AddForce(throwDirection, ForceMode.Impulse);
 
 
 		isHolding = false;
-		skullRb = null;
+		objRb = null;
 		pickUpTrigger.enabled = true;
 		isAiming = false;
 		trajectLine.enabled = false;
@@ -144,14 +155,39 @@ void OnInteract()
 	
 }
 
+public void OnCycleThrow(InputValue value)
+{
+	if(!isAiming || !isHolding) return;
+	
+	float scroll = value.Get<Vector2>().y;
+	
+	if(scroll > 0f)
+	{
+		// scroll up = increase throw
+		aimThrowForce = Mathf.Clamp(aimThrowForce + throwForceStep, minThrowForce, maxThrowForce);
+		aimUpForce = Mathf.Clamp(aimUpForce + upForceStep, minUpForce, maxUpForce);
+	}
+	else if(scroll < 0f)
+	{
+		// scroll down = decrease throw
+		aimThrowForce = Mathf.Clamp(aimThrowForce - throwForceStep, minThrowForce, maxThrowForce);
+		aimUpForce = Mathf.Clamp(aimUpForce - upForceStep, minUpForce, maxUpForce);
+	}
+}
+
+
 void UpdateTrajectory()//Beware the code below, for the abyss stares back at thee
 {
-	 Vector3[] positions = new Vector3[trajectSegments];
+	Vector3[] positions = new Vector3[trajectSegments];
         Vector3 currentPos = objectPosition.position;
-        Vector3 throwDirection = objectPosition.transform.forward * throwForce + objectPosition.transform.up * upForce;
-        Vector3 currentVel = throwDirection / skullRb.mass;//above are the calculations of the throw itself
+        
+        float currentThrowForce = isAiming ? aimThrowForce : throwForce;
+        float currentUpForce = isAiming ? aimUpForce : upForce;
+        
+        Vector3 throwDirection = objectPosition.transform.forward * currentThrowForce + objectPosition.transform.up * currentUpForce;
+        Vector3 currentVel = throwDirection / objRb.mass;
 
-        float drag = skullRb.linearDamping;
+        float drag = objRb.linearDamping;
         int finalSegment = trajectSegments;
         bool hitSomething = false;
         Vector3 hitPoint = Vector3.zero;

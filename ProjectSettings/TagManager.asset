@@ -6,6 +6,7 @@ TagManager:
   tags:
   - skull
   - phiast
+  - PickUp
   layers:
   - Default
   - TransparentFX
