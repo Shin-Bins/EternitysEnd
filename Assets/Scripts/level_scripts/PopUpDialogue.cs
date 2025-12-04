@@ -2,11 +2,11 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.InputSystem;
 public class PopUpDialogue : MonoBehaviour
 {
 
-public TextMeshProGUI diaText;
+public TMP_Text diaText;
 public float textSpeed;
 public string[] lines;
 
@@ -16,34 +16,31 @@ private int index;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        diaText.text = sting.Empty;
-        StartDialogue();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+         Cursor.visible = true;
+         Cursor.lockState = CursorLockMode.None;
+         diaText.text = string.Empty;
+         StartDialogue();
     }
 
     void StartDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
+      
     }
 
     IEnumerator TypeLine()
     {
-        foreach(char c in line [index].ToCharArray())
+        foreach(char c in lines [index].ToCharArray())
         {
-            diaText.text += c;
+           diaText.text += c;
            yield return new WaitForSeconds(textSpeed);
         }
     }
 
-    void NextLine()
+    public void NextLine()
     {
-        if(index < line.Length + 1)
+        if(index < lines.Length - 1)
         {
             index ++;
             diaText.text = string.Empty;
