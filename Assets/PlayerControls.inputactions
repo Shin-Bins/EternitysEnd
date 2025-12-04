@@ -86,6 +86,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Value",
+                    "id": "8317baaf-055e-47b9-af7c-2af5b2e352a4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -284,6 +293,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Backwards",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f1452b6-8a73-4c83-a59c-d0acaf2c2854",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

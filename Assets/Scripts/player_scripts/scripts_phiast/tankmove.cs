@@ -7,16 +7,23 @@ public class tankmove : MonoBehaviour
 
     public float _speed;
     public float acceleration;
+    public float jforce = 1.0f;
+    public Vector3 Jumpnow;
 
     private Tankcon _tankcon;
     bool rotateright;
     bool rotateleft;
     bool Forwards;
     bool Backwards;
+    bool jump;
+    public bool grounded;
+    Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
+        rb = GetComponent<Rigidbody>();
+        Jumpnow = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -31,6 +38,8 @@ public class tankmove : MonoBehaviour
 
 
         //transform.position += positionChange;
+
+        // this shit sucks ass do not use ever, it's staying here to be shamed
 
 
 
@@ -53,6 +62,13 @@ public class tankmove : MonoBehaviour
         {
             transform.Translate(transform.forward * acceleration * Time.deltaTime, Space.World);
             acceleration = -5;
+        }
+
+        if (jump)
+        {
+            if (grounded == true)
+            rb.AddForce(Jumpnow * jforce, ForceMode.Impulse);
+            grounded = false;
         }
     }
 
@@ -90,7 +106,7 @@ public class tankmove : MonoBehaviour
             case 0: Forwards = false; break;
             case 1: Forwards = true; break;
             default: Forwards = false; break;
-                acceleration = 5f;
+                
         }
     }
 
@@ -103,9 +119,24 @@ public class tankmove : MonoBehaviour
             case 0: Backwards = false; break;
             case 1: Backwards = true; break;
             default: Backwards = false; break;
-                acceleration = -5f;
+                
+        }
+    }
+
+    void OnJump(InputValue val)
+    {
+        Debug.Log("Jump" +  val.Get<float>());
+        switch (val.Get<float>())
+        {
+            case 0: jump = false; break;
+            case 1: jump = true; break;
+            default: jump = false; break;
         }
     }
 
 
+    private void OnCollisionStay(Collision collision)
+    {
+        grounded = true;
+    }
 }

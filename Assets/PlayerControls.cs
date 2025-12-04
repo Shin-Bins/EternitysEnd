@@ -172,6 +172,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Value"",
+                    ""id"": ""8317baaf-055e-47b9-af7c-2af5b2e352a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -372,6 +381,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Backwards"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f1452b6-8a73-4c83-a59c-d0acaf2c2854"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -477,6 +497,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Phiast_Rotateright = m_Phiast.FindAction("Rotateright", throwIfNotFound: true);
         m_Phiast_Forwards = m_Phiast.FindAction("Forwards", throwIfNotFound: true);
         m_Phiast_Backwards = m_Phiast.FindAction("Backwards", throwIfNotFound: true);
+        m_Phiast_Jump = m_Phiast.FindAction("Jump", throwIfNotFound: true);
         // Skull
         m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
         m_Skull_RotateLeft = m_Skull.FindAction("RotateLeft", throwIfNotFound: true);
@@ -573,6 +594,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Phiast_Rotateright;
     private readonly InputAction m_Phiast_Forwards;
     private readonly InputAction m_Phiast_Backwards;
+    private readonly InputAction m_Phiast_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "Phiast".
     /// </summary>
@@ -620,6 +642,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Phiast/Backwards".
         /// </summary>
         public InputAction @Backwards => m_Wrapper.m_Phiast_Backwards;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_Phiast_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -673,6 +699,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Backwards.started += instance.OnBackwards;
             @Backwards.performed += instance.OnBackwards;
             @Backwards.canceled += instance.OnBackwards;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -711,6 +740,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Backwards.started -= instance.OnBackwards;
             @Backwards.performed -= instance.OnBackwards;
             @Backwards.canceled -= instance.OnBackwards;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -943,6 +975,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBackwards(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.
