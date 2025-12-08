@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6951060815475363267}
   - component: {fileID: 7602618494422987047}
   - component: {fileID: 6614707549076259351}
-  - component: {fileID: 6721596429007324752}
   - component: {fileID: 5240350007555726379}
   m_Layer: 0
   m_Name: skull
@@ -188,25 +187,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   slamForce: 10
---- !u!114 &6721596429007324752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2536976196450705820}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02da8253d9d2038448edfebbdfcd72eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SkullControl
-  groundCheck: {fileID: 2600846477760910594}
-  groundCheckRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  slamForce: 15
-  rotSpeed: 0
 --- !u!114 &5240350007555726379
 MonoBehaviour:
   m_ObjectHideFlags: 0
