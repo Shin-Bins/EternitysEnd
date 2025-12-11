@@ -14,16 +14,24 @@ public class PopUpDialogue : MonoBehaviour
         [TextArea(2, 4)]
         public string text;
         public Sprite charSprite; //container for all aspects of the dialogue. Can add more in here like audio to personalize the speaker. Will update later
+        public AudioClip voice;
     }
 
 [SerializeField]private GameObject diaBox;
 [SerializeField] TMP_Text diaText;
 [SerializeField] float textSpeed;
-[SerializeField] Image speakerImage;//this is the game object that displays the image set above
 [SerializeField] DialogueLine[] lines;
-[SerializeField] bool hasTriggered = false;//fixes the issue of retriggering dialogue. Might need another solution if we want dialogues to repeat.
+
 private int index;
 
+[SerializeField] Image speakerImage;//this is the game object that displays the image set above
+private AudioSource src;
+[SerializeField] float voicePitch = 1f;
+[SerializeField]float pitchVariation = 0.1f;//changes the pitch to vary the line
+[SerializeField] int voiceFreq = 3; //after how many characters the voice line plays again
+private int characterCount = 0;
+
+[SerializeField] bool hasTriggered = false;//fixes the issue of retriggering dialogue. Might need another solution if we want dialogues to repeat.
 [SerializeField]private PlayerInput cuan;
 [SerializeField]private PlayerInput phiast;//ugly work around. Direct references to the player input components to turn them off when dialogue is happening. Need to find a better way
 
@@ -37,6 +45,7 @@ private int index;
         }
          Cursor.visible = true;
          Cursor.lockState = CursorLockMode.None;
+         src = GetComponent<AudioSource>();
          diaText.text = string.Empty;
          diaBox.SetActive(true);
          StartDialogue();
@@ -68,10 +77,35 @@ private int index;
 
     IEnumerator TypeLine()
     {
+        characterCount = 0;
         foreach(char c in lines [index].text.ToCharArray())
         {
            diaText.text += c;
+          
+               // skips spaces in text
+            if (c != ' ' && characterCount % voiceFreq == 0)
+            {
+                PlayMumble();
+            }
+            
+            if (c != ' ')
+            {
+                characterCount++;
+            }
            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+
+     void PlayMumble()
+    {
+
+       if (src == null) return;
+        
+        // Only play if this line has a mumble sound assigned
+        if (lines[index].voice != null)
+        {
+            src.pitch = voicePitch + Random.Range(-pitchVariation, pitchVariation);
+            src.PlayOneShot(lines[index].voice);
         }
     }
 

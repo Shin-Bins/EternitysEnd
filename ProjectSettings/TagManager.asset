@@ -7,6 +7,7 @@ TagManager:
   - skull
   - phiast
   - PickUp
+  - Damage
   layers:
   - Default
   - TransparentFX
