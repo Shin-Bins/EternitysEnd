@@ -66,6 +66,7 @@ public class PhiastHealth : MonoBehaviour
     {
         Debug.Log("omae wa shindeiru");
         //we'll add in the death logic soon'
+        GameManager.Instance.Death();
     }
    
 }
