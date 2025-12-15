@@ -32,8 +32,6 @@ private AudioSource src;
 private int characterCount = 0;
 
 [SerializeField] bool hasTriggered = false;//fixes the issue of retriggering dialogue. Might need another solution if we want dialogues to repeat.
-[SerializeField]private PlayerInput cuan;
-[SerializeField]private PlayerInput phiast;//ugly work around. Direct references to the player input components to turn them off when dialogue is happening. Need to find a better way
 
     void OnEnable()
     {
@@ -53,8 +51,7 @@ private int characterCount = 0;
 
     void StartDialogue()
     {
-        cuan.enabled = false;
-        phiast.enabled = false;
+       GameManager.Instance.DisableInput();//Function in the game manager that disables inputs
         Debug.Log("Dialogue started");
         index = 0;
         UpdateSpeaker();
@@ -121,8 +118,7 @@ private int characterCount = 0;
         else
         {
             hasTriggered = true;
-            cuan.enabled = true;
-            phiast.enabled = true;
+            GameManager.Instance.EnableInput();//reenables inputs
             diaBox.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

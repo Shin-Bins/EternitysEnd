@@ -14,5 +14,6 @@ void OnTriggerEnter(Collider other)
 	{
 		GameManager.Instance.RespawnCheckpoint(other.gameObject);
 	}
+
 }
 }

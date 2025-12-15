@@ -19,64 +19,76 @@ public class SkullControls_PlayerInput : MonoBehaviour
     public float slamForce = 10f;
     private Rigidbody srb;
 
-    //public Transform anPhiast;
+    private Transform anPhiast;
+    public float lookAtSpeed = 5f; // Speed rotation toward Phiast
+    private bool isLookingAtPhiast = false;
+    private Quaternion targetRotation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        srb = GetComponent<Rigidbody>();   
+        srb = GetComponent<Rigidbody>(); 
+        GameObject phiastRef = GameObject.FindGameObjectWithTag("phiast");
+        if(phiastRef != null)
+        {
+            anPhiast = phiastRef.transform;
+        }
     }
 
     public void OnFindPhiast()
     {
-       // transform.LookAt(anPhiast); 
+        if (anPhiast != null)
+        {
+            
+            Vector3 directionToPhiast = anPhiast.position - transform.position;
+            directionToPhiast.y = 0; // Keep rotation horizontal
+            
+            if (directionToPhiast != Vector3.zero)
+            {
+                targetRotation = Quaternion.LookRotation(directionToPhiast);
+                isLookingAtPhiast = true;//stops rotation when looking at phiast
+            }
+        }
     }
 
     public void OnRotateLeft(InputValue val)
     {
         Debug.Log("Left " + val.Get<float>());
-        /*switch*/rotatingLeft = val.Get<float>() > 0.5f;
-        {
-          /*  case 0: rotatingLeft = false; break;
-            case 1: rotatingLeft = true; break;
-            default: rotatingLeft=false; break;*/
-        }
+        rotatingLeft = val.Get<float>() > 0.5f;
     }
     public void OnRotateRight(InputValue val)
     {
         Debug.Log("Right " + val.Get<float>());
-        /*switch (*/rotatingRight = val.Get<float>() > 0.5f;
-        {
-         /*   case 0: rotatingRight = false; break;
-            case 1: rotatingRight = true; break;
-            default: rotatingRight = false; break;*/
-        }
+        rotatingRight = val.Get<float>() > 0.5f;
     }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
 
             if (isGrounded)
         {
-            HandleRotation();
+            if (isLookingAtPhiast)
+            {
+                // Smoothly rotate toward Phiast
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookAtSpeed * Time.deltaTime);
+                
+                // Stop when close enough
+                if (Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)
+                {
+                    isLookingAtPhiast = false;
+                }
+            }
+            else
+            {
+                HandleRotation();
+            }
         }
         else
         {
-            // Reset rotation time when not grounded
             currentRotationTime = 0f;
         }
-
-       /* if (rotatingLeft && isGrounded)
-        {
-            transform.Rotate(new Vector3(0,-1,0));
-        }
-        if (rotatingRight && isGrounded)
-        {
-            transform.Rotate(new Vector3(0, 1, 0));
-        }*/
     }
-
-
 
     void HandleRotation()
     {
@@ -95,7 +107,6 @@ public class SkullControls_PlayerInput : MonoBehaviour
             currentRotationTime = Mathf.Max(0f, currentRotationTime);
         }
         
-        // Evaluate the curve to get rotation multiplier
         float curveValue = windupCurve.Evaluate(currentRotationTime);
         float rotationAmount = curveValue * maxRotationSpeed * Time.deltaTime;
         
