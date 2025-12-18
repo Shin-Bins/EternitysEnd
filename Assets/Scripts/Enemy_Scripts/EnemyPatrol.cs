@@ -18,6 +18,9 @@ public class EnemyPatrol : MonoBehaviour
    public int index;
     public float timer;
     public float chasetime;
+    float radius = 5;
+    
+    
     
 
     public Transform centrePoint;
@@ -28,6 +31,8 @@ public class EnemyPatrol : MonoBehaviour
         index = 0;
         timer = 31;
         timer += Time.deltaTime;
+        
+        
     }
 
     // Update is called once per frame
@@ -117,5 +122,11 @@ public class EnemyPatrol : MonoBehaviour
 
 
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(centrePoint.position, range);
     }
 }
