@@ -23,6 +23,7 @@ public class PickUpSkull : MonoBehaviour
 	private float trajectTimestep = 0.1f;
 	public Transform endMarker;
 	[SerializeField]private LayerMask collisionLayers;
+	private LineRenderer trajectLine;
 
 	private Rigidbody rb;
 	private Collider obj;
@@ -30,12 +31,13 @@ public class PickUpSkull : MonoBehaviour
 	private BoxCollider objColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform objectPosition;//this is where cuan is held
 	private SphereCollider pickUpTrigger;//checks to see if phiast is in range. Probably another way to do this but it works
-	private LineRenderer trajectLine;
+	private tankmove phiast;
 	private PlayerControls playerControls;
 
 void Start()
 {
 	rb = GetComponent<Rigidbody>();
+	phiast = GetComponent<tankmove>();
 	pickUpTrigger = GetComponent<SphereCollider>();
 	trajectLine = GetComponent<LineRenderer>();
 	trajectLine.enabled = false;
@@ -93,11 +95,14 @@ void PickUp()
 	{
 		pickUpTrigger.enabled = false;
 		isHolding = true;
+		phiast.holdingSkull = true;
+
 		objColl = obj.GetComponent<BoxCollider>();
 		objRb = obj.GetComponent<Rigidbody>();
 		objRb.linearVelocity = Vector3.zero;
 		objRb.isKinematic = true;
 		objColl.enabled = false;
+
 		objRb.transform.parent = objectPosition;
 		objRb.transform.localPosition = Vector3.zero;
 		objRb.transform.localRotation = Quaternion.identity;
@@ -109,9 +114,13 @@ void Drop()
 	if(obj != null && isHolding)
 	{
 	objRb.transform.parent = null;
+
 	objRb.isKinematic = false;
 	objColl.enabled = true;
+
 	isHolding = false;
+	phiast.holdingSkull = false;
+
 	objRb = null;
 	pickUpTrigger.enabled = true;
 	endMarker.gameObject.SetActive(false);
@@ -134,6 +143,7 @@ public void OnThrow()
 
 
 		isHolding = false;
+		phiast.holdingSkull = false;
 		objRb = null;
 		pickUpTrigger.enabled = true;
 		isAiming = false;

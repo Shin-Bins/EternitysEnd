@@ -15,8 +15,14 @@ public class tankmove : MonoBehaviour
     bool rotateleft;
     bool Forwards;
     bool Backwards;
+
     bool jump;
     public bool grounded;
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+    public bool holdingSkull = false;
+
     Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +47,8 @@ public class tankmove : MonoBehaviour
 
         // this shit sucks ass do not use ever, it's staying here to be shamed
 
-
+        grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+    
 
         if (rotateleft)
         {
@@ -66,7 +73,7 @@ public class tankmove : MonoBehaviour
 
         if (jump)
         {
-            if (grounded == true)
+            if (grounded == true && !holdingSkull)
             rb.AddForce(Jumpnow * jforce, ForceMode.Impulse);
             grounded = false;
         }
@@ -132,11 +139,5 @@ public class tankmove : MonoBehaviour
             case 1: jump = true; break;
             default: jump = false; break;
         }
-    }
-
-
-    private void OnCollisionStay(Collision collision)
-    {
-        grounded = true;
     }
 }

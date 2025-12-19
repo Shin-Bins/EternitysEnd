@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
      {
          charToRespawn.transform.position = currentCheckpoint;
      }
+     else{
+         Death();     }
  }
 
  public void DisableInput()
