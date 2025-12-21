@@ -493,6 +493,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1611666248181651893, guid: 75a8d2cc889325c46b9b3e89529842a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9214665145732390568}
+    - targetCorrespondingSourceObject: {fileID: 1611666248181651893, guid: 75a8d2cc889325c46b9b3e89529842a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4339654807105790047}
   m_SourcePrefab: {fileID: 100100000, guid: 75a8d2cc889325c46b9b3e89529842a4, type: 3}
 --- !u!1 &2560088104014258049 stripped
 GameObject:
@@ -516,6 +519,19 @@ MonoBehaviour:
   invinceFrames: 2
   flashInterval: 0.2
   canBeHurt: 1
+--- !u!114 &4339654807105790047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560088104014258049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fad306f4ec3e194bbb5a7e09f64e6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PushAndPull
+  pushDistance: 1.5
 --- !u!4 &5928566949950315565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7465854660852275737, guid: 75a8d2cc889325c46b9b3e89529842a4, type: 3}

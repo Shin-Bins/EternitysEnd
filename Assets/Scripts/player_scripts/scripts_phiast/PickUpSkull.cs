@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PickUpSkull : MonoBehaviour
 {
-	public bool inRange = false;
+	private bool inRange = false;
 	public bool isHolding = false;
 	private bool isAiming = false;
 

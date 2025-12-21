@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 public class tankmove : MonoBehaviour
 {
-
+    [Header("Movement vars")]
     public float _speed;
+    public float holdSpeed;
     public float acceleration;
     public float jforce = 1.0f;
     public Vector3 Jumpnow;
@@ -16,11 +17,13 @@ public class tankmove : MonoBehaviour
     bool Forwards;
     bool Backwards;
 
+    [Header("Jump and Ground check")]
     bool jump;
     public bool grounded;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+
     public bool holdingSkull = false;
 
     Rigidbody rb;
@@ -74,14 +77,25 @@ public class tankmove : MonoBehaviour
         if (jump)
         {
             if (grounded == true && !holdingSkull)
-            rb.AddForce(Jumpnow * jforce, ForceMode.Impulse);
-            grounded = false;
+            {
+                Jump();
+            }
+            
         }
     }
 
     private void Awake()
     {
         _tankcon = GetComponent<Tankcon>();
+    }
+
+    void Jump()
+    {
+        Vector3 velocity = rb.linearVelocity;
+        velocity.y = 0f;
+        rb.linearVelocity = velocity;
+        rb.AddForce(Jumpnow * jforce, ForceMode.Impulse);
+        grounded = false;
     }
 
     public void OnRotateleft(InputValue val)
@@ -132,7 +146,7 @@ public class tankmove : MonoBehaviour
 
     void OnJump(InputValue val)
     {
-        Debug.Log("Jump" +  val.Get<float>());
+         Debug.Log("Jump" +  val.Get<float>());
         switch (val.Get<float>())
         {
             case 0: jump = false; break;
