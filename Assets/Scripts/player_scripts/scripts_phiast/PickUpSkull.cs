@@ -99,7 +99,6 @@ void PickUp()
 
 		objColl = obj.GetComponent<BoxCollider>();
 		objRb = obj.GetComponent<Rigidbody>();
-		objRb.linearVelocity = Vector3.zero;
 		objRb.isKinematic = true;
 		objColl.enabled = false;
 

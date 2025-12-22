@@ -66,8 +66,9 @@ public class SkullControls_PlayerInput : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
 
-            if (isGrounded)
+        if (isGrounded)
         {
+            srb.isKinematic = true;
             if (isLookingAtPhiast)
             {
                 // Smoothly rotate toward Phiast
