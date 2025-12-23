@@ -112,6 +112,7 @@ private int characterCount = 0;
         {
             index ++;
             diaText.text = string.Empty;
+            Debug.Log("NextLine");
             UpdateSpeaker();
             StartCoroutine(TypeLine());
         }
@@ -120,6 +121,7 @@ private int characterCount = 0;
             hasTriggered = true;
             GameManager.Instance.EnableInput();//reenables inputs
             diaBox.SetActive(false);
+            Debug.Log("Finito");
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
