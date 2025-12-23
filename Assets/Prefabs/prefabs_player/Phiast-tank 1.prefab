@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 7215271179488686312}
   - component: {fileID: 6649765788147590338}
   - component: {fileID: 8109236779340004139}
-  - component: {fileID: 8750686899786524551}
   - component: {fileID: 8401645356769198315}
   - component: {fileID: 6340954484884918629}
-  - component: {fileID: 2975461781685761507}
   - component: {fileID: 73105494743410030}
   - component: {fileID: 7804843216196551519}
   - component: {fileID: 4167058023072545648}
@@ -123,33 +121,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8750686899786524551
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611666248181651893}
-  serializedVersion: 5
-  m_Mass: 8.98
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &8401645356769198315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,23 +163,6 @@ MonoBehaviour:
   m_DefaultActionMap: Phiast
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2975461781685761507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611666248181651893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb10b4b3bf88094e84979ad15c14310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _speed: 35
-  acceleration: 5
-  jforce: 15
-  Jumpnow: {x: 0, y: 0, z: 0}
-  grounded: 0
 --- !u!135 &73105494743410030
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -242,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049a83b8d843f07459cedf921bfee858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickUpSkull
-  inRange: 0
   isHolding: 0
   throwForce: 30
   upForce: 5

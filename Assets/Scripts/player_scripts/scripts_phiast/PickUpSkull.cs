@@ -31,13 +31,13 @@ public class PickUpSkull : MonoBehaviour
 	private BoxCollider objColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform objectPosition;//this is where cuan is held
 	private SphereCollider pickUpTrigger;//checks to see if phiast is in range. Probably another way to do this but it works
-	private tankmove phiast;
+	private panzermove phiast;
 	private PlayerControls playerControls;
 
 void Start()
 {
 	rb = GetComponent<Rigidbody>();
-	phiast = GetComponent<tankmove>();
+	phiast = GetComponent<panzermove>();
 	pickUpTrigger = GetComponent<SphereCollider>();
 	trajectLine = GetComponent<LineRenderer>();
 	trajectLine.enabled = false;

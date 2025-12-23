@@ -7,89 +7,136 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
-    //Chckpoints
+   public static GameManager Instance { get; private set; }
+    
     private Vector3 currentCheckpoint = Vector3.zero;
-
-    //Dialogue
     private GameObject playerPrefab;
     private PlayerInput[] inputs;
     private NavMeshAgent[] agents;
-
+    
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
+    
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+    
     void Start()
     {
-       playerPrefab = GameObject.Find("Player");
-       inputs = playerPrefab.GetComponentsInChildren<PlayerInput>();
-       agents = FindObjectsByType<NavMeshAgent>(FindObjectsSortMode.None);
-
-       if(playerPrefab == null)
+        RefreshReferences();
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RefreshReferences();
+    }
+    
+    void RefreshReferences()
+    {
+        playerPrefab = GameObject.Find("Player");
+        
+        if (playerPrefab != null)
         {
-            Debug.Log("Where are mah boahs");
+            inputs = playerPrefab.GetComponentsInChildren<PlayerInput>();
         }
-        if(inputs.Length == 0)
+        else
         {
-            Debug.Log("No inputto");
+            inputs = new PlayerInput[0];
+            Debug.LogWarning("Player not found in scene");
+        }
+        
+        agents = FindObjectsByType<NavMeshAgent>(FindObjectsSortMode.None);
+    }
+    
+    public void SetCheckpoint(Vector3 position)
+    {
+        currentCheckpoint = position;
+        Debug.Log("Checkpoint set");
+    }
+    
+    public void RespawnCheckpoint(GameObject charToRespawn)
+    {
+        if(currentCheckpoint != Vector3.zero)
+        {
+            charToRespawn.transform.position = currentCheckpoint;
+        }
+        else
+        {
+            Death();
         }
     }
-
- public void SetCheckpoint(Vector3 position)
- {
-     currentCheckpoint = position;
-     Debug.Log("Checkpoint set");
- }
-
- public void RespawnCheckpoint(GameObject charToRespawn)
- {
-     if(currentCheckpoint != Vector3.zero)
-     {
-         charToRespawn.transform.position = currentCheckpoint;
-     }
-     else{
-         Death();     }
- }
-
- public void DisableInput()
- {
-     foreach(var input in inputs)
-     {
-         input.enabled = false;
-     }
-
-     if(agents.Length != 0)
-     {
-         foreach(var agent in agents)
-         {
-             agent.enabled = false;
-         }
-     }
- }
-
- public void EnableInput()
- {
-     foreach(var input in inputs)
-     {
-         input.enabled = true;
-     }
-
-     if(agents.Length != 0)
-     {
-         foreach(var agent in agents)
-         {
-             agent.enabled = false;
-         }
-     }
- }
- public void Death()
- {
-     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
- }
+    
+    public void DisableInput()
+    {
+        if (inputs == null || inputs.Length == 0)
+        {
+            RefreshReferences();
+        }
+        
+        foreach(var input in inputs)
+        {
+            if (input != null)
+            {
+                input.enabled = false;
+            }
+        }
+        
+        if(agents != null && agents.Length != 0)
+        {
+            foreach(var agent in agents)
+            {
+                if (agent != null)
+                {
+                    agent.enabled = false;
+                }
+            }
+        }
+    }
+    
+    public void EnableInput()
+    {
+        if (inputs == null || inputs.Length == 0)
+        {
+            RefreshReferences();
+        }
+        
+        foreach(var input in inputs)
+        {
+            if (input != null)
+            {
+                input.enabled = true;
+            }
+        }
+        
+        if(agents != null && agents.Length != 0)
+        {
+            foreach(var agent in agents)
+            {
+                if (agent != null)
+                {
+                    agent.enabled = true;
+                }
+            }
+        }
+    }
+    
+    public void Death()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
