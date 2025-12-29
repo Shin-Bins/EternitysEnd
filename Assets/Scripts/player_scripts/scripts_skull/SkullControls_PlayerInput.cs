@@ -68,7 +68,6 @@ public class SkullControls_PlayerInput : MonoBehaviour
 
         if (isGrounded)
         {
-            srb.isKinematic = true;
             if (isLookingAtPhiast)
             {
                 // Smoothly rotate toward Phiast

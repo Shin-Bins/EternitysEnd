@@ -1,7 +1,11 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.InputSystem; 
+using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -22,11 +26,17 @@ public class DialogueManager : MonoBehaviour
     private PopUpDialogue.DialogueLine[] currentLines;
     private PopUpDialogue currentDialogueTrigger;
 
+    private GameObject playerPrefab;
+    private PlayerInput[] inputs;
+    private NavMeshAgent[] agents;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -41,6 +51,86 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+     void Start()
+    {
+        RefreshReferences();
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RefreshReferences();
+    }
+    
+    void RefreshReferences()
+    {
+        playerPrefab = GameObject.Find("Player");
+        
+        if (playerPrefab != null)
+        {
+            inputs = playerPrefab.GetComponentsInChildren<PlayerInput>();
+        }
+        else
+        {
+            inputs = new PlayerInput[0];
+            Debug.LogWarning("Player not found in scene");
+        }
+        
+        agents = FindObjectsByType<NavMeshAgent>(FindObjectsSortMode.None);
+    }
+     public void DisableInput()
+    {
+        if (inputs == null || inputs.Length == 0)
+        {
+            RefreshReferences();
+        }
+        
+        foreach(var input in inputs)
+        {
+            if (input != null)
+            {
+                input.enabled = false;
+            }
+        }
+        
+        if(agents != null && agents.Length != 0)
+        {
+            foreach(var agent in agents)
+            {
+                if (agent != null)
+                {
+                    agent.enabled = false;
+                }
+            }
+        }
+    }
+    
+    public void EnableInput()
+    {
+        if (inputs == null || inputs.Length == 0)
+        {
+            RefreshReferences();
+        }
+        
+        foreach(var input in inputs)
+        {
+            if (input != null)
+            {
+                input.enabled = true;
+            }
+        }
+        
+        if(agents != null && agents.Length != 0)
+        {
+            foreach(var agent in agents)
+            {
+                if (agent != null)
+                {
+                    agent.enabled = true;
+                }
+            }
+        }
+    }
+    
     public void StartDialogue(PopUpDialogue.DialogueLine[] lines, PopUpDialogue trigger)
     {
         // Stop any currently running dialogue
@@ -59,7 +149,7 @@ public class DialogueManager : MonoBehaviour
         diaBox.SetActive(true);
         diaText.text = string.Empty;
         
-        GameManager.Instance.DisableInput();
+        DisableInput();
         
         UpdateSpeaker();
         activeTypingCoroutine = StartCoroutine(TypeLine());
@@ -139,7 +229,7 @@ public class DialogueManager : MonoBehaviour
             currentDialogueTrigger.MarkAsTriggered();
         }
 
-        GameManager.Instance.EnableInput();
+        EnableInput();
         diaBox.SetActive(false);
         
         Cursor.visible = false;
