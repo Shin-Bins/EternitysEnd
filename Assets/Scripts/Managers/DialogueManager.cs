@@ -133,7 +133,7 @@ public class DialogueManager : MonoBehaviour
     
     public void StartDialogue(PopUpDialogue.DialogueLine[] lines, PopUpDialogue trigger)
     {
-        // Stop any currently running dialogue
+
         if (activeTypingCoroutine != null)
         {
             StopCoroutine(activeTypingCoroutine);
@@ -195,10 +195,23 @@ public class DialogueManager : MonoBehaviour
 
     void PlayMumble()
     {
-        if (src == null || currentLines[currentIndex].voice == null) return;
-
-        src.pitch = voicePitch + Random.Range(-pitchVariation, pitchVariation);
-        src.PlayOneShot(currentLines[currentIndex].voice);
+         if (src == null) return;
+        
+        // Get the voice clips array from the current dialogue line
+        AudioClip[] voice = currentLines[currentIndex].voice;
+        
+        // Check if there are any clips available
+        if (voice == null || voice.Length == 0) return;
+        
+        // Randomly select one clip from the array
+        AudioClip selectedClip = voice[Random.Range(0, voice.Length)];
+        
+        // Play the selected clip if it's not null
+        if (selectedClip != null)
+        {
+            src.pitch = voicePitch + Random.Range(-pitchVariation, pitchVariation);
+            src.PlayOneShot(selectedClip);
+        }
     }
 
     public void NextLine()

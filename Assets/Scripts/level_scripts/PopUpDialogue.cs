@@ -14,7 +14,7 @@ public class PopUpDialogue : MonoBehaviour
         [TextArea(2, 4)]
         public string text;
         public Sprite charSprite;
-        public AudioClip voice;
+        public AudioClip[] voice;
     }
 
     [SerializeField] private DialogueLine[] lines;
