@@ -710,13 +710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b69c04aa34fc1448ff5cdf35ad9225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopUpDialogue
-  diaText: {fileID: 5391036248484822204}
-  textSpeed: 0.1
-  speakerImage: {fileID: 7280300557390597808}
   lines: []
   hasTriggered: 0
-  cuan: {fileID: 0}
-  phiast: {fileID: 0}
 --- !u!114 &91951022941103287
 MonoBehaviour:
   m_ObjectHideFlags: 0

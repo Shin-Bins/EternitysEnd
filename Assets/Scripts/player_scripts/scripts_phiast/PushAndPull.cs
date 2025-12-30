@@ -10,8 +10,6 @@ public class PushAndPull : MonoBehaviour
            Push();
        }
     
-    
-
     private void Push()
     {
         // Get player's forward direction
