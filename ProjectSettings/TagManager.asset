@@ -9,6 +9,7 @@ TagManager:
   - PickUp
   - Damage
   - Movable
+  - Spawner
   layers:
   - Default
   - TransparentFX
