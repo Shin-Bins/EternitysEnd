@@ -4,17 +4,12 @@ using System.Collections.Generic;
 
 public class MovingPlatform : MonoBehaviour
 {
- [SerializeField]
-    private WaypointPath _waypointPath;
-
-    [SerializeField]
-    private float _speed;
-
+    [SerializeField] private WaypointPath _waypointPath;
+    [SerializeField]private float _speed;
     private int _targetWaypointIndex;
-
     private Transform _previousWaypoint;
     private Transform _targetWaypoint;
-    public int platformStep;//Thsi is just how many waypoints the platform will move at once
+    public int platformStep;//Thsi is just how many waypoints the platform will move at once if not on auto
 
     private float _timeToWaypoint;
     private float _elapsedTime;
@@ -22,16 +17,23 @@ public class MovingPlatform : MonoBehaviour
     private bool isMoving = false;
     public bool isAuto = false;
 
+    public GameObject rails;
     void Start()
     {
        TargetNextWaypoint();
+       rails.SetActive(false);
     }
 
     void FixedUpdate()
     {
-         if (!isAuto && _elapsedTime >= _timeToWaypoint) return;
+         if (!isAuto && _elapsedTime >= _timeToWaypoint) 
+         {
+             isMoving = false;
+             rails.SetActive(false);
+             return;
+         }
         _elapsedTime += Time.deltaTime;
-
+        isMoving = true;
         float elapsedPercentage = _elapsedTime / _timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
@@ -40,6 +42,11 @@ public class MovingPlatform : MonoBehaviour
         if (elapsedPercentage >= 1 && isAuto)
         {
             TargetNextWaypoint();
+        }
+        else if (elapsedPercentage >= 1)
+        {
+            isMoving = false;
+            rails.SetActive(false);
         }
     }
 
@@ -87,22 +94,20 @@ public class MovingPlatform : MonoBehaviour
     }
 
     public void TargetPreviousWaypoint()
-{
-    _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
-    _targetWaypointIndex = _waypointPath.GetPreviousWaypointIndex(_targetWaypointIndex);
-    _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
-    _elapsedTime = 0;
-    float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
-    _timeToWaypoint = distanceToWaypoint / _speed;
-}
+    {
+        _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+        _targetWaypointIndex = _waypointPath.GetPreviousWaypointIndex(_targetWaypointIndex);
+        _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
+        _elapsedTime = 0;
+        float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
+        _timeToWaypoint = distanceToWaypoint / _speed;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.SetParent(transform);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        other.transform.SetParent(null);
+        if(isMoving)
+        {
+            rails.SetActive(false);
+        }
     }
 }

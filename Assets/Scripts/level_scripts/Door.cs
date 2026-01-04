@@ -40,4 +40,9 @@ public class Door : MonoBehaviour
            isOpen = true;
         }
     }
+
+    public void OpenDoor()
+    {
+        isOpen = true;
+    }
 }

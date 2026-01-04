@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
   delay: 3
-  radius: 5
+  radius: 10
   vfxDuration: 1
+  isActive: 0
+  hasExploded: 0
   explosionEffect: {fileID: 358637981425055526, guid: 8eb503696b886e04faff8fc0f480d473, type: 3}
 --- !u!65 &4380109089731156415
 BoxCollider:
