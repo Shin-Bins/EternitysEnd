@@ -20,4 +20,14 @@ public class WaypointPath : MonoBehaviour
 
         return nextWaypointIndex;
     }
+
+    public int GetPreviousWaypointIndex(int currentWaypointIndex)
+    {
+        int previousWaypointIndex = currentWaypointIndex - 1;
+        if (previousWaypointIndex < 0)
+        {
+            previousWaypointIndex = transform.childCount - 1;
+        }
+        return previousWaypointIndex;
+    }
 }

@@ -6,8 +6,8 @@ public class Bomb : MonoBehaviour
     public float radius = 5f;
     public float vfxDuration = 1f;
     private float countDown;
-    private bool isActive = false;
-    private bool hasExploded = false;
+    [SerializeField]private bool isActive = false;
+    [SerializeField]private bool hasExploded = false;
     public GameObject explosionEffect;
 
 
@@ -37,6 +37,9 @@ public class Bomb : MonoBehaviour
         if(collision.gameObject.CompareTag("Spawner"))
         {
             isActive = false;
+        }
+        else{
+            isActive = true;
         }
     }
     
