@@ -4,9 +4,11 @@ using System.Collections.Generic;
 
 public class WaypointPath : MonoBehaviour
 {
-  public Transform GetWaypoint(int waypointIndex)
+   [SerializeField]private List<Transform> _waypoints = new List<Transform>();
+    
+    public Transform GetWaypoint(int waypointIndex)
     {
-        return transform.GetChild(waypointIndex);
+        return _waypoints[waypointIndex];
     }
 
     public int GetNextWaypointIndex(int currentWaypointIndex)

@@ -3,7 +3,7 @@ using UnityEngine;
 public class BombSpawner : MonoBehaviour
 {
     public GameObject bomba;
-    private bool noBomba = false;
+    public bool noBomba = false;
     public float spawnDelay = 3f;
     private float countDown;
 
