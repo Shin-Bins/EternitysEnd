@@ -10,7 +10,6 @@ public class EnemyPatrol : MonoBehaviour
 
     private NavMeshAgent agent;
     public float range;
-    public BoxCollider vision;
     public Transform target;
     Vector3 chase;
     public Transform phist;
@@ -34,47 +33,23 @@ public class EnemyPatrol : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
+        TargetCheck();
+        StyleSwitching();
+    }
+
+    void StyleSwitching()
+    {
+        switch (index)
         {
-            Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point))
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
-                timer = 0f;
-                
-            }
-        }
-
-        if (index == 1)
-        {
-            chase = phist.position;
-            agent.SetDestination(chase);
-            
-        }
-
-        if (index == 2)
-        {
-            chase = skull.position;
-            agent.SetDestination(chase);
-        }
-
-        if (timer > 10f)
-        {
-            index = 3;
-        }
-
-        if (index == 3)
-        {
-            Vector3 point;
-           if (RandomPoint(centrePoint.position, range, out point))
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                agent.SetDestination(point);
-                timer = 0f;
-
-            }
-
+            case 0:
+                RoyalGuard();
+                break;
+            case 1:
+                Chase(phist);
+                break;
+            case 2:
+                Chase(skull);
+                break;
         }
     }
 
@@ -93,24 +68,98 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    void RoyalGuard()
     {
-        if (other.gameObject.tag == "phiast")
+         if (index == 0)
         {
-            index = 1;
-            timer = 0f;        
+            if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
+            {
+                Vector3 point;
+                if (RandomPoint(centrePoint.position, range, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                    timer = 0f;
+                }
+            }
         }
+    }
 
-        if (other.gameObject.tag == "skull")
+    void TargetCheck()
+    {
+        if (skull != null && Vector3.Distance(centrePoint.position, skull.position) <= range)
         {
             index = 2;
             timer = 0f;
         }
+        else if (phist != null && Vector3.Distance(centrePoint.position, phist.position) <= range)
+        {
+            index = 1;
+            timer = 0f;
+        }
+
+        else if (timer > 10f && (index == 1 || index == 2))
+        {
+            index = 0;
+            timer = 0f;
+        }
+    }
+
+    void Chase(Transform target)
+    {
+        if (target != null)
+        {
+            chase = ClampPosition(target.position);
+            agent.SetDestination(chase);
+        }
+    }
+
+    Vector3 ClampPosition(Vector3 targetPosition)
+    {
+        Vector3 directionToTarget = targetPosition - centrePoint.position;
+    
+        if (directionToTarget.magnitude > range)
+        {
+            directionToTarget = directionToTarget.normalized * range;
+            return centrePoint.position + directionToTarget;
+        }
+
+        return targetPosition;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(centrePoint.position, range);
+    }
+
+    void OnEnable()
+    {
+     // reset everything to avoid ai freaking out if set inactive and active
+        index = 0;
+        timer = 0f;
+
+        if (agent == null)
+            agent = GetComponent<NavMeshAgent>();
+
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.ResetPath();
+            agent.isStopped = false;
+        
+            Vector3 point;
+            if (RandomPoint(centrePoint.position, range, out point))
+            {
+                agent.SetDestination(point);
+            }
+        }
+    }
+    void OnDisable()
+    {
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.ResetPath();
+            agent.isStopped = true;
+        }
     }
 }
