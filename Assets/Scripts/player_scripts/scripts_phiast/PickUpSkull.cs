@@ -112,17 +112,19 @@ void Drop()
 {
 	if(obj != null && isHolding)
 	{
-	objRb.transform.parent = null;
+		objRb.transform.parent = null;
 
-	objRb.isKinematic = false;
-	objColl.enabled = true;
+		objRb.isKinematic = false;
+		objColl.enabled = true;
 
-	isHolding = false;
-	phiast.holdingSkull = false;
-
-	objRb = null;
-	pickUpTrigger.enabled = true;
-	endMarker.gameObject.SetActive(false);
+		isHolding = false;
+		phiast.holdingSkull = false;
+            isAiming = false;
+            trajectLine.enabled = false;
+            endMarker.gameObject.SetActive(false);
+            objRb = null;
+		pickUpTrigger.enabled = true;
+		endMarker.gameObject.SetActive(false);
 	}
 }
 
