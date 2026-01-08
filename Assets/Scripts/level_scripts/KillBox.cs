@@ -7,7 +7,7 @@ void OnTriggerEnter(Collider other)
 	if(other.CompareTag("phiast"))
 	{
 		PhiastHealth health = other.GetComponent<PhiastHealth>();
-		health.TakeDamage();
+		health.TakeDamage(transform.position);
 		GameManager.Instance.RespawnCheckpoint(other.gameObject);
 		Debug.Log("Got da phiastie");
 	}

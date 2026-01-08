@@ -14,27 +14,55 @@ public class PhiastHealth : MonoBehaviour
     private Renderer rend;
     private Color originalColour;
 
+     private Vector3 knockbackVelocity;
+    public float knockbackForce = 5f;
+    public float knockbackUpForce = 200f;
+    public float knockbackDuration = 1f;
+    private float knockbackTimer = 0f;//All this for a knockback btw
+
+    private CharacterController controller;
+
     void Start()
     {
-     rend = GetComponent<Renderer>();
-     originalColour = rend.material.color;
-     currentHealth = maxHealth;
+        rend = GetComponent<Renderer>();
+        originalColour = rend.material.color;
+        currentHealth = maxHealth;
+        controller = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        if(knockbackTimer > 0)
+        {
+            controller.Move(knockbackVelocity * Time.deltaTime);
+            knockbackVelocity.y -= 20f * Time.deltaTime;
+            knockbackTimer -= Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Damage"))
         {
-            TakeDamage();
+            TakeDamage(other.transform.position);
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(Vector3 damagePos)
     {
         if(canBeHurt)
         {
             currentHealth--;
             StartCoroutine(FlashEffect());
+
+             Vector3 knockbackDir = (transform.position - damagePos).normalized;
+             knockbackDir.y = 0; // Keep horizontal
+        
+             //horizontal knockback
+             knockbackVelocity = knockbackDir * knockbackForce;
+             knockbackVelocity.y = knockbackUpForce; // upward knockback
+             knockbackTimer = knockbackDuration;
+
             if(currentHealth == 0)
             {
                 PhiastDeath();
