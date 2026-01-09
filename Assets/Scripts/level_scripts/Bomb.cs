@@ -32,7 +32,7 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Spawner"))
         {

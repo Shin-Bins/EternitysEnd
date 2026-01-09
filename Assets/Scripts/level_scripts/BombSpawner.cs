@@ -7,13 +7,6 @@ public class BombSpawner : MonoBehaviour
     public float spawnDelay = 3f;
     private float countDown;
 
-void OnTriggerExit(Collider other)
-{
-    if(other.CompareTag("PickUp"))
-    {
-        noBomba = true;
-    }
-}
 
 void Start()
 {
@@ -22,6 +15,25 @@ void Start()
 
 void Update()
 {
+     // Check if there's no bomb at this position
+    Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
+    bool bombHere = false;
+    
+    foreach(Collider col in colliders)
+    {
+        if(col.CompareTag("PickUp"))
+        {
+            bombHere = true;
+            break;
+        }
+    }
+    
+    if(!bombHere &&!noBomba)
+    {
+        noBomba = true;
+        countDown = spawnDelay;
+    }
+
     if(noBomba)
     {
         countDown -= Time.deltaTime;
@@ -29,6 +41,7 @@ void Update()
         {
             Instantiate(bomba, transform.position, transform.rotation);
             noBomba = false;
+            countDown = spawnDelay;
         }
     }
 }

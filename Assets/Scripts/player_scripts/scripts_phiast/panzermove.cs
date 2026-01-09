@@ -6,11 +6,13 @@ public class panzermove : MonoBehaviour
     private Vector2 input;
     private float verticalVelocity = 0f;
     
-    public float moveSpeed = 5f;
+    public float moveSpeed = 7f;
     public float turnSpeed = 100f;
     public float jumpHeight = 2f;
     public float gravity = 9.81f;
 
+    public bool isPushing = false;
+    private float pushSpeed = 4f;
     public bool holdingSkull = false;
     
     private CharacterController controller;
@@ -43,6 +45,14 @@ public class panzermove : MonoBehaviour
         direction.y = verticalVelocity;
         
         controller.Move(direction * Time.deltaTime);
+
+        if(isPushing)
+        {
+            moveSpeed = pushSpeed;
+        }
+        else{
+            moveSpeed = 7f;
+        }
     }
     
     public void OnMove(InputValue value)

@@ -29,7 +29,6 @@ public class MovingPlatform : MonoBehaviour
          if (!isAuto && _elapsedTime >= _timeToWaypoint) 
          {
              isMoving = false;
-             rails.SetActive(false);
              return;
          }
         _elapsedTime += Time.deltaTime;
@@ -46,7 +45,6 @@ public class MovingPlatform : MonoBehaviour
         else if (elapsedPercentage >= 1)
         {
             isMoving = false;
-            rails.SetActive(false);
         }
     }
 
@@ -64,6 +62,7 @@ public class MovingPlatform : MonoBehaviour
 
     public void MoveForward(int numberOfWaypoints)
     {
+        if (isMoving) return;
         StartCoroutine(MoveStepsForward(numberOfWaypoints));
     }
 
@@ -77,9 +76,9 @@ public class MovingPlatform : MonoBehaviour
          }
     }
 
-
     public void MoveBackward(int numberOfWaypoints)
     {
+        if (isMoving) return;
         StartCoroutine(MoveStepsBackward(numberOfWaypoints));
     }
 
@@ -101,13 +100,5 @@ public class MovingPlatform : MonoBehaviour
         _elapsedTime = 0;
         float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
         _timeToWaypoint = distanceToWaypoint / _speed;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(isMoving)
-        {
-            rails.SetActive(false);
-        }
     }
 }
