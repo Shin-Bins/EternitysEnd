@@ -10,7 +10,6 @@ public class panzermove : MonoBehaviour
     public float turnSpeed = 100f;
     public float jumpHeight = 2f;
     public float gravity = 9.81f;
-    public float pushForce = 1f;//how strong we push physics objects
 
     public bool holdingSkull = false;
     
@@ -56,28 +55,6 @@ public class panzermove : MonoBehaviour
         if (controller.isGrounded && !holdingSkull)
         {
             verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * gravity);
-        }
-    }
-
-    void OnControllerColliderHit(ControllerColliderHit hit)//Physics without da rigidbawdy
-    {     
-        Rigidbody body = hit.collider.attachedRigidbody;
-        if (body != null && !body.isKinematic)
-        {
-            Vector3 pushDir = hit.moveDirection;
-            pushDir.y = 0;
-
-            if (Mathf.Abs(pushDir.x) > Mathf.Abs(pushDir.z))
-            {
-                pushDir = new Vector3(Mathf.Sign(pushDir.x), 0, 0);
-            }
-            else
-            {
-                pushDir = new Vector3(0, 0, Mathf.Sign(pushDir.z));
-            }
-        
-            
-            body.AddForce(pushDir * pushForce, ForceMode.Impulse);
         }
     }
 }

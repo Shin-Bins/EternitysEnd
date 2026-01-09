@@ -15,9 +15,9 @@ public class PhiastHealth : MonoBehaviour
     private Color originalColour;
 
      private Vector3 knockbackVelocity;
-    public float knockbackForce = 5f;
-    public float knockbackUpForce = 200f;
-    public float knockbackDuration = 1f;
+    public float knockbackForce = 2f;
+    public float knockbackUpForce = 2f;
+    public float knockbackDuration = .3f;
     private float knockbackTimer = 0f;//All this for a knockback btw
 
     private CharacterController controller;

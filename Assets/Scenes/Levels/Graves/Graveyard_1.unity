@@ -6519,7 +6519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4220489014268783673, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -43
+      value: -43.29
       objectReference: {fileID: 0}
     - target: {fileID: 4220489014268783673, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15303,7 +15303,7 @@ Transform:
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07328327, y: 0, z: 0, w: 0.99731123}
-  m_LocalPosition: {x: -2.85, y: 8.49605, z: -48.128757}
+  m_LocalPosition: {x: -2.85, y: 8.49605, z: -48.41876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24574,6 +24574,7 @@ MonoBehaviour:
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
+  pushForce: 0.1
   holdingSkull: 0
 --- !u!143 &2143094345
 CharacterController:

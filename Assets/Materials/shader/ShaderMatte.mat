@@ -125,7 +125,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _StepEdge: 0.0009
     - _Surface: 0
-    - _Thickness: 0.058
+    - _Thickness: 0.05
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1

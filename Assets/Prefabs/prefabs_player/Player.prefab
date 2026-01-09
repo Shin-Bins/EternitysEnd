@@ -504,7 +504,6 @@ GameObject:
   - component: {fileID: 2829033067350680333}
   - component: {fileID: 6863125033569881680}
   - component: {fileID: 4144067794478694021}
-  - component: {fileID: 5017868501590535866}
   - component: {fileID: 5926519283682248951}
   - component: {fileID: 3421134721411382668}
   - component: {fileID: 2135034434035301490}
@@ -617,18 +616,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5017868501590535866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6415388480427172980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ced37f3957722441b31b3207ed1a427, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!114 &5926519283682248951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,6 +822,9 @@ MonoBehaviour:
   invinceFrames: 2
   flashInterval: 0.2
   canBeHurt: 1
+  knockbackForce: 2
+  knockbackUpForce: 2
+  knockbackDuration: 0.3
 --- !u!114 &5270767076157628136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,10 +875,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1cfdde2ed53a846b3a8197be6f0aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::panzermove
-  moveSpeed: 5
+  moveSpeed: 7
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
+  pushForce: 1
   holdingSkull: 0
 --- !u!1 &7141021339034127053
 GameObject:
