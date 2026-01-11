@@ -28,6 +28,13 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float attackCooldown = 2f;
     public GameObject damageZone;
 
+    [Header("Grab Cuan")]
+    private bool isHolding = false;
+    private float skullKillTimer = 3f;
+    private Rigidbody cuanRb;//this is a reference for when we pick up the obj
+	private BoxCollider cuanColl;//turn off collision with skull when carried. Was having some funky effects on phiast
+	public Transform cuanPosition;//this is where cuan is held
+
     public int index;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,6 +77,9 @@ public class EnemyPatrol : MonoBehaviour
             case 3:
                 SwordMaster();
                 break;
+            case 4:
+                SkullMaster();
+                break;
         }
     }
 
@@ -90,10 +100,15 @@ public class EnemyPatrol : MonoBehaviour
 
     void StateCheck()//The position of the index entry matters. The higher it is the higher the priority is too
     {
-    if (phist == null) return;
-        
-        float distanceToPhist = Vector3.Distance(transform.position, phist.position);
-        
+
+        float distToPhist = Vector3.Distance(transform.position, phist.position);
+        float distToCuan = Vector3.Distance(transform.position, skull.position);
+
+        if(distToCuan <= attackRange && !isHolding)
+        {
+            index = 4;
+            return;
+        }
 
         // Chase conditions
         if (skull != null && Vector3.Distance(centrePoint.position, skull.position) <= range)
@@ -101,7 +116,7 @@ public class EnemyPatrol : MonoBehaviour
             index = 2;
             timer = 0f;
         }
-        if (distanceToPhist <= attackRange)
+        if (distToPhist <= attackRange)
         {
             index = 3;
             return;
@@ -111,7 +126,6 @@ public class EnemyPatrol : MonoBehaviour
             index = 1;
             timer = 0f;
         }
-        // Return to patrol if chase timer expires and no targets in range
         else if (timer > 10f && (index == 1 || index == 2))
         {
             index = 0;
@@ -169,6 +183,24 @@ public class EnemyPatrol : MonoBehaviour
         agent.updateRotation = true; 
         attackTimer = attackCooldown;
         StateCheck();
+    }
+
+    void SkullMaster()
+    {
+        if(skull != null && !isHolding)
+	    {
+            agent.isStopped = true;
+		    isHolding = true;
+
+		    cuanColl = skull.GetComponent<BoxCollider>();
+		    cuanRb = skull.GetComponent<Rigidbody>();
+		    cuanRb.isKinematic = true;
+		    cuanColl.enabled = false;
+
+		    cuanRb.transform.parent = cuanPosition;
+		    cuanRb.transform.localPosition = Vector3.zero;
+		    cuanRb.transform.localRotation = Quaternion.identity;
+	    }
     }
 
     Vector3 ClampPosition(Vector3 targetPosition)

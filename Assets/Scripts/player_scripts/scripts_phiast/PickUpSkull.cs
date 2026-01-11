@@ -142,7 +142,6 @@ public void OnThrow()
 		Vector3 throwDirection = objectPosition.transform.forward * currentThrowForce + objectPosition.transform.up * currentUpForce;
 		objRb.AddForce(throwDirection, ForceMode.Impulse);
 
-
 		isHolding = false;
 		phiast.holdingSkull = false;
 		objRb = null;
