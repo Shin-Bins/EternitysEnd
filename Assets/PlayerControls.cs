@@ -190,6 +190,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd28659c-9b34-4794-9d60-f0d81be71340"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -412,6 +421,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CycleThrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f48cf61-6337-4a93-92c8-6c41c53e9876"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3be2e92-bfdd-4a15-a5f6-1e25c998a010"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -567,6 +598,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Phiast_Backwards = m_Phiast.FindAction("Backwards", throwIfNotFound: true);
         m_Phiast_Jump = m_Phiast.FindAction("Jump", throwIfNotFound: true);
         m_Phiast_CycleThrow = m_Phiast.FindAction("CycleThrow", throwIfNotFound: true);
+        m_Phiast_Pause = m_Phiast.FindAction("Pause", throwIfNotFound: true);
         // Skull
         m_Skull = asset.FindActionMap("Skull", throwIfNotFound: true);
         m_Skull_RotateLeft = m_Skull.FindAction("RotateLeft", throwIfNotFound: true);
@@ -670,6 +702,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Phiast_Backwards;
     private readonly InputAction m_Phiast_Jump;
     private readonly InputAction m_Phiast_CycleThrow;
+    private readonly InputAction m_Phiast_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Phiast".
     /// </summary>
@@ -725,6 +758,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Phiast/CycleThrow".
         /// </summary>
         public InputAction @CycleThrow => m_Wrapper.m_Phiast_CycleThrow;
+        /// <summary>
+        /// Provides access to the underlying input action "Phiast/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Phiast_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -784,6 +821,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CycleThrow.started += instance.OnCycleThrow;
             @CycleThrow.performed += instance.OnCycleThrow;
             @CycleThrow.canceled += instance.OnCycleThrow;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -828,6 +868,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CycleThrow.started -= instance.OnCycleThrow;
             @CycleThrow.performed -= instance.OnCycleThrow;
             @CycleThrow.canceled -= instance.OnCycleThrow;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -1181,6 +1224,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCycleThrow(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Skull" which allows adding and removing callbacks.
