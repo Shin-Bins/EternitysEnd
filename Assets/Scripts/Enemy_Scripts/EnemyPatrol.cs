@@ -7,25 +7,37 @@ using UnityEngine.ProBuilder.MeshOperations;
 
 public class EnemyPatrol : MonoBehaviour
 {
-
+    [Header("Patrol")]
     private NavMeshAgent agent;
+    public Transform centrePoint;
     public float range;
+    private float timer;
     public Transform target;
+    float radius = 5f;
+
+    [Header("Chase")]
     Vector3 chase;
     public Transform phist;
     public Transform skull;
-    public int index;
-    public float timer;
-    public float chasetime;
-    float radius = 5;
+    private float chasetime;
 
-    public Transform centrePoint;
+    [Header("Attack")]
+    [SerializeField]private bool isAttacking = false;
+    [SerializeField]private float attackRange = 3f;
+    [SerializeField] private float attackTimer;
+    [SerializeField] private float attackCooldown = 2f;
+    public GameObject damageZone;
+
+    public int index;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        damageZone.SetActive(false);
+        agent.updateRotation = true; 
         index = 0;
-       // timer = 7f;         
+        timer = 7f;         
     }
 
     // Update is called once per frame
@@ -33,7 +45,12 @@ public class EnemyPatrol : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        TargetCheck();
+        if(attackTimer > 0f)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+
+        StateCheck();
         StyleSwitching();
     }
 
@@ -49,6 +66,9 @@ public class EnemyPatrol : MonoBehaviour
                 break;
             case 2:
                 Chase(skull);
+                break;
+            case 3:
+                SwordMaster();
                 break;
         }
     }
@@ -68,36 +88,30 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
-    void RoyalGuard()
+    void StateCheck()//The position of the index entry matters. The higher it is the higher the priority is too
     {
-         if (index == 0)
-        {
-            if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
-            {
-                Vector3 point;
-                if (RandomPoint(centrePoint.position, range, out point))
-                {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                    agent.SetDestination(point);
-                    timer = 0f;
-                }
-            }
-        }
-    }
+    if (phist == null) return;
+        
+        float distanceToPhist = Vector3.Distance(transform.position, phist.position);
+        
 
-    void TargetCheck()
-    {
+        // Chase conditions
         if (skull != null && Vector3.Distance(centrePoint.position, skull.position) <= range)
         {
             index = 2;
             timer = 0f;
         }
-        else if (phist != null && Vector3.Distance(centrePoint.position, phist.position) <= range)
+        if (distanceToPhist <= attackRange)
+        {
+            index = 3;
+            return;
+        }
+        else if (Vector3.Distance(centrePoint.position, phist.position) <= range)
         {
             index = 1;
             timer = 0f;
         }
-
+        // Return to patrol if chase timer expires and no targets in range
         else if (timer > 10f && (index == 1 || index == 2))
         {
             index = 0;
@@ -105,13 +119,56 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    void RoyalGuard()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
+           {
+                Vector3 point;
+                if (RandomPoint(centrePoint.position, range, out point))
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                    agent.SetDestination(point);
+                    timer = 0f;
+                }
+           }
+    }
+
     void Chase(Transform target)
     {
         if (target != null)
         {
+            agent.isStopped = false;
             chase = ClampPosition(target.position);
             agent.SetDestination(chase);
         }
+    }
+
+    public bool CanAttack()
+    {
+       return !isAttacking && attackTimer <= 0f;
+    }
+
+    void SwordMaster()
+    {
+        if(!CanAttack()) return;
+       
+        isAttacking = true;
+        agent.isStopped = true;
+        agent.updateRotation = false;
+        transform.LookAt(target);
+        damageZone.SetActive(true);
+        
+        Invoke("EndAttack", 0.1f);//This is to test out attacking enemies. A better way would be to use a collider that is activated mid animation. Until we have animations, this is the way
+    }
+
+    void EndAttack()
+    {
+        damageZone.SetActive(false);
+        isAttacking = false;
+        agent.isStopped = false;
+        agent.updateRotation = true; 
+        attackTimer = attackCooldown;
+        StateCheck();
     }
 
     Vector3 ClampPosition(Vector3 targetPosition)
