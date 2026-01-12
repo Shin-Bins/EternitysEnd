@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 658256938211702082}
   - component: {fileID: 7372317613442814428}
   - component: {fileID: 3849371469684175998}
+  - component: {fileID: 5392824255346487740}
   m_Layer: 7
   m_Name: skull
   m_TagString: skull
@@ -307,6 +308,20 @@ MonoBehaviour:
   m_DefaultActionMap: Skull
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5392824255346487740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445618643357236090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d065423450e86e94daa59c3c0d1210a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CuanHealth
+  isHeld: 0
+  cuanHeldDeath: {fileID: 0}
 --- !u!1 &811658970874318201
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +895,7 @@ MonoBehaviour:
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
+  isPushing: 0
   holdingSkull: 0
 --- !u!1 &7141021339034127053
 GameObject:

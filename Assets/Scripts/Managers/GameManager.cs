@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     private Vector3 currentCheckpoint = Vector3.zero;
 
-    //level loading
+    [Header("Level Loading")]
     [SerializeField] private Image fadeOut;
     [SerializeField] private float fadeDuration = 0.5f;
  
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public void SetCheckpoint(Vector3 position)
     {
         currentCheckpoint = position;

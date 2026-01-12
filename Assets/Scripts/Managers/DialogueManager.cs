@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
             {
                 if (agent != null)
                 {
-                    agent.enabled = false;
+                    agent.isStopped = true;
                 }
             }
         }
@@ -125,7 +125,7 @@ public class DialogueManager : MonoBehaviour
             {
                 if (agent != null)
                 {
-                    agent.enabled = true;
+                    agent.isStopped = false;
                 }
             }
         }
@@ -196,17 +196,12 @@ public class DialogueManager : MonoBehaviour
     void PlayMumble()
     {
          if (src == null) return;
-        
-        // Get the voice clips array from the current dialogue line
         AudioClip[] voice = currentLines[currentIndex].voice;
-        
-        // Check if there are any clips available
         if (voice == null || voice.Length == 0) return;
         
-        // Randomly select one clip from the array
+        // Randomly select mumble clip
         AudioClip selectedClip = voice[Random.Range(0, voice.Length)];
         
-        // Play the selected clip if it's not null
         if (selectedClip != null)
         {
             src.pitch = voicePitch + Random.Range(-pitchVariation, pitchVariation);

@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -27,13 +29,15 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float attackTimer;
     [SerializeField] private float attackCooldown = 2f;
     public GameObject damageZone;
+    
 
     [Header("Grab Cuan")]
-    private bool isHolding = false;
+    public bool isHolding = false;
     private float skullKillTimer = 3f;
     private Rigidbody cuanRb;//this is a reference for when we pick up the obj
 	private BoxCollider cuanColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform cuanPosition;//this is where cuan is held
+    private CuanHealth skullyHealth;
 
     public int index;
     
@@ -44,7 +48,7 @@ public class EnemyPatrol : MonoBehaviour
         damageZone.SetActive(false);
         agent.updateRotation = true; 
         index = 0;
-        timer = 7f;         
+        timer = 7f;  
     }
 
     // Update is called once per frame
@@ -116,7 +120,7 @@ public class EnemyPatrol : MonoBehaviour
             index = 2;
             timer = 0f;
         }
-        if (distToPhist <= attackRange)
+        if (distToPhist <= attackRange && !isHolding)
         {
             index = 3;
             return;
@@ -194,8 +198,10 @@ public class EnemyPatrol : MonoBehaviour
 
 		    cuanColl = skull.GetComponent<BoxCollider>();
 		    cuanRb = skull.GetComponent<Rigidbody>();
+            skullyHealth = skull.GetComponent<CuanHealth>();
 		    cuanRb.isKinematic = true;
 		    cuanColl.enabled = false;
+            skullyHealth.isHeld = true;
 
 		    cuanRb.transform.parent = cuanPosition;
 		    cuanRb.transform.localPosition = Vector3.zero;
