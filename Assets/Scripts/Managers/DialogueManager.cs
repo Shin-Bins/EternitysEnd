@@ -134,6 +134,12 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(PopUpDialogue.DialogueLine[] lines, PopUpDialogue trigger)
     {
 
+     if (lines == null || lines.Length == 0)
+        {
+            Debug.LogError("Cannot start dialogue: lines array is null or empty!");
+            return;
+        }
+
         if (activeTypingCoroutine != null)
         {
             StopCoroutine(activeTypingCoroutine);
@@ -157,6 +163,14 @@ public class DialogueManager : MonoBehaviour
 
     void UpdateSpeaker()
     {
+
+          // Safety checks to prevent index out of bounds errors
+        if (currentLines == null || currentLines.Length == 0)
+        {
+            Debug.LogWarning("CurrentLines is null or empty!");
+            speakerImage.enabled = false;
+            return;
+        }
         if (currentLines[currentIndex].charSprite != null)
         {
             speakerImage.sprite = currentLines[currentIndex].charSprite;

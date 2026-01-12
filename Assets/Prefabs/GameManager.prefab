@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   fadeOut: {fileID: 8077910908029562067}
   fadeDuration: 0.5
-  cuanHeldDeath: {fileID: 0}
 --- !u!1 &2446797212872194279
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +109,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &7833308881670788762
 MonoBehaviour:
