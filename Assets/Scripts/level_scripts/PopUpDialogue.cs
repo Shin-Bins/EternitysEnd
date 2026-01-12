@@ -26,6 +26,13 @@ public class PopUpDialogue : MonoBehaviour
         {
             return;
         }
+           Debug.Log($"PopUpDialogue OnEnable called. Lines array length: {(lines != null ? lines.Length : 0)}");
+        
+        if (lines == null || lines.Length == 0)
+        {
+            Debug.LogError("Lines array is null or empty in PopUpDialogue component!", this);
+            return;
+        }
 
         if (DialogueManager.Instance != null)
         {

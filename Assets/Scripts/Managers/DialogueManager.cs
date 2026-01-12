@@ -225,12 +225,18 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
+    // if text is typing, finish typing
         if (activeTypingCoroutine != null)
         {
             StopCoroutine(activeTypingCoroutine);
             activeTypingCoroutine = null;
+            
+            // Display the full text immediately
+            diaText.text = currentLines[currentIndex].text;
+            return;
         }
 
+        // if the text is finished typing, go to the next line
         if (currentIndex < currentLines.Length - 1)
         {
             currentIndex++;

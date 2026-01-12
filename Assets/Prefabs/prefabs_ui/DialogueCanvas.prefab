@@ -606,7 +606,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2111042974517897283}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PopUpDialogue, Assembly-CSharp
         m_MethodName: NextLine
         m_Mode: 1
@@ -629,7 +629,6 @@ GameObject:
   - component: {fileID: 2389329251640334912}
   - component: {fileID: 5577376274071669695}
   - component: {fileID: 3397097725148761887}
-  - component: {fileID: 2111042974517897283}
   - component: {fileID: 91951022941103287}
   m_Layer: 5
   m_Name: DialogueBox
@@ -698,20 +697,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2111042974517897283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8410135036598803058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b69c04aa34fc1448ff5cdf35ad9225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PopUpDialogue
-  lines: []
-  hasTriggered: 0
 --- !u!114 &91951022941103287
 MonoBehaviour:
   m_ObjectHideFlags: 0
