@@ -91,7 +91,7 @@ void OnTriggerExit(Collider other)
 
 void PickUp()
 {
-	if(obj != null)
+	if(obj != null && CharacterManager.Instance.cuanHeld == false)
 	{
 		pickUpTrigger.enabled = false;
 		isHolding = true;
@@ -105,10 +105,12 @@ void PickUp()
 		objRb.transform.parent = objectPosition;
 		objRb.transform.localPosition = Vector3.zero;
 		objRb.transform.localRotation = Quaternion.identity;
+
+		CharacterManager.Instance.HandleHolding();
 	}
 }
 
-void Drop()
+public void Drop()
 {
 	if(obj != null && isHolding)
 	{
@@ -125,6 +127,8 @@ void Drop()
             objRb = null;
 		pickUpTrigger.enabled = true;
 		endMarker.gameObject.SetActive(false);
+
+		CharacterManager.Instance.HandleHolding();
 	}
 }
 
@@ -149,6 +153,8 @@ public void OnThrow()
 		isAiming = false;
 		trajectLine.enabled = false;
 		endMarker.gameObject.SetActive(false);
+
+		CharacterManager.Instance.HandleHolding();
 	}
 }
 

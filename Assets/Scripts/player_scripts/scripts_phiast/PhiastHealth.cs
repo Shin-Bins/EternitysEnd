@@ -14,13 +14,14 @@ public class PhiastHealth : MonoBehaviour
     private Renderer rend;
     private Color originalColour;
 
-     private Vector3 knockbackVelocity;
+    private Vector3 knockbackVelocity;
     public float knockbackForce = 2f;
     public float knockbackUpForce = 2f;
     public float knockbackDuration = .3f;
     private float knockbackTimer = 0f;//All this for a knockback btw
 
     private CharacterController controller;
+    private PickUpSkull skully;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class PhiastHealth : MonoBehaviour
         originalColour = rend.material.color;
         currentHealth = maxHealth;
         controller = GetComponent<CharacterController>();
+        skully = GetComponent<PickUpSkull>();
     }
 
     void Update()
@@ -62,7 +64,8 @@ public class PhiastHealth : MonoBehaviour
              knockbackVelocity = knockbackDir * knockbackForce;
              knockbackVelocity.y = knockbackUpForce; // upward knockback
              knockbackTimer = knockbackDuration;
-
+             
+             skully.Drop();
             if(currentHealth == 0)
             {
                 PhiastDeath();

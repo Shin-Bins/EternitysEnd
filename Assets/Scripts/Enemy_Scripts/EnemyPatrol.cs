@@ -34,6 +34,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Grab Cuan")]
     public bool isHolding = false;
     private float skullKillTimer = 3f;
+    private float grabRange = 1.5f;
     private Rigidbody cuanRb;//this is a reference for when we pick up the obj
 	private BoxCollider cuanColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform cuanPosition;//this is where cuan is held
@@ -108,7 +109,7 @@ public class EnemyPatrol : MonoBehaviour
         float distToPhist = Vector3.Distance(transform.position, phist.position);
         float distToCuan = Vector3.Distance(transform.position, skull.position);
 
-        if(distToCuan <= attackRange && !isHolding)
+        if(distToCuan <= grabRange && !isHolding && CharacterManager.Instance.cuanHeld == false)
         {
             index = 4;
             return;
@@ -202,10 +203,27 @@ public class EnemyPatrol : MonoBehaviour
 		    cuanRb.isKinematic = true;
 		    cuanColl.enabled = false;
             skullyHealth.isHeld = true;
+            CharacterManager.Instance.HandleHolding();
 
 		    cuanRb.transform.parent = cuanPosition;
 		    cuanRb.transform.localPosition = Vector3.zero;
 		    cuanRb.transform.localRotation = Quaternion.identity;
+	    }
+    }
+
+    void SkullDisaster()
+    {
+        if(skull != null && isHolding)
+	    {
+		cuanRb.transform.parent = null;
+
+	    cuanRb.isKinematic = false;
+		cuanColl.enabled = true;
+        skullyHealth.isHeld = false;
+		isHolding = false;
+        cuanRb = null;
+
+		CharacterManager.Instance.HandleHolding();
 	    }
     }
 
