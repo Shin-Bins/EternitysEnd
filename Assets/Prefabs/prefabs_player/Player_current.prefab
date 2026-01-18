@@ -909,8 +909,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fad306f4ec3e194bbb5a7e09f64e6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PushAndPull
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 383
+  raycastOffset: 0.1
   objectPosition: {fileID: 3884737055830388303}
-  holdSpeed: 10
 --- !u!1 &6927213864549176730
 GameObject:
   m_ObjectHideFlags: 0
