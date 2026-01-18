@@ -307,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3884737055830388303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Holder
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 2983819539841550372}
   - component: {fileID: 3192227197101269301}
   - component: {fileID: 1246369805626815897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,8 @@ GameObject:
   - component: {fileID: 5558790282339644460}
   - component: {fileID: 6398751901341078715}
   - component: {fileID: 8370172010728644489}
-  m_Layer: 0
+  - component: {fileID: 4683887588680503941}
+  m_Layer: 7
   m_Name: Phiast-tank 1
   m_TagString: phiast
   m_Icon: {fileID: 0}
@@ -881,7 +882,7 @@ MonoBehaviour:
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
-  isPushing: 0
+  isLifting: 0
   holdingSkull: 0
 --- !u!114 &8370172010728644489
 MonoBehaviour:
@@ -896,6 +897,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pause
   pausemenu: {fileID: 0}
+--- !u!114 &4683887588680503941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728684997373097945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fad306f4ec3e194bbb5a7e09f64e6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PushAndPull
+  objectPosition: {fileID: 3884737055830388303}
+  holdSpeed: 10
 --- !u!1 &6927213864549176730
 GameObject:
   m_ObjectHideFlags: 0

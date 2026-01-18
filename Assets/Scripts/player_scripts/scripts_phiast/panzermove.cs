@@ -11,8 +11,8 @@ public class panzermove : MonoBehaviour
     public float jumpHeight = 2f;
     public float gravity = 9.81f;
 
-    public bool isPushing = false;
-    private float pushSpeed = 4f;
+    public bool isLifting = false;
+    private float liftSpeed = 4f;
     public bool holdingSkull = false;
     
     private CharacterController controller;
@@ -26,7 +26,7 @@ public class panzermove : MonoBehaviour
     {
         bool isGrounded = controller.isGrounded;
         
-        if (input.x != 0)
+        if (input.x != 0 && !isLifting)
         {
             float turn = input.x * turnSpeed * Time.deltaTime;
             transform.Rotate(0, turn, 0);
@@ -46,9 +46,9 @@ public class panzermove : MonoBehaviour
         
         controller.Move(direction * Time.deltaTime);
 
-        if(isPushing)
+        if(isLifting)
         {
-            moveSpeed = pushSpeed;
+            moveSpeed = liftSpeed;
         }
         else{
             moveSpeed = 7f;

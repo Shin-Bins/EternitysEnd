@@ -6597,10 +6597,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2560088104014258049, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2143094345}
+      addedObject: {fileID: 2143094344}
     - targetCorrespondingSourceObject: {fileID: 2560088104014258049, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2143094344}
+      addedObject: {fileID: 2143094345}
     - targetCorrespondingSourceObject: {fileID: 1910780207607310149, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2133395714}

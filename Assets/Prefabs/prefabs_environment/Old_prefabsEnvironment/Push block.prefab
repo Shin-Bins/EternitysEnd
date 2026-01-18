@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4526074998299399932}
   - component: {fileID: 4829780858115862323}
   - component: {fileID: 2791163967055759499}
-  - component: {fileID: 858266998706866352}
   m_Layer: 3
   m_Name: Push block
   m_TagString: Movable
@@ -112,18 +111,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &858266998706866352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682720311300199642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9adb7860eda9c1441b26e385ff4998e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MvableBlocks
-  gridSize: 1
-  pushSpeed: 3
-  checkRadius: 1

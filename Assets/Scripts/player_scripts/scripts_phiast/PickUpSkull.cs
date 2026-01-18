@@ -25,7 +25,6 @@ public class PickUpSkull : MonoBehaviour
 	[SerializeField]private LayerMask collisionLayers;
 	private LineRenderer trajectLine;
 
-	private Rigidbody rb;
 	private Collider obj;
 	private Rigidbody objRb;//this is a reference for when we pick up the obj
 	private BoxCollider objColl;//turn off collision with skull when carried. Was having some funky effects on phiast
@@ -36,7 +35,6 @@ public class PickUpSkull : MonoBehaviour
 
 void Start()
 {
-	rb = GetComponent<Rigidbody>();
 	phiast = GetComponent<panzermove>();
 	pickUpTrigger = GetComponent<SphereCollider>();
 	trajectLine = GetComponent<LineRenderer>();
