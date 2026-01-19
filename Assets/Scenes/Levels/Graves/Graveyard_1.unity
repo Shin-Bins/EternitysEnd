@@ -6601,6 +6601,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2560088104014258049, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2143094345}
+    - targetCorrespondingSourceObject: {fileID: 2560088104014258049, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2143094355}
     - targetCorrespondingSourceObject: {fileID: 1910780207607310149, guid: fc96a3053b483bb4c93941f2af499557, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2133395714}
@@ -15722,6 +15725,7 @@ Transform:
   - {fileID: 1182723556}
   - {fileID: 5271996662751244509}
   - {fileID: 690861287}
+  - {fileID: 1160597519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000972040
@@ -16885,6 +16889,73 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1001 &1160597518
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 978969677}
+    m_Modifications:
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 150.00809
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -58.98577
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 43.087227
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621514514805689521, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+      propertyPath: m_Name
+      value: Pause_Menu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+--- !u!4 &1160597519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 652772656392008541, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+  m_PrefabInstance: {fileID: 1160597518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1160597520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5621514514805689521, guid: 73a70981ffba6834ba5dc2a2c129e446, type: 3}
+  m_PrefabInstance: {fileID: 1160597518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1173628430
 GameObject:
   m_ObjectHideFlags: 0
@@ -26909,7 +26980,7 @@ MonoBehaviour:
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
-  isPushing: 0
+  isLifting: 0
   holdingSkull: 0
 --- !u!143 &2143094345
 CharacterController:
@@ -26936,6 +27007,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2143094355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143094331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ae090964b73e943882d2afcc6d39eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pause
+  pausemenu: {fileID: 1160597520}
 --- !u!1001 &4459023957814235637
 PrefabInstance:
   m_ObjectHideFlags: 0
