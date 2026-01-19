@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class DecideState : State
+public class ReadyAttackState : State
 {
-	protected StateMachine stateMachine;
+    protected StateMachine stateMachine;
 	private BossStats boss;
 	private Transform phiastLocal;
 	private float rotationSpeed = 10f;
-	private float followTimer;
-
+    private float holdTimer;
+	
 	private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
@@ -17,8 +17,8 @@ public class DecideState : State
 
 	public override void Enter()
 	{
-		Debug.Log("deciding state");
-		followTimer = 0f;
+		Debug.Log("readying state");
+		holdTimer = 0f;
 	}
 
 	public override void Tick()
@@ -38,15 +38,15 @@ public class DecideState : State
 				Debug.Log("Where's that guy");
 			}
 
-			followTimer += Time.deltaTime;
-			if(followTimer >= boss.attackDelay)
+			holdTimer += Time.deltaTime;
+			if(holdTimer >= boss.holdAttack)
 			{
-				stateMachine.ChangeState<ReadyAttackState>();
+				stateMachine.ChangeState<AttackState>();
 			}
 	}
 
 	public override void Exit()
 	{
-		Debug.Log("I'm not gonna sugarcoat it for ya");
+		Debug.Log("Welcome to the true mans world");
 	}
 }
