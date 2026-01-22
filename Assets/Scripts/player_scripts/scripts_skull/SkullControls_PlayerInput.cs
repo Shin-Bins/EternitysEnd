@@ -1,4 +1,5 @@
-using UnityEditor.AnimatedValues;
+//using UnityEditor;
+//using UnityEditor.AnimatedValues;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -70,10 +71,8 @@ public class SkullControls_PlayerInput : MonoBehaviour
         {
             if (isLookingAtPhiast)
             {
-                // Smoothly rotate toward Phiast
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lookAtSpeed * Time.deltaTime);
-                
-                // Stop when close enough
+
                 if (Quaternion.Angle(transform.rotation, targetRotation) < 0.5f)
                 {
                     isLookingAtPhiast = false;
@@ -96,21 +95,18 @@ public class SkullControls_PlayerInput : MonoBehaviour
         
         if (isRotating)
         {
-            // Increase time along the curve
             currentRotationTime += Time.deltaTime * rotationAcceleration;
             currentRotationTime = Mathf.Clamp01(currentRotationTime);
         }
         else
         {
-            // Decrease time when not rotating (deceleration)
             currentRotationTime -= Time.deltaTime * rotationAcceleration;
             currentRotationTime = Mathf.Max(0f, currentRotationTime);
         }
         
         float curveValue = windupCurve.Evaluate(currentRotationTime);
         float rotationAmount = curveValue * maxRotationSpeed * Time.deltaTime;
-        
-        // Apply rotation
+
         if (rotatingLeft)
         {
             transform.Rotate(Vector3.down * rotationAmount);
