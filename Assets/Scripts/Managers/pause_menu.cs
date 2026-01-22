@@ -13,12 +13,6 @@ public class pause_menu : MonoBehaviour
          thisscene = SceneManager.GetActiveScene();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void unpause()
     {
         Time.timeScale = 1;
@@ -31,6 +25,6 @@ public class pause_menu : MonoBehaviour
 
     public void quit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }
