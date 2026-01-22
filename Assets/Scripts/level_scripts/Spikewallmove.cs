@@ -6,7 +6,7 @@ public class Spikewallmove : MonoBehaviour
     public Transform start;
     public Transform end;
     public float speed;
-    bool go;
+    public bool go;
     
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,12 +20,12 @@ public class Spikewallmove : MonoBehaviour
     void Update()
     {
 
-        if (go = true)
+        if (go == true)
         {
             forward();
         }
 
-        if (go = false)
+        if (go == false)
         {
             back();
         }
@@ -38,7 +38,7 @@ public class Spikewallmove : MonoBehaviour
         
         {
             transform.position = Vector3.MoveTowards(transform.position, start.position, speed * Time.deltaTime);
-            if (transform.position == start.position)
+            if (transform.position == start.position && go == true)
             {
                 go = false;
             }
@@ -50,7 +50,7 @@ public class Spikewallmove : MonoBehaviour
     public void back()
     {
         transform.position = Vector3.MoveTowards(transform.position, end.position, speed * Time.deltaTime);
-        if (transform.position == end.position)
+        if (transform.position == end.position && go == false)
         {
             go = true;
         }
