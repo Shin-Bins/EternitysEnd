@@ -10,6 +10,8 @@ TagManager:
   - Damage
   - Movable
   - Spawner
+  - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX

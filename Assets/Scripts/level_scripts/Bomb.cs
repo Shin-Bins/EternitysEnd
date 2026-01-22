@@ -10,8 +10,6 @@ public class Bomb : MonoBehaviour
     [SerializeField]private bool hasExploded = false;
     public GameObject explosionEffect;
 
-
-    
     void Start()
     {
         countDown = delay;
@@ -40,6 +38,14 @@ public class Bomb : MonoBehaviour
         }
         else{
             isActive = true;
+        }
+        if(collision.gameObject.CompareTag("Boss"))
+        {
+            BossStats boss = collision.gameObject.GetComponent<BossStats>();
+            {
+                boss.Damaged();
+            }
+            Explode();
         }
     }
     

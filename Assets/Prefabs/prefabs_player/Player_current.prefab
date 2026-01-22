@@ -912,7 +912,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 383
-  raycastOffset: 0.1
+  raycastOffset: 0.5
   objectPosition: {fileID: 3884737055830388303}
 --- !u!1 &6927213864549176730
 GameObject:
