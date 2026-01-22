@@ -101,4 +101,9 @@ public class GameManager : MonoBehaviour
         }
         fadeOut.fillAmount = targetFill;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
