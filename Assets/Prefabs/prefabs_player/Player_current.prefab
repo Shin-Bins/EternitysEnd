@@ -418,6 +418,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4727275301816534987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8547020615179029228}
+  m_Layer: 7
+  m_Name: Ghost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8547020615179029228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727275301816534987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7882228795638771073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6281578740584051468
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +558,6 @@ GameObject:
   - component: {fileID: 5558790282339644460}
   - component: {fileID: 6398751901341078715}
   - component: {fileID: 8370172010728644489}
-  - component: {fileID: 4683887588680503941}
   m_Layer: 7
   m_Name: Phiast-tank 1
   m_TagString: phiast
@@ -551,6 +581,7 @@ Transform:
   - {fileID: 3884737055830388303}
   - {fileID: 2983819539841550372}
   - {fileID: 2006592276553933716}
+  - {fileID: 8547020615179029228}
   m_Father: {fileID: 6137057271046291008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4605331185843410635
@@ -884,6 +915,7 @@ MonoBehaviour:
   gravity: 9.81
   isLifting: 0
   holdingSkull: 0
+  ghostMan: {fileID: 4727275301816534987}
 --- !u!114 &8370172010728644489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,23 +929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pause
   pausemenu: {fileID: 0}
---- !u!114 &4683887588680503941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6728684997373097945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fad306f4ec3e194bbb5a7e09f64e6ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PushAndPull
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 383
-  raycastOffset: 0.5
-  objectPosition: {fileID: 3884737055830388303}
 --- !u!1 &6927213864549176730
 GameObject:
   m_ObjectHideFlags: 0

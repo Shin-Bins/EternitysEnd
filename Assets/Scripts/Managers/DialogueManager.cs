@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     private PopUpDialogue.DialogueLine[] currentLines;
     private PopUpDialogue currentDialogueTrigger;
 
-    private GameObject playerPrefab;
+    public GameObject playerPrefab;
     private PlayerInput[] inputs;
     private NavMeshAgent[] agents;
 
@@ -63,7 +63,7 @@ public class DialogueManager : MonoBehaviour
     
     void RefreshReferences()
     {
-        playerPrefab = GameObject.Find("Player");
+        //playerPrefab = GameObject.Find("Player");
         
         if (playerPrefab != null)
         {

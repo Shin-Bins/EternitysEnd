@@ -12,6 +12,7 @@ TagManager:
   - Spawner
   - Boss
   - Enemy
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
