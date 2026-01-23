@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 16282845}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 68a4e12a02ea84e45a71e8db2fd762f9, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: c775fb556ee5bb145be53b977c63db4b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!108 &16282845 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1525863047654424746, guid: 2d0ae2efee5839f47842854237a9cdad, type: 3}
+  m_PrefabInstance: {fileID: 52401840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &25272586
 GameObject:
   m_ObjectHideFlags: 0
@@ -8395,6 +8400,7 @@ GameObject:
   - component: {fileID: 983812698}
   - component: {fileID: 983812697}
   - component: {fileID: 983812696}
+  - component: {fileID: 983812701}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -8552,6 +8558,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &983812701
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983812695}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!43 &988020324
 Mesh:
   m_ObjectHideFlags: 0
@@ -9130,6 +9145,10 @@ PrefabInstance:
       propertyPath: cuanHeldDeath
       value: 
       objectReference: {fileID: 425898715}
+    - target: {fileID: 1809651408475043000, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2836849674531566197, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: m_Name
       value: Player_current
@@ -9181,7 +9200,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9019562278210697847, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264588873}
   m_SourcePrefab: {fileID: 100100000, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
 --- !u!1 &1091278715
 GameObject:
@@ -10402,6 +10424,20 @@ Transform:
   - {fileID: 1551770367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1264588866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9019562278210697847, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+  m_PrefabInstance: {fileID: 1088374732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!45 &1264588873
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264588866}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!43 &1294857715
 Mesh:
   m_ObjectHideFlags: 0
