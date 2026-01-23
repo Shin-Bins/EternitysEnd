@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Graves/Graveyard_3.unity
     guid: 5be8da220c7d3a04c905c03a1a190324
+  - enabled: 1
+    path: Assets/Scenes/Levels/Torture-chamber/torture.unity
+    guid: 99e73b92b15a3eb499ccaa1bcf537ba1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
