@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::panzermove
   moveSpeed: 7
-  turnSpeed: 100
+  turnSpeed: 150
   jumpHeight: 2
   gravity: 9.81
   holdingSkull: 0
@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f4cca04c56394da111a2d848d5db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::punch
-  hitbox: {fileID: 0}
+  hitbox: {fileID: 6245860836164628431}
 --- !u!1 &6927213864549176730
 GameObject:
   m_ObjectHideFlags: 0

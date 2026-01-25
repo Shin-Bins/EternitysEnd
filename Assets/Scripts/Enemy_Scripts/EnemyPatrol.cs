@@ -103,7 +103,7 @@ public class EnemyPatrol : MonoBehaviour
 
     }
 
-    void StateCheck()//The position of the index entry matters. The higher it is the higher the priority is too
+    void StateCheck()//position of the index entry matters. The higher it is the higher the priority
     {
 
         float distToPhist = Vector3.Distance(transform.position, phist.position);
@@ -211,19 +211,21 @@ public class EnemyPatrol : MonoBehaviour
 	    }
     }
 
-    void SkullDisaster()
+    public void SkullDisaster()
     {
         if(skull != null && isHolding)
 	    {
-		cuanRb.transform.parent = null;
+		    cuanRb.transform.parent = null;
 
-	    cuanRb.isKinematic = false;
-		cuanColl.enabled = true;
-        skullyHealth.isHeld = false;
-		isHolding = false;
-        cuanRb = null;
+	        cuanRb.isKinematic = false;
+            Vector3 dropDirection = cuanPosition.transform.up * 5f;
+            cuanRb.AddForce(dropDirection, ForceMode.Impulse);
+		    cuanColl.enabled = true;
+            skullyHealth.isHeld = false;
+		    isHolding = false;
+            cuanRb = null;
 
-		CharacterManager.Instance.HandleHolding();
+		    CharacterManager.Instance.HandleHolding();
 	    }
     }
 

@@ -26,7 +26,7 @@ public class DialogueManager : MonoBehaviour
     private PopUpDialogue.DialogueLine[] currentLines;
     private PopUpDialogue currentDialogueTrigger;
 
-    public GameObject playerPrefab;
+    private GameObject playerPrefab;
     private PlayerInput[] inputs;
     private NavMeshAgent[] agents;
 
@@ -49,6 +49,7 @@ public class DialogueManager : MonoBehaviour
         {
             src = gameObject.AddComponent<AudioSource>();
         }
+        playerPrefab = GameObject.Find("Player_current");
     }
 
      void Start()

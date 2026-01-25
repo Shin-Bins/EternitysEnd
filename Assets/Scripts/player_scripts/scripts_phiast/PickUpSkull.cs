@@ -104,6 +104,13 @@ void PickUp()
 		objRb.transform.localPosition = Vector3.zero;
 		objRb.transform.localRotation = Quaternion.identity;
 
+		Bomb bomb = obj.GetComponent<Bomb>();
+		if(bomb != null)
+		{
+			bomb.isActive = true;
+			bomb.SetHoldScript(this);
+		}
+
 		CharacterManager.Instance.HandleHolding();
 	}
 }

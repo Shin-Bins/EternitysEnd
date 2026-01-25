@@ -1196,6 +1196,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: 9.81
   holdingSkull: 0
+  ghostMan: {fileID: 0}
 --- !u!143 &2143094345
 CharacterController:
   m_ObjectHideFlags: 0

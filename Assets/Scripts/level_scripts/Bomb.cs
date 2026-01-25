@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public float delay = 3f;
-    public float radius = 5f;
-    public float vfxDuration = 1f;
+    [SerializeField]private float delay = 3f;
+    [SerializeField]private float radius = 5f;
+    [SerializeField]private float vfxDuration = 1f;
     private float countDown;
-    [SerializeField]private bool isActive = false;
+    public bool isActive = false;
     [SerializeField]private bool hasExploded = false;
     public GameObject explosionEffect;
 
+    private PickUpSkull holdScript;
     void Start()
     {
         countDown = delay;
@@ -28,6 +29,11 @@ public class Bomb : MonoBehaviour
               hasExploded = true;
             }
         }
+    }
+
+    public void SetHoldScript(PickUpSkull script)
+    {
+        holdScript = script;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -77,5 +83,10 @@ public class Bomb : MonoBehaviour
         }
         Destroy(gameObject);
 
+    }
+
+    void OnDestroy()
+    {
+        holdScript.Drop();
     }
 }
