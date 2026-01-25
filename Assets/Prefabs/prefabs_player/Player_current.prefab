@@ -449,6 +449,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7882228795638771073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6245860836164628431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7198149513497143484}
+  - component: {fileID: 6969942330990054864}
+  m_Layer: 0
+  m_Name: hitbox-punch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7198149513497143484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245860836164628431}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.59, z: 0.98600006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7882228795638771073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6969942330990054864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245860836164628431}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.955308, z: 1}
+  m_Center: {x: 0, y: -0.47765398, z: 0}
 --- !u!1 &6281578740584051468
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +611,7 @@ GameObject:
   - component: {fileID: 5558790282339644460}
   - component: {fileID: 6398751901341078715}
   - component: {fileID: 8370172010728644489}
+  - component: {fileID: 6566148905600244262}
   m_Layer: 7
   m_Name: Phiast-tank 1
   m_TagString: phiast
@@ -582,6 +636,7 @@ Transform:
   - {fileID: 2983819539841550372}
   - {fileID: 2006592276553933716}
   - {fileID: 8547020615179029228}
+  - {fileID: 7198149513497143484}
   m_Father: {fileID: 6137057271046291008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4605331185843410635
@@ -913,7 +968,6 @@ MonoBehaviour:
   turnSpeed: 100
   jumpHeight: 2
   gravity: 9.81
-  isLifting: 0
   holdingSkull: 0
   ghostMan: {fileID: 4727275301816534987}
 --- !u!114 &8370172010728644489
@@ -929,6 +983,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pause
   pausemenu: {fileID: 0}
+--- !u!114 &6566148905600244262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728684997373097945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627f4cca04c56394da111a2d848d5db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::punch
+  hitbox: {fileID: 0}
 --- !u!1 &6927213864549176730
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1041,7 @@ GameObject:
   - component: {fileID: 3176832367590904562}
   - component: {fileID: 1809651408475043000}
   - component: {fileID: 2772075942917066205}
+  - component: {fileID: 8414956844568115296}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1087,7 +1155,7 @@ Camera:
   m_GameObject: {fileID: 9019562278210697847}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.17577429, g: 0.18784942, b: 0.4716981, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1173,3 +1241,12 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!45 &8414956844568115296
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019562278210697847}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
