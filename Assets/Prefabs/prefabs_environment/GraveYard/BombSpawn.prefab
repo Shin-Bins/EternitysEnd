@@ -70,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5f45f03cc79f682499165cd806a0c423, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BombSpawner
   bomba: {fileID: 3841924497358877010, guid: 8d9e9234b82720f4395ab460998ab2ee, type: 3}
+  noBomba: 0
   spawnDelay: 3
 --- !u!1001 &1794908157605692880
 PrefabInstance:
@@ -210,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomba
       objectReference: {fileID: 0}
+    - target: {fileID: 7980153984782844710, guid: 8d9e9234b82720f4395ab460998ab2ee, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24551c91a78a2f0468115569e00fe2c7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

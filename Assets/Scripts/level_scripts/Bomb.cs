@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Bomb : MonoBehaviour
 {
@@ -10,9 +12,16 @@ public class Bomb : MonoBehaviour
     [SerializeField]private bool hasExploded = false;
     public GameObject explosionEffect;
 
+    [SerializeField] float flashInterval = 0.2f;
+    private Color activeFlash = Color.red;
+    private Renderer rend;
+    private Color originalColour;
+
     private PickUpSkull holdScript;
     void Start()
     {
+        rend = GetComponent<Renderer>();
+        originalColour = rend.material.color;
         countDown = delay;
     }
 
@@ -22,6 +31,7 @@ public class Bomb : MonoBehaviour
         if(isActive == true)
         {
             countDown -= Time.deltaTime;
+            StartCoroutine(FlashEffect());
         
             if(countDown <= 0f && !hasExploded)
             {
@@ -62,6 +72,23 @@ public class Bomb : MonoBehaviour
         {
             isActive = true;
         }
+    }
+
+    IEnumerator FlashEffect()
+    {
+        float elapsed = 0f;
+        while (elapsed < delay)
+        {
+            rend.material.color = activeFlash;
+            yield return new WaitForSeconds(flashInterval);
+            
+            rend.material.color = originalColour;
+            yield return new WaitForSeconds(flashInterval);
+            
+            elapsed += flashInterval * 2;
+        }        
+        //resets material and bool
+        rend.material.color = originalColour;
     }
 
     void Explode()

@@ -17,11 +17,9 @@ public class MovingPlatform : MonoBehaviour
     private bool isMoving = false;
     public bool isAuto = false;
 
-    public GameObject rails;
     void Start()
     {
        TargetNextWaypoint();
-       rails.SetActive(false);
     }
 
     void FixedUpdate()
