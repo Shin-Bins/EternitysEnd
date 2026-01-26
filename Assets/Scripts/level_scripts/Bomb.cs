@@ -41,6 +41,7 @@ public class Bomb : MonoBehaviour
         if(collision.gameObject.CompareTag("Spawner"))
         {
             isActive = false;
+            countDown = delay;
         }
         else{
             isActive = true;
@@ -87,6 +88,9 @@ public class Bomb : MonoBehaviour
 
     void OnDestroy()
     {
-        holdScript.Drop();
+        if(holdScript != null)
+        {
+            holdScript.Drop();
+        }
     }
 }

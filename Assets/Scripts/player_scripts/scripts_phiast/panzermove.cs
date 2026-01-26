@@ -17,6 +17,11 @@ public class panzermove : MonoBehaviour
     private Vector3 movement;
     private CharacterController controller;
     private Quaternion ghostRotation;
+
+    private AudioSource src;
+    public AudioClip phiastSteps;
+    public float footstepInterval = 0.5f;//how long between steps
+    private float footstepTimer = 0f;
     
     void Awake()
     {
@@ -30,6 +35,7 @@ public class panzermove : MonoBehaviour
             ghostMan.transform.position = transform.position;
             ghostRotation = ghostMan.transform.rotation;
         }
+        src = GetComponent<AudioSource>();
     }
     
     void Update()
@@ -55,6 +61,21 @@ public class panzermove : MonoBehaviour
         direction.y = verticalVelocity;
         
         movement = direction * Time.deltaTime;
+
+        bool isMoving = isGrounded && input.y != 0;
+        if (isMoving)
+        {
+            footstepTimer -= Time.deltaTime;
+            if (footstepTimer <= 0f)
+            {
+                PlayPhiastSteps();
+                footstepTimer = footstepInterval;
+            }
+        }
+        else
+        {
+            footstepTimer = 0f; // Reset when not moving
+        }
     }
     
     void LateUpdate()
@@ -98,6 +119,16 @@ public class panzermove : MonoBehaviour
     public void OnMove(InputValue value)
     {
         input = value.Get<Vector2>();
+        //isMoving = true;
+    }
+
+    void PlayPhiastSteps()
+    {
+        if(phiastSteps != null)
+        {
+            src.pitch = Random.Range(0.8f, 1.2f);
+            src.PlayOneShot(phiastSteps);
+        }
     }
     
     public void OnJump()

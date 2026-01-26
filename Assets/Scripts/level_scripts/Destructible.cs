@@ -7,9 +7,12 @@ public class Destructible : MonoBehaviour
 
     public void DestructObject()
     {
-        if(destroyedModel != null && destructionVFX != null)
+        if(destroyedModel != null)
         {
             Instantiate(destroyedModel, transform.position, transform.rotation);
+        }
+        if(destructionVFX != null)
+        {
             Instantiate(destructionVFX, transform.position, transform.rotation);
         }
         Destroy(gameObject);

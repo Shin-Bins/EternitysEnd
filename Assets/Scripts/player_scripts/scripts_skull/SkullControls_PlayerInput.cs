@@ -25,10 +25,14 @@ public class SkullControls_PlayerInput : MonoBehaviour
     private bool isLookingAtPhiast = false;
     private Quaternion targetRotation;
 
+    public AudioClip bonk;
+    private AudioSource src;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        srb = GetComponent<Rigidbody>(); 
+        srb = GetComponent<Rigidbody>();
+        src = GetComponent<AudioSource>();
         GameObject phiastRef = GameObject.FindGameObjectWithTag("phiast");
         if(phiastRef != null)
         {
@@ -122,6 +126,14 @@ public class SkullControls_PlayerInput : MonoBehaviour
         if (!isGrounded && transform.parent == null)
         {
             srb.linearVelocity = -transform.up * slamForce;
+        }
+    }
+
+    void OnCollisionEnter(Collision collider)
+    {
+        if(!isGrounded)
+        {
+            src.PlayOneShot(bonk);
         }
     }
 }
