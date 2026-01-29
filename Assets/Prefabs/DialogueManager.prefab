@@ -48,6 +48,6 @@ MonoBehaviour:
   diaText: {fileID: 0}
   speakerImage: {fileID: 0}
   textSpeed: 0.015
-  voiceFreq: 10
+  voiceFreq: 20
   voicePitch: 1
   pitchVariation: 0.1
