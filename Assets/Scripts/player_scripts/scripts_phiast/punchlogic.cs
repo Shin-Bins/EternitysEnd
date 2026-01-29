@@ -4,15 +4,19 @@ public class punchlogic : MonoBehaviour
 {
   void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             EnemyPatrol enemy = other.GetComponent<EnemyPatrol>();
             if(enemy != null)
             {
                 enemy.SkullDisaster();
             }
-            Debug.Log("hitem");
-           // other.transform.parent.gameObject.SetActive(false);
+            else
+            {
+                Debug.Log("Nay enemy");
+            }
+                Debug.Log("hitem");
+            other.transform.parent.gameObject.SetActive(false);
         }
     }
 }

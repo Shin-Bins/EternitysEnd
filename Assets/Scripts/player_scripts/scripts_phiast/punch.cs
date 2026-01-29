@@ -14,16 +14,11 @@ public class punch : MonoBehaviour
         hitbox.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnPunch()
     {
         hitbox.SetActive(true);
         StartCoroutine(punchdelay());
+        Debug.Log("PUNCH");
     }
 
     private IEnumerator punchdelay()
@@ -31,6 +26,4 @@ public class punch : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         hitbox.SetActive(false );
     }
-
-  
 }

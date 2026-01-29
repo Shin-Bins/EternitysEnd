@@ -4,21 +4,21 @@ public class BossManager : MonoBehaviour
 {
 	private BossStats daBoss;
 
-	public GameObject sluaghOne;
-	public GameObject sluaghTwo;
-	public GameObject sluaghThree;
+	public GameObject sectionOne;
+	public GameObject sectionTwo;
+	public GameObject sectionThree;
 
 	void Awake()
 	{
 		daBoss = FindFirstObjectByType<BossStats>();
-		sluaghOne.SetActive(false);
-		sluaghTwo.SetActive(false);
-		sluaghThree.SetActive(false);
+		sectionOne.SetActive(false);
+		sectionTwo.SetActive(false);
+		sectionThree.SetActive(false);
 	}
 
 	void Update()
 	{
-		if(daBoss.currentHealth ==3)
+		if(daBoss.currentHealth == 3)
 		{
 			PhaseTwo();
 		}
@@ -26,26 +26,26 @@ public class BossManager : MonoBehaviour
 
 	void PhaseTwo()
 	{
-		if(sluaghOne != null)
+		if(sectionOne != null)
 		{
 			Debug.Log("PhaseTwo baby");
-			sluaghOne.SetActive(true);
+			sectionOne.SetActive(true);
 		}
 	}
 
 	void PhaseThree()
 	{
-		if(sluaghTwo != null)
+		if(sectionTwo != null)
 		{
-			sluaghTwo.SetActive(true);
+			sectionTwo.SetActive(true);
 		}
 	}
 
 	void PhaseFour()
 	{
-		if(sluaghThree != null)
+		if(sectionThree != null)
 		{
-			sluaghThree.SetActive(true);
+			sectionThree.SetActive(true);
 		}
 	}
 }
