@@ -35,10 +35,15 @@ public class EnemyPatrol : MonoBehaviour
     public bool isHolding = false;
     private float skullKillTimer = 3f;
     private float grabRange = 2f;
-    private Rigidbody cuanRb;//this is a reference for when we pick up the obj
+    private Rigidbody cuanRb;//this is a reference for when we pick up cuan
 	private BoxCollider cuanColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform cuanPosition;//this is where cuan is held
     private CuanHealth skullyHealth;
+
+    [Header("Stnned")]
+    private bool isStunned = false;
+    private float stunTime = 3f;
+    private float stunTimer = 0f;
 
     public int index;
     
@@ -60,6 +65,16 @@ public class EnemyPatrol : MonoBehaviour
         if(attackTimer > 0f)
         {
             attackTimer -= Time.deltaTime;
+        }
+
+        if(isStunned)
+        {
+            stunTimer -= Time.deltaTime;
+            if(stunTimer <= 0f)
+            {
+                isStunned = false;
+            }
+            return;
         }
 
         StateCheck();
@@ -111,7 +126,6 @@ public class EnemyPatrol : MonoBehaviour
 
         if(distToCuan <= grabRange && !isHolding && CharacterManager.Instance.cuanHeld == false)
         {
-            Debug.Log("Gonna grab");
             index = 4;
             return;
         }
@@ -141,7 +155,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void RoyalGuard()
     {
-        Debug.Log("Patrolling");
         if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
            {
                 Vector3 point;
@@ -156,7 +169,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void Chase(Transform target)
     {
-        Debug.Log("Chasin");
         if (target != null)
         {
             agent.isStopped = false;
@@ -173,7 +185,6 @@ public class EnemyPatrol : MonoBehaviour
     void SwordMaster()
     {
         if(!CanAttack()) return;
-        Debug.Log("Attackin");
         isAttacking = true;
         agent.isStopped = true;
         agent.updateRotation = false;
@@ -185,7 +196,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void EndAttack()
     {
-        Debug.Log("Un-attackin");
         damageZone.SetActive(false);
         isAttacking = false;
         agent.isStopped = false;
@@ -196,7 +206,6 @@ public class EnemyPatrol : MonoBehaviour
 
     void SkullMaster()
     {
-        Debug.Log("Grabbin");
         if(skull != null && !isHolding)
 	    {
             agent.isStopped = true;
@@ -218,7 +227,6 @@ public class EnemyPatrol : MonoBehaviour
 
     public void SkullDisaster()
     {
-        Debug.Log("Droppin");
         if(skull != null && isHolding)
 	    {
 		    cuanRb.transform.parent = null;
@@ -231,8 +239,18 @@ public class EnemyPatrol : MonoBehaviour
 		    isHolding = false;
             cuanRb = null;
 
+            Debug.Log("I dropa da skull");
 		    CharacterManager.Instance.HandleHolding();
+            Stunned();
 	    }
+    }
+
+    void Stunned()
+    {
+        isStunned = true;
+        stunTimer = stunTime;
+        agent.isStopped = true;
+        agent.ResetPath();
     }
 
     Vector3 ClampPosition(Vector3 targetPosition)

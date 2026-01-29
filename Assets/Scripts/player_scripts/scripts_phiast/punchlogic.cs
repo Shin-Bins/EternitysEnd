@@ -16,7 +16,6 @@ public class punchlogic : MonoBehaviour
                 Debug.Log("Nay enemy");
             }
                 Debug.Log("hitem");
-            other.transform.parent.gameObject.SetActive(false);
         }
     }
 }
