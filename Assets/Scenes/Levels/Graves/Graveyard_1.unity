@@ -7607,13 +7607,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[3].text
-      value: Did you forget the pot you forced onto me? I've not eaten in one-thousand,
-        two hundred years, fool! Maybe there's another way..
+      value: Did you forget the pot you forced onto me? I've barely eaten in one-thousand,
+        two hundred years. Maybe there's another way..
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[4].text
       value: Hm? You better not be thinking of *Throwing* me over there using the
-        [Left Mouse Button]!
+        [Left Mouse Button] or [Right Trigger!
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[5].text
@@ -24896,7 +24896,7 @@ PrefabInstance:
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[1].text
       value: 'No time for that! Use the [W/A/S/D ] keys or the [Left Stick] to get
-        over here and pick me up with the [E key]'
+        over here and pick me up with the [E key] or [X/Square button]'
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[2].text
@@ -28251,8 +28251,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[2].text
-      value: While holding me, use the [Right Mouse Button] to aim me. Use the [Mouse
-        Wheel] to adjust your aim and throw me
+      value: While holding me, use the [Right Mouse Button] or [Left Trigger] to
+        aim me. Use the [Mouse Wheel] or [D-Pad] to adjust your aim and throw me
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[1].charSprite
@@ -29434,7 +29434,7 @@ PrefabInstance:
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[0].text
       value: Look like there's a switch up there. I'll need to drop you  with the
-        [E key] and get up there
+        [E key/ X/ Square button] and get up there
       objectReference: {fileID: 0}
     - target: {fileID: 6426123050995192412, guid: 8c33098c500e1a84c95b7d20ac6dc6e2, type: 3}
       propertyPath: lines.Array.data[1].text
