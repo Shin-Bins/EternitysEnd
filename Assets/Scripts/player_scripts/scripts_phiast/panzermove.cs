@@ -22,7 +22,9 @@ public class panzermove : MonoBehaviour
     public AudioClip phiastSteps;
     public float footstepInterval = 0.5f;//how long between steps
     private float footstepTimer = 0f;
-    
+    public ParticleSystem jumpDustEffect;
+
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -136,6 +138,13 @@ public class panzermove : MonoBehaviour
         if (controller.isGrounded && !holdingSkull)
         {
             verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * gravity);
+
+            // Trigger the dust effect
+            if (jumpDustEffect != null)
+            {
+                jumpDustEffect.Play();
+                Debug.Log("dust");
+            }
         }
     }
 }
