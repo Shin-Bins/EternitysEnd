@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Graves/MainMenu.unity
     guid: 6fb7db21931b7cc49bd05e5677752c84
   - enabled: 1
+    path: Assets/Scenes/Menus/Level-select.unity
+    guid: e26cf15eba1b4c64fa8e7368e945a40b
+  - enabled: 1
     path: Assets/Scenes/Levels/Graves/Graveyard_1.unity
     guid: 5a2bc35ae8d68d04685464333485c1cf
   - enabled: 1
