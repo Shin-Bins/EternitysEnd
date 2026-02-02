@@ -7,6 +7,11 @@ using System.Collections.Generic;
 public class punch : MonoBehaviour
 {
    public GameObject hitbox;
+   public panzermove Panzermove;
+    public GameObject Phist;
+    
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +22,8 @@ public class punch : MonoBehaviour
     void OnPunch()
     {
         hitbox.SetActive(true);
+        Panzermove.enabled =false;
+        Phist.transform.Translate(transform.forward * 60f * Time.deltaTime);
         StartCoroutine(punchdelay());
         Debug.Log("PUNCH");
     }
@@ -25,5 +32,6 @@ public class punch : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         hitbox.SetActive(false );
+        Panzermove.enabled =true;
     }
 }
