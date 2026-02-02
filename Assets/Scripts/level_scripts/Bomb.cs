@@ -30,21 +30,24 @@ public class Bomb : MonoBehaviour
         if(isActive == true)
         {
             countDown -= Time.deltaTime;
-            if(!src.isPlaying && isActive)
+
+            if(countDown > 0 && !src.isPlaying && isActive)
             {
-                src.clip = countdownAud;
-                src.Play();
+                   src.clip = countdownAud;
+                   src.volume = 1f;
+                   src.Play();
             }
-            else{
-                src.Stop();
-            }
-        
             if(countDown <= 0f && !hasExploded)
             {
               Explode();
               hasExploded = true;
             }
         }
+           if(!isActive)
+           {
+                src.clip = null;
+                src.Stop();
+           }
     }
 
     public void SetHoldScript(PickUpSkull script)
@@ -75,13 +78,16 @@ public class Bomb : MonoBehaviour
     
     void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Spawner"))
+        if(collision.gameObject.CompareTag("Spawner") && !isActive)
         {
-            if(!isActive)
-            {
-                isActive = true;
-            }
+            Activate();
         }
+    }
+
+    void Activate()
+    {
+        if(isActive) return;
+        isActive = true;       
     }
 
     void Explode()

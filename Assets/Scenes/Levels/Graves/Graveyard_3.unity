@@ -5232,7 +5232,7 @@ PrefabInstance:
       objectReference: {fileID: 421075296}
     - target: {fileID: 8573658324135148663, guid: c8775ab2f2739534dbf9784696a8663c, type: 3}
       propertyPath: m_VersionIndex
-      value: 3930
+      value: 3951
       objectReference: {fileID: 0}
     - target: {fileID: 8573658324135148663, guid: c8775ab2f2739534dbf9784696a8663c, type: 3}
       propertyPath: m_Faces.Array.size
@@ -13936,7 +13936,7 @@ PrefabInstance:
       objectReference: {fileID: 930052235}
     - target: {fileID: 8893878498689124229, guid: c8775ab2f2739534dbf9784696a8663c, type: 3}
       propertyPath: m_VersionIndex
-      value: 1790
+      value: 1811
       objectReference: {fileID: 0}
     - target: {fileID: 8893878498689124229, guid: c8775ab2f2739534dbf9784696a8663c, type: 3}
       propertyPath: m_SelectedEdges.Array.size
