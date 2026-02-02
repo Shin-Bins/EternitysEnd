@@ -1166,8 +1166,11 @@ MonoBehaviour:
   gravity: 9.81
   holdingSkull: 0
   ghostMan: {fileID: 4727275301816534987}
-  phiastSteps: {fileID: 8300000, guid: 16d9d7787077b6642bae3008120a1223, type: 3}
-  footstepInterval: 0.5
+  jumpAud: {fileID: 8300000, guid: d2eb80e2bec58ec4688c6362998e1d20, type: 3}
+  grassSteps: {fileID: 8300000, guid: b7d9c2be9098905428ab72b2e95bea59, type: 3}
+  woodSteps: {fileID: 8300000, guid: 16d9d7787077b6642bae3008120a1223, type: 3}
+  stoneSteps: {fileID: 8300000, guid: ede9ec4b7a1a9274083dcd9a0c94a836, type: 3}
+  waterSteps: {fileID: 8300000, guid: aa367d4d98776bf42abbd2a54fac822d, type: 3}
   jumpDustEffect: {fileID: 746504476642513032}
 --- !u!114 &8370172010728644489
 MonoBehaviour:
