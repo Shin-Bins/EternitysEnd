@@ -1198,6 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::punch
   hitbox: {fileID: 6245860836164628431}
+  Panzermove: {fileID: 6398751901341078715}
+  Phist: {fileID: 6728684997373097945}
 --- !u!82 &1696283008233537055
 AudioSource:
   m_ObjectHideFlags: 0
