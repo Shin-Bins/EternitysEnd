@@ -53,6 +53,7 @@ void OnTriggerEnter(Collider other)
 {
 	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
 	{
+			Debug.Log("In range bbyyy");
 		inRange = true;
 		obj = other;
 	}

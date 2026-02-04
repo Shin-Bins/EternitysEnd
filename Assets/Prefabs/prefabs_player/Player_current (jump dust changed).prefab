@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2836849674531566197, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: m_Name
-      value: Player_current Variant
+      value: Player_current (jump dust changed)
       objectReference: {fileID: 0}
     - target: {fileID: 3001835415520954894, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -277,7 +277,8 @@ PrefabInstance:
       value: Jump Dust
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3346435976463026442, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
