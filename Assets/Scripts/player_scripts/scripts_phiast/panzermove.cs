@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class panzermove : MonoBehaviour
 {
+
+//movin and jumpin and holdin bidnuss
     private Vector2 input;
     private float verticalVelocity = 0f;
     
@@ -14,12 +16,14 @@ public class panzermove : MonoBehaviour
     public bool holdingSkull = false;
     public GameObject ghostMan; // Crazy workaround for moving platforms. Thank you 4 year old unity forums
     
+    //technical bidnuss
     private Vector3 movement;
     private CharacterController controller;
     private Quaternion ghostRotation;
 
+    //Audio bidnuss
     private AudioSource src;
-    public AudioClip jumpAud;
+    public AudioClip[] jumpAud;
     public AudioClip grassSteps;
     public AudioClip woodSteps;
     public AudioClip stoneSteps;
@@ -28,8 +32,12 @@ public class panzermove : MonoBehaviour
 
     private float footstepInterval = 0.5f;//how long between steps
     private float footstepTimer = 0f;
-    public ParticleSystem jumpDustEffect;
 
+    //Aesthetic bidnuss
+    public ParticleSystem jumpDustEffect;
+    private Animator anim;
+    private float timeForIdle = 10f;
+    private float idleTimer = 0f;
 
     void Awake()
     {
@@ -44,6 +52,7 @@ public class panzermove : MonoBehaviour
             ghostRotation = ghostMan.transform.rotation;
         }
         src = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
     
     void Update()
@@ -67,8 +76,25 @@ public class panzermove : MonoBehaviour
         
         Vector3 direction = transform.forward * input.y * moveSpeed;
         direction.y = verticalVelocity;
-        
         movement = direction * Time.deltaTime;
+
+        //anim params for run
+        float playerSpeed = Mathf.Abs(input.y) * moveSpeed;
+        anim.SetFloat("Player_Speed", playerSpeed);
+
+        //anim for idle
+        if(input.x == 0 && input.y == 0)
+        {
+            idleTimer += Time.deltaTime;
+            if(idleTimer >= timeForIdle)
+            {
+                anim.SetTrigger("IdleMaster");
+                idleTimer = 0f;
+            }
+        }
+        else{
+            idleTimer = 0f;
+        }
 
         bool isMoving = isGrounded && input.y != 0;
         if (isMoving)
@@ -121,13 +147,11 @@ public class panzermove : MonoBehaviour
             ghostMan.transform.parent = null;
             ghostRotation = ghostMan.transform.rotation;
         }
-    }
-    
+    }    
     
     public void OnMove(InputValue value)
     {
         input = value.Get<Vector2>();
-        //isMoving = true;
     }
 
     void PlayPhiastSteps()
@@ -156,7 +180,14 @@ public class panzermove : MonoBehaviour
         if (controller.isGrounded && !holdingSkull)
         {
             verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * gravity);
-            src.PlayOneShot(jumpAud);
+            if(jumpAud.Length != 0)
+            {
+                int randomClip = Random.Range(0, jumpAud.Length);
+                src.clip = jumpAud[randomClip];
+                src.pitch = Random.Range(0.9f, 1.1f);
+                src.Play();
+            }
+
             // Trigger the dust effect
             if (jumpDustEffect != null)
             {

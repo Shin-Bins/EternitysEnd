@@ -7,12 +7,14 @@ public class ReadyAttackState : State
 	private Transform phiastLocal;
 	private float rotationSpeed = 10f;
     private float holdTimer;
-	
+	private Animator bossAnim;
+
 	private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
 		phiastLocal = GameObject.FindGameObjectWithTag("phiast").transform;
 		boss = GetComponent<BossStats>();
+		bossAnim = GetComponent<Animator>();
 	}
 
 	public override void Enter()

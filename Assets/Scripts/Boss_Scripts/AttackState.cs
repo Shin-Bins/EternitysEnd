@@ -5,17 +5,20 @@ public class AttackState : State
 	protected StateMachine stateMachine;
 	private BossStats boss;
 	private bool hasAttacked = false;
+	private Animator bossAnim;
 
   	private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
 		boss = GetComponent<BossStats>();
+		bossAnim = GetComponent<Animator>();
 	}
 
 	public override void Enter()
 	{
 		Debug.Log("attack state");
 		hasAttacked = false;
+		bossAnim.SetBool("Attack", true);
 		SlamAttack();
 	}
 
@@ -35,6 +38,6 @@ public class AttackState : State
 
 	public override void Exit()
 	{
-		
+		bossAnim.SetBool("Attack", false);
 	}
 }

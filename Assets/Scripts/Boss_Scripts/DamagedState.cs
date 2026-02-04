@@ -8,12 +8,14 @@ public class DamagedState : State
 	private float damagedTimer;
 	private AudioSource src;
 	public AudioClip damagedAud;
+	private Animator bossAnim;
 
     private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
 		boss = GetComponent<BossStats>();
 		src = GetComponent<AudioSource>();
+		bossAnim = GetComponent<Animator>();
 	}
 
 	public override void Enter()
@@ -21,6 +23,7 @@ public class DamagedState : State
 		boss.canBeHurt = false;
 		damagedTimer = 0f;
 		src.PlayOneShot(damagedAud);
+		bossAnim.SetBool("DamageDealt", true);
 	}
 
 	public override void Tick()
@@ -36,5 +39,6 @@ public class DamagedState : State
 	public override void Exit()
 	{
 		boss.canBeHurt = true;
+		bossAnim.SetBool("DamageDealt", false);
 	}
 }

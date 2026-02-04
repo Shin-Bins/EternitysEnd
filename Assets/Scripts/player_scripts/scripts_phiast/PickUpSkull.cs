@@ -30,6 +30,8 @@ public class PickUpSkull : MonoBehaviour
 	private BoxCollider objColl;//turn off collision with skull when carried. Was having some funky effects on phiast
 	public Transform objectPosition;//this is where cuan is held
 	private SphereCollider pickUpTrigger;//checks to see if phiast is in range. Probably another way to do this but it works
+
+	private Animator anim;
 	private panzermove phiast;
 	private PlayerControls playerControls;
 
@@ -39,6 +41,7 @@ void Start()
 	pickUpTrigger = GetComponent<SphereCollider>();
 	trajectLine = GetComponent<LineRenderer>();
 	trajectLine.enabled = false;
+	anim = GetComponent<Animator>();
 }
 
 void Update()
@@ -53,7 +56,6 @@ void OnTriggerEnter(Collider other)
 {
 	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
 	{
-			Debug.Log("In range bbyyy");
 		inRange = true;
 		obj = other;
 	}
@@ -80,7 +82,7 @@ void OnTriggerExit(Collider other)
         
         // Toggle aiming on/off
         isAiming = !isAiming;
-        
+        anim.SetBool("AimSkull", true);
         if(!isAiming)
         {
             trajectLine.enabled = false;
@@ -104,6 +106,8 @@ void PickUp()
 		objRb.transform.parent = objectPosition;
 		objRb.transform.localPosition = Vector3.zero;
 		objRb.transform.localRotation = Quaternion.identity;
+		
+		anim.SetBool("IsHoldingSkull", true);
 
 		Bomb bomb = obj.GetComponent<Bomb>();
 		if(bomb != null)
@@ -134,6 +138,9 @@ public void Drop()
 		pickUpTrigger.enabled = true;
 		endMarker.gameObject.SetActive(false);
 
+		anim.SetBool("IsHoldingSkull", false);
+		anim.SetBool("AimSkull", false);
+
 		CharacterManager.Instance.HandleHolding();
 	}
 }
@@ -160,6 +167,8 @@ public void OnThrow()
 		trajectLine.enabled = false;
 		endMarker.gameObject.SetActive(false);
 
+		anim.SetBool("AimSkull", false);
+		anim.SetBool("ThrowSkull", true);
 		CharacterManager.Instance.HandleHolding();
 	}
 }
