@@ -12,16 +12,15 @@ public class Bomb : MonoBehaviour
     [SerializeField]private bool hasExploded = false;
     public GameObject explosionEffect;
 
-    [SerializeField] float flashInterval = 0.2f;
-    private Color activeFlash = Color.red;
-    private Renderer rend;
-    private Color originalColour;
-
     private PickUpSkull holdScript;
+
+    private AudioSource src;
+    public AudioClip countdownAud;
+    public AudioClip boomAud;
+
     void Start()
     {
-        rend = GetComponent<Renderer>();
-        originalColour = rend.material.color;
+        src = GetComponent<AudioSource>();
         countDown = delay;
     }
 
@@ -31,14 +30,24 @@ public class Bomb : MonoBehaviour
         if(isActive == true)
         {
             countDown -= Time.deltaTime;
-            StartCoroutine(FlashEffect());
-        
+
+            if(countDown > 0 && !src.isPlaying && isActive)
+            {
+                   src.clip = countdownAud;
+                   src.volume = 1f;
+                   src.Play();
+            }
             if(countDown <= 0f && !hasExploded)
             {
               Explode();
               hasExploded = true;
             }
         }
+           if(!isActive)
+           {
+                src.clip = null;
+                src.Stop();
+           }
     }
 
     public void SetHoldScript(PickUpSkull script)
@@ -52,6 +61,7 @@ public class Bomb : MonoBehaviour
         {
             isActive = false;
             countDown = delay;
+            src.Stop();
         }
         else{
             isActive = true;
@@ -68,31 +78,24 @@ public class Bomb : MonoBehaviour
     
     void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Spawner"))
+        if(collision.gameObject.CompareTag("Spawner") && !isActive)
         {
-            isActive = true;
+            Activate();
         }
     }
 
-    IEnumerator FlashEffect()
+    void Activate()
     {
-        float elapsed = 0f;
-        while (elapsed < delay)
-        {
-            rend.material.color = activeFlash;
-            yield return new WaitForSeconds(flashInterval);
-            
-            rend.material.color = originalColour;
-            yield return new WaitForSeconds(flashInterval);
-            
-            elapsed += flashInterval * 2;
-        }        
-        //resets material and bool
-        rend.material.color = originalColour;
+        if(isActive) return;
+        isActive = true;       
     }
 
     void Explode()
     {
+
+        src.Stop();
+        AudioSource.PlayClipAtPoint(boomAud, transform.position);
+
         if(explosionEffect != null)
         {
             GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
@@ -110,7 +113,6 @@ public class Bomb : MonoBehaviour
             }
         }
         Destroy(gameObject);
-
     }
 
     void OnDestroy()

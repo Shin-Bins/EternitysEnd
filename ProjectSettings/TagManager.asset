@@ -13,6 +13,10 @@ TagManager:
   - Boss
   - Enemy
   - MovingPlatform
+  - Grass
+  - Wood
+  - Stone
+  - Water
   layers:
   - Default
   - TransparentFX

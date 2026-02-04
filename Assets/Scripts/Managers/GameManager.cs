@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("Level Loading")]
     [SerializeField] private Image fadeOut;
     [SerializeField] private float fadeDuration = 0.5f;
+
+    public int nextsceneload;
  
     
     void Awake()
@@ -28,6 +30,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        nextsceneload = SceneManager.GetActiveScene().buildIndex + 1;
+
     }
 
     public void SetCheckpoint(Vector3 position)
@@ -105,5 +110,15 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void loadunlock()
+    {
+        SceneManager.LoadScene(nextsceneload);
+
+        if (nextsceneload > PlayerPrefs.GetInt("LevelAT"))
+        {
+            PlayerPrefs.SetInt("LevelAT", nextsceneload);
+        }
     }
 }

@@ -19,10 +19,18 @@ public class panzermove : MonoBehaviour
     private Quaternion ghostRotation;
 
     private AudioSource src;
-    public AudioClip phiastSteps;
-    public float footstepInterval = 0.5f;//how long between steps
+    public AudioClip jumpAud;
+    public AudioClip grassSteps;
+    public AudioClip woodSteps;
+    public AudioClip stoneSteps;
+    public AudioClip waterSteps;
+    private AudioClip phiastSteps;
+
+    private float footstepInterval = 0.5f;//how long between steps
     private float footstepTimer = 0f;
-    
+    public ParticleSystem jumpDustEffect;
+
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -124,6 +132,18 @@ public class panzermove : MonoBehaviour
 
     void PlayPhiastSteps()
     {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, 2f))
+        {
+            if(hit.collider.CompareTag("Grass"))
+                phiastSteps = grassSteps;
+            else if(hit.collider.CompareTag("Wood"))
+                phiastSteps = woodSteps;
+            else if(hit.collider.CompareTag("Stone"))
+                phiastSteps = stoneSteps;
+            else if(hit.collider.CompareTag("Water"))
+                phiastSteps = waterSteps;
+        }
         if(phiastSteps != null)
         {
             src.pitch = Random.Range(0.8f, 1.2f);
@@ -136,6 +156,13 @@ public class panzermove : MonoBehaviour
         if (controller.isGrounded && !holdingSkull)
         {
             verticalVelocity = Mathf.Sqrt(jumpHeight * 2f * gravity);
+            src.PlayOneShot(jumpAud);
+            // Trigger the dust effect
+            if (jumpDustEffect != null)
+            {
+                jumpDustEffect.Play();
+                Debug.Log("dust");
+            }
         }
     }
 }

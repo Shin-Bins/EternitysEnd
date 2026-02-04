@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/Menus/Level-select.unity
+    guid: e26cf15eba1b4c64fa8e7368e945a40b
   - enabled: 1
     path: Assets/Scenes/Levels/Graves/MainMenu.unity
     guid: 6fb7db21931b7cc49bd05e5677752c84
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene1/Cutscene_1.unity
+    guid: 56a3489991f6cf7488a443a24ae28774
   - enabled: 1
     path: Assets/Scenes/Levels/Graves/Graveyard_1.unity
     guid: 5a2bc35ae8d68d04685464333485c1cf
@@ -20,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Graves/Graveyard_3.unity
     guid: 5be8da220c7d3a04c905c03a1a190324
+  - enabled: 1
+    path: Assets/Scenes/Levels/Graves/Graveyard_to_church.unity
+    guid: 58991655c85cd9447b4f13a2265de280
   - enabled: 1
     path: Assets/Scenes/Levels/Torture-chamber/torture.unity
     guid: 99e73b92b15a3eb499ccaa1bcf537ba1

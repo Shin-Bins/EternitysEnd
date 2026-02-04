@@ -31,7 +31,8 @@ public class Pause : MonoBehaviour
             Debug.Log("unpause");
             ispaused = false;
             pausemenu.SetActive(false);
-           
+            
+
         }
 
         else if (ispaused == false)
@@ -40,6 +41,7 @@ public class Pause : MonoBehaviour
             ispaused = true;
             Debug.Log("paused");
             pausemenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
         }
 
         

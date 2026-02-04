@@ -17,6 +17,7 @@ public class CuanHealth : MonoBehaviour
         Color color = cuanHeldDeath.color;
         color.a = 0f;
         cuanHeldDeath.color = color;
+        
     }
 
     // Update is called once per frame
