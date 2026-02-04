@@ -56,6 +56,7 @@ public class PhiastHealth : MonoBehaviour
         {
             currentHealth--;
             StartCoroutine(FlashEffect());
+            StartCoroutine(hurtdelay());
 
              Vector3 knockbackDir = (transform.position - damagePos).normalized;
              knockbackDir.y = 0; // Keep horizontal
@@ -98,6 +99,13 @@ public class PhiastHealth : MonoBehaviour
         Debug.Log("omae wa shindeiru");
         //we'll add in the death logic soon'
         GameManager.Instance.Death();
+    }
+
+    private IEnumerator hurtdelay()
+    {
+        canBeHurt = false;
+        yield return new WaitForSeconds(0.5f);
+        canBeHurt = true;
     }
    
 }

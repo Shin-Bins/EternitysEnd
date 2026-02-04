@@ -14,27 +14,21 @@ public class KillBox : MonoBehaviour
 
     private void Start()
     {
-		phis = GameObject.Find("Phiast-tank 1");
-		skull = GameObject.Find("skull");
+		phis = GameObject.Find("Phiast_NLA");
+		skull = GameObject.Find("StCuan (1)");
 		respawnpoint = GameObject.Find("reset");
 		check = GameObject.Find("Checkpoint");
 		checka = check.transform;
 		cha = phis.GetComponent<CharacterController>();
-		phis.transform.position = checka.position;
+		
 		
         
 
 
     }
 
-	public void pleasework()
-	{
-		cha.enabled = false;
-		phis.transform.position = checka.position;
-		cha.enabled = true;
-
-	}
-    void OnTriggerExit(Collider other)
+	
+    void OnTriggerEnter(Collider other)
 {
 	if(other.CompareTag("phiast"))
 	{
@@ -42,16 +36,18 @@ public class KillBox : MonoBehaviour
 		
 		PhiastHealth health = other.GetComponent<PhiastHealth>();
 		health.TakeDamage(transform.position);
-			pleasework();
-			
+		cha.enabled = false;
+        GameManager.Instance.RespawnCheckpoint(other.gameObject);
+		cha.enabled = true;
 
-		
-		
-			
-			
-			
-        //skull.transform.position = respawnpoint.transform.position;//
-		Debug.Log("Got da phiastie");
+
+
+
+
+
+
+            //skull.transform.position = respawnpoint.transform.position;//
+            Debug.Log("Got da phiastie");
 	}
 	if(other.CompareTag("skull"))
 	{

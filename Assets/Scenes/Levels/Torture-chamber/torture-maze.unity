@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -3089,7 +3089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549031081757155894, guid: 37b57301d8bd95443bcb94c73b075698, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6811,7 +6811,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -7344,11 +7344,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 645730714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &559435644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6728684997373097945, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
-  m_PrefabInstance: {fileID: 1348576930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &562605203
 GameObject:
   m_ObjectHideFlags: 0
@@ -9433,7 +9428,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -11150,7 +11145,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -13913,6 +13908,38 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1312091396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6492381491883447734, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+  m_PrefabInstance: {fileID: 1348576930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1312091398
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312091396}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 3
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!43 &1323902671
 Mesh:
   m_ObjectHideFlags: 0
@@ -14103,6 +14130,10 @@ PrefabInstance:
       propertyPath: cuanHeldDeath
       value: 
       objectReference: {fileID: 980758286}
+    - target: {fileID: 2563887972312334841, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: pausemenu
+      value: 
+      objectReference: {fileID: 1925993511}
     - target: {fileID: 2836849674531566197, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: m_Name
       value: Player_current
@@ -14111,6 +14142,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3089215296733018499, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: Phist
+      value: 
+      objectReference: {fileID: 1312091396}
+    - target: {fileID: 3936985489586912790, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000009760261
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936985489586912790, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.3600092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315432549959530017, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: cuanHeldDeath
+      value: 
+      objectReference: {fileID: 980758286}
     - target: {fileID: 6137057271046291008, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 272.15
@@ -14154,11 +14201,11 @@ PrefabInstance:
     - target: {fileID: 6566148905600244262, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: Phist
       value: 
-      objectReference: {fileID: 559435644}
+      objectReference: {fileID: 0}
     - target: {fileID: 6566148905600244262, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: Panzermove
       value: 
-      objectReference: {fileID: 2083287293}
+      objectReference: {fileID: 0}
     - target: {fileID: 8370172010728644489, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pausemenu
       value: 
@@ -14166,7 +14213,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6492381491883447734, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1312091398}
   m_SourcePrefab: {fileID: 100100000, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
 --- !u!1 &1450218561 stripped
 GameObject:
@@ -14307,7 +14357,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -14480,7 +14530,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485294156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19796683, y: 0, z: 0, w: 0.9802088}
+  m_LocalRotation: {x: -0.19796683, y: -0.00000004284084, z: 0.000000008381903, w: -0.98020875}
   m_LocalPosition: {x: 272.15, y: 206.49478, z: 342.4723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15446,7 +15496,6 @@ GameObject:
   - component: {fileID: 1629115291}
   - component: {fileID: 1629115290}
   - component: {fileID: 1629115289}
-  - component: {fileID: 1629115292}
   m_Layer: 0
   m_Name: You die box
   m_TagString: Untagged
@@ -15507,33 +15556,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1629115292
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629115288}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1631278699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15597,7 +15619,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -18379,7 +18401,7 @@ PrefabInstance:
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: phiast
       value: 
-      objectReference: {fileID: 2083287289}
+      objectReference: {fileID: 0}
     - target: {fileID: 8426610899788669010, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
       propertyPath: damageDist
       value: 2
@@ -24280,22 +24302,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
---- !u!4 &2083287289 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7882228795638771073, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
-  m_PrefabInstance: {fileID: 1348576930}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2083287293 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6398751901341078715, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
-  m_PrefabInstance: {fileID: 1348576930}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559435644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1cfdde2ed53a846b3a8197be6f0aee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::panzermove
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
