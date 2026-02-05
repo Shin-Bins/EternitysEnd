@@ -17,6 +17,7 @@ public class AttackState : State
 	public override void Enter()
 	{
 		Debug.Log("attack state");
+		bossAnim.SetBool("Attack", true);
 		hasAttacked = false;
 		SlamAttack();
 	}

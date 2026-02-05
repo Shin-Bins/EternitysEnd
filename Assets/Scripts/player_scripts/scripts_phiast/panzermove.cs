@@ -12,7 +12,6 @@ public class panzermove : MonoBehaviour
     public float turnSpeed = 100f;
     public float jumpHeight = 2f;
     public float gravity = 9.81f;
-    private float liftSpeed = 4f;
     public bool holdingSkull = false;
     public GameObject ghostMan; // Crazy workaround for moving platforms. Thank you 4 year old unity forums
     

@@ -11,9 +11,13 @@ public class WeepingAngel : MonoBehaviour
     public float speed, damageDist;
     public Camera cam;
 
+    private Animator anim;
+    private AudioSource src;
     void Start()
     {
         ai = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        src = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,6 +28,7 @@ public class WeepingAngel : MonoBehaviour
         {
             ai.speed = 0f;
             ai.SetDestination(transform.position);
+            anim.SetBool("OutofSight", false);
             Debug.Log("No spooky:(");
         }
         if(!GeometryUtility.TestPlanesAABB(planes, this.gameObject.GetComponent<Renderer>().bounds))
@@ -31,8 +36,16 @@ public class WeepingAngel : MonoBehaviour
             dest = phiast.position;
             ai.destination = dest;
             ai.speed = speed;
+            anim.SetBool("OutofSight", true);
+            SwitchPose();
             Debug.Log("Spooky time");
         }
+    }
+
+    void SwitchPose()
+    {
+        int numberGen = Random.Range(0,4);
+        anim.SetInteger("Number Gen", numberGen);
     }
 
     void OnTriggerEnter(Collider other)

@@ -14,6 +14,7 @@ public class BossStats : MonoBehaviour
     [Header("Attack")]
     public float attackDelay = 10f;//how long in between attacks he doesn't do anything'
     public float holdAttack = 3f;//how long he holds his attackDelay
+    public GameObject damZone;
 
     private StateMachine stateMachine;
 
@@ -21,6 +22,17 @@ public class BossStats : MonoBehaviour
     {
         currentHealth = maxHealth;
         stateMachine = GetComponent<StateMachine>();
+        damZone.SetActive(false);
+    }
+
+    public void DoDamage()
+    {
+        damZone.SetActive(true);
+    }
+
+    public void DontDamage()
+    {
+        damZone.SetActive(false);
     }
 
    public void Damaged()

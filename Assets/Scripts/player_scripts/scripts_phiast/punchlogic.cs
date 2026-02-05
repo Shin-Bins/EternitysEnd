@@ -10,12 +10,13 @@ public class punchlogic : MonoBehaviour
             if(enemy != null)
             {
                 enemy.SkullDisaster();
+                Debug.Log("hitem");
             }
             else
             {
                 Debug.Log("Nay enemy");
             }
-                Debug.Log("hitem");
+
         }
     }
 }
