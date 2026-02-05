@@ -14,12 +14,8 @@ public class PhiastHealth : MonoBehaviour
     private Renderer rend;
     private Color originalColour;
 
-    private Vector3 knockbackVelocity;
-    public float knockbackForce = 2f;
-    public float knockbackUpForce = 2f;
-    public float knockbackDuration = .3f;
-    private float knockbackTimer = 0f;//All this for a knockback btw
-
+    private AudioSource src;
+    public AudioClip hurtAud;
     private CharacterController controller;
     private PickUpSkull skully;
 
@@ -30,17 +26,9 @@ public class PhiastHealth : MonoBehaviour
         currentHealth = maxHealth;
         controller = GetComponent<CharacterController>();
         skully = GetComponent<PickUpSkull>();
+        src = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        if(knockbackTimer > 0)
-        {
-            controller.Move(knockbackVelocity * Time.deltaTime);
-            knockbackVelocity.y -= 20f * Time.deltaTime;
-            knockbackTimer -= Time.deltaTime;
-        }
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -58,15 +46,8 @@ public class PhiastHealth : MonoBehaviour
             StartCoroutine(FlashEffect());
             StartCoroutine(hurtdelay());
 
-             Vector3 knockbackDir = (transform.position - damagePos).normalized;
-             knockbackDir.y = 0; // Keep horizontal
-        
-             //horizontal knockback
-             knockbackVelocity = knockbackDir * knockbackForce;
-             knockbackVelocity.y = knockbackUpForce; // upward knockback
-             knockbackTimer = knockbackDuration;
-             
-             skully.Drop();
+            src.PlayOneShot(hurtAud);
+            skully.Drop();
             if(currentHealth == 0)
             {
                 PhiastDeath();

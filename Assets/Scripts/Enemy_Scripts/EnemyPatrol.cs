@@ -45,6 +45,13 @@ public class EnemyPatrol : MonoBehaviour
     private float stunTime = 3f;
     private float stunTimer = 0f;
 
+    [Header("Audio")]
+    private AudioSource src;
+    public AudioClip patrolAud;
+    public AudioClip alertedAud;
+    public AudioClip attackAud;
+    public AudioClip damageAud;
+
     public int index;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -155,6 +162,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void RoyalGuard()
     {
+        src.clip = patrolAud;
+        src.loop = true;
+        src.Play();
         if (agent.remainingDistance <= agent.stoppingDistance && timer > 5f)
            {
                 Vector3 point;
@@ -169,6 +179,9 @@ public class EnemyPatrol : MonoBehaviour
 
     void Chase(Transform target)
     {
+        src.clip = alertedAud;
+        src.loop = true;
+        src.Play();
         if (target != null)
         {
             agent.isStopped = false;
@@ -190,6 +203,9 @@ public class EnemyPatrol : MonoBehaviour
         agent.updateRotation = false;
         transform.LookAt(target);
         damageZone.SetActive(true);
+        src.clip = attackAud;
+        src.loop = false;
+        src.Play();
         
         Invoke("EndAttack", 0.1f);//This is to test out attacking enemies. A better way would be to use a collider that is activated mid animation. Until we have animations, this is the way
     }
@@ -238,6 +254,10 @@ public class EnemyPatrol : MonoBehaviour
             skullyHealth.isHeld = false;
 		    isHolding = false;
             cuanRb = null;
+
+            src.clip = damageAud;
+            src.loop = false;
+            src.Play();
 
             Debug.Log("I dropa da skull");
 		    CharacterManager.Instance.HandleHolding();

@@ -277,6 +277,10 @@ MonoBehaviour:
   damageZone: {fileID: 987580517344914840}
   isHolding: 0
   cuanPosition: {fileID: 3045231646976152011}
+  patrolAud: {fileID: 0}
+  alertedAud: {fileID: 0}
+  attackAud: {fileID: 0}
+  damageAud: {fileID: 0}
   index: 0
 --- !u!82 &5797811424982357637
 AudioSource:
@@ -499,6 +503,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1524236726317811235}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3464496632985272659}
   m_SourcePrefab: {fileID: 100100000, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
 --- !u!4 &4023265064352920752 stripped
 Transform:
@@ -676,4 +683,30 @@ MonoBehaviour:
   damageZone: {fileID: 987580517344914840}
   isHolding: 0
   cuanPosition: {fileID: 3045231646976152011}
+  patrolAud: {fileID: 8300000, guid: c2404407bcc51a246b9a2d9d847a3f52, type: 3}
+  alertedAud: {fileID: 8300000, guid: b7eea1ddfacc53445a97dc0f4b442dc1, type: 3}
+  attackAud: {fileID: 8300000, guid: ce0cc2e96e277164b886e20d488617e8, type: 3}
+  damageAud: {fileID: 8300000, guid: c5e32e2966930d045a472a6768bbeefc, type: 3}
   index: 0
+--- !u!95 &3464496632985272659
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368019871276920330}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b1c42275af3c0f418f198ab96dac3f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

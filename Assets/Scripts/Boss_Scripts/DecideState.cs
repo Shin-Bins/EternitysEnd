@@ -7,12 +7,14 @@ public class DecideState : State
 	private Transform phiastLocal;
 	private float rotationSpeed = 10f;
 	private float followTimer;
+	private Animator bossAnim;
 
 	private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
 		phiastLocal = GameObject.FindGameObjectWithTag("phiast").transform;
 		boss = GetComponent<BossStats>();
+		bossAnim = GetComponent<Animator>();
 	}
 
 	public override void Enter()
@@ -41,6 +43,7 @@ public class DecideState : State
 			followTimer += Time.deltaTime;
 			if(followTimer >= boss.attackDelay)
 			{
+				bossAnim.SetBool("PlayerFound", true);
 				stateMachine.ChangeState<ReadyAttackState>();
 			}
 	}

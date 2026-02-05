@@ -1504,9 +1504,7 @@ MonoBehaviour:
   invinceFrames: 2
   flashInterval: 0.2
   canBeHurt: 1
-  knockbackForce: 2
-  knockbackUpForce: 2
-  knockbackDuration: 0.3
+  hurtAud: {fileID: 8300000, guid: 93db6936e9365744eacf622c83a51161, type: 3}
 --- !u!95 &8225586486822378999
 Animator:
   serializedVersion: 7

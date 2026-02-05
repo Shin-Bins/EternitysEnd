@@ -43,12 +43,14 @@ public class ReadyAttackState : State
 			holdTimer += Time.deltaTime;
 			if(holdTimer >= boss.holdAttack)
 			{
+				bossAnim.SetBool("Attack", true);
 				stateMachine.ChangeState<AttackState>();
 			}
 	}
 
 	public override void Exit()
 	{
+		bossAnim.SetBool("PlayerFound", false);
 		Debug.Log("Welcome to the true mans world");
 	}
 }

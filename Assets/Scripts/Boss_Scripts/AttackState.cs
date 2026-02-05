@@ -18,7 +18,6 @@ public class AttackState : State
 	{
 		Debug.Log("attack state");
 		hasAttacked = false;
-		bossAnim.SetBool("Attack", true);
 		SlamAttack();
 	}
 
@@ -32,6 +31,7 @@ public class AttackState : State
 	{
 		if(hasAttacked)
 		{
+			bossAnim.SetBool("AttackEnd", true);
 			stateMachine.ChangeState<DecideState>();
 		}
 	}
