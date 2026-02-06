@@ -168,6 +168,7 @@ public void OnThrow()
 		endMarker.gameObject.SetActive(false);
 
 		anim.SetBool("AimSkull", false);
+		anim.SetBool("IsHoldingSkull", false);
 		anim.SetBool("ThrowSkull", true);
 		CharacterManager.Instance.HandleHolding();
 	}

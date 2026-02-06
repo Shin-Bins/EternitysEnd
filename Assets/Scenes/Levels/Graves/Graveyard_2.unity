@@ -5315,6 +5315,14 @@ PrefabInstance:
       propertyPath: cuanHeldDeath
       value: 
       objectReference: {fileID: 1182723555}
+    - target: {fileID: 3936985489586912790, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00000021606684
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936985489586912790, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.36000156
+      objectReference: {fileID: 0}
     - target: {fileID: 5315432549959530017, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: cuanHeldDeath
       value: 
@@ -17551,7 +17559,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bc7b30b34889c984db273d5e36fdc068, type: 2}
+  - {fileID: 2100000, guid: cf27a2cf740edcf498fa657c6c318f9e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
