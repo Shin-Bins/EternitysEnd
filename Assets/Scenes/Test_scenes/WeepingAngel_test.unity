@@ -425,6 +425,17 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &384599630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733732837851049976, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+  m_PrefabInstance: {fileID: 2129530841}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &846979621
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8259634449435259570, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 384599630}
     - target: {fileID: 8370172010728644489, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pausemenu
       value: 
@@ -1110,10 +1125,6 @@ PrefabInstance:
       propertyPath: phiast
       value: 
       objectReference: {fileID: 1311365181}
-    - target: {fileID: 6098316940568917120, guid: 1e109966da15749488c6f1cd6bb2bae7, type: 3}
-      propertyPath: damageDist
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
