@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
+
 
 public class PhiastHealth : MonoBehaviour
 {
@@ -18,6 +21,8 @@ public class PhiastHealth : MonoBehaviour
     public AudioClip hurtAud;
     private CharacterController controller;
     private PickUpSkull skully;
+    public Image healthbar;
+    private float healthdrop;
 
     void Start()
     {
@@ -27,6 +32,10 @@ public class PhiastHealth : MonoBehaviour
         controller = GetComponent<CharacterController>();
         skully = GetComponent<PickUpSkull>();
         src = GetComponent<AudioSource>();
+        healthbar.enabled = false;
+        healthdrop = 100;
+        healthbar.fillAmount = healthdrop / 100f;
+        
     }
 
 
@@ -43,6 +52,10 @@ public class PhiastHealth : MonoBehaviour
         if(canBeHurt)
         {
             currentHealth--;
+            healthbar.enabled = true;
+            healthdrop -= 33;
+            healthbar.fillAmount = healthdrop / 100f;
+
             StartCoroutine(FlashEffect());
             StartCoroutine(hurtdelay());
 
@@ -87,6 +100,11 @@ public class PhiastHealth : MonoBehaviour
         canBeHurt = false;
         yield return new WaitForSeconds(0.5f);
         canBeHurt = true;
+        yield return new WaitForSeconds(4f);
+        healthbar.enabled = false;
+
     }
    
+   
+
 }
