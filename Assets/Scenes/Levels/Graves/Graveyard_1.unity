@@ -25956,7 +25956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272293338728071490, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38607,6 +38607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2119098034476613998, guid: 646f46358a7c6db4483cb9bf65859e14, type: 3}
+      propertyPath: cuanHeldDeath
+      value: 
+      objectReference: {fileID: 1905782328}
     - target: {fileID: 2343115123879717062, guid: 646f46358a7c6db4483cb9bf65859e14, type: 3}
       propertyPath: pausemenu
       value: 
