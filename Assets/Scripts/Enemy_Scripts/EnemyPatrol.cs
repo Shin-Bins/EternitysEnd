@@ -15,7 +15,6 @@ public class EnemyPatrol : MonoBehaviour
     public float range;
     private float timer;
     public Transform target;
-    float radius = 5f;
 
     [Header("Chase")]
     Vector3 chase;
@@ -29,11 +28,9 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private float attackTimer;
     [SerializeField] private float attackCooldown = 5f;
     public GameObject damageZone;
-    
 
     [Header("Grab Cuan")]
     public bool isHolding = false;
-    private float skullKillTimer = 3f;
     private float grabRange = 2f;
     private Rigidbody cuanRb;//this is a reference for when we pick up cuan
 	private BoxCollider cuanColl;//turn off collision with skull when carried. Was having some funky effects on phiast
@@ -52,13 +49,17 @@ public class EnemyPatrol : MonoBehaviour
     public AudioClip attackAud;
     public AudioClip damageAud;
 
+    private Animator anim;
+
     public int index;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        src = GetComponent<AudioSource>();
         damageZone.SetActive(false);
+        anim = GetComponent<Animator>();
         agent.updateRotation = true; 
         index = 0;
         timer = 7f;  
@@ -67,6 +68,10 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //movement animation
+        float speed = agent.velocity.magnitude;
+        anim.SetFloat("Speed", speed);
+
         timer += Time.deltaTime;
 
         if(attackTimer > 0f)
@@ -80,6 +85,7 @@ public class EnemyPatrol : MonoBehaviour
             if(stunTimer <= 0f)
             {
                 isStunned = false;
+                anim.SetBool("KnockedOut", false);
             }
             return;
         }
@@ -201,15 +207,11 @@ public class EnemyPatrol : MonoBehaviour
         isAttacking = true;
         agent.isStopped = true;
         agent.updateRotation = false;
-        transform.LookAt(target);
-        damageZone.SetActive(true);
         src.clip = attackAud;
         src.loop = false;
         src.Play();
-        
-        Invoke("EndAttack", 0.1f);//This is to test out attacking enemies. A better way would be to use a collider that is activated mid animation. Until we have animations, this is the way
+        anim.SetBool("PlayerInRange", true);
     }
-
     void EndAttack()
     {
         damageZone.SetActive(false);
@@ -217,6 +219,7 @@ public class EnemyPatrol : MonoBehaviour
         agent.isStopped = false;
         agent.updateRotation = true; 
         attackTimer = attackCooldown;
+        anim.SetBool("PlayerInRange", false);
         StateCheck();
     }
 
@@ -267,6 +270,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void Stunned()
     {
+        anim.SetBool("KnockedOut", true);
         isStunned = true;
         stunTimer = stunTime;
         agent.isStopped = true;
@@ -320,5 +324,10 @@ public class EnemyPatrol : MonoBehaviour
             agent.ResetPath();
             agent.isStopped = true;
         }
+    }
+
+    public void SmokinSexyStyle()
+    {
+        damageZone.SetActive(true);;
     }
 }

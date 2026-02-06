@@ -6,7 +6,7 @@ public class ReadyAttackState : State
 	private BossStats boss;
 	private Transform phiastLocal;
 	private float rotationSpeed = 10f;
-    private float holdTimer;
+    public float holdTimer;
 	private Animator bossAnim;
 
 	private void Awake()

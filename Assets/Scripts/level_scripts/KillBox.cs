@@ -7,8 +7,6 @@ public class KillBox : MonoBehaviour
 	public GameObject phis;
 	public GameObject skull;
 	public GameObject respawnpoint;
-	public Transform checka;
-	public GameObject check;
 	CharacterController cha;
 	
 
@@ -17,8 +15,6 @@ public class KillBox : MonoBehaviour
 		phis = GameObject.Find("Phiast_NLA");
 		skull = GameObject.Find("StCuan (1)");
 		respawnpoint = GameObject.Find("reset");
-		check = GameObject.Find("Checkpoint");
-		checka = check.transform;
 		cha = phis.GetComponent<CharacterController>();
 		
 		
@@ -38,6 +34,7 @@ public class KillBox : MonoBehaviour
 		health.TakeDamage(transform.position);
 		cha.enabled = false;
         GameManager.Instance.RespawnCheckpoint(other.gameObject);
+		skull.transform.position = respawnpoint.transform.position;
 		cha.enabled = true;
 
 
