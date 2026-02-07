@@ -18,6 +18,7 @@ TagManager:
   - Stone
   - Water
   - Destruct
+  - HealthPack
   layers:
   - Default
   - TransparentFX

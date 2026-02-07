@@ -45,7 +45,25 @@ public class PhiastHealth : MonoBehaviour
         {
             TakeDamage(other.transform.position);
         }
+
+        if(other.CompareTag("HealthPack"))
+        {
+            if (currentHealth == 3)
+            {
+                Debug.Log("healthfull");
+            }
+            else
+            {
+
+                heal();
+                other.gameObject.SetActive(false);
+
+            }
+            
+        }
     }
+
+    
 
     public void TakeDamage(Vector3 damagePos)
     {
@@ -65,6 +83,18 @@ public class PhiastHealth : MonoBehaviour
             {
                 PhiastDeath();
             }
+        }
+    }
+
+    public void heal()
+    {
+        if (currentHealth < 3)
+        {
+            currentHealth++;
+            healthbar.enabled = true;
+            healthdrop += 33;
+            healthbar.fillAmount = healthdrop / 100f;
+            StartCoroutine(hurtdelay());
         }
     }
     IEnumerator FlashEffect()
