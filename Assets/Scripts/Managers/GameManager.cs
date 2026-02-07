@@ -18,8 +18,7 @@ public class GameManager : MonoBehaviour
 
     public int nextsceneload;
  
-    
-    void Awake()
+     void Awake()
     {
         if (Instance == null)
         {

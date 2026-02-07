@@ -6,15 +6,12 @@ public class DamagedState : State
     protected StateMachine stateMachine;
 	private BossStats boss;
 	private float damagedTimer;
-	private AudioSource src;
-	public AudioClip damagedAud;
 	private Animator bossAnim;
 
     private void Awake()
 	{
 		stateMachine = GetComponent<StateMachine>();
 		boss = GetComponent<BossStats>();
-		src = GetComponent<AudioSource>();
 		bossAnim = GetComponent<Animator>();
 	}
 
@@ -22,7 +19,6 @@ public class DamagedState : State
 	{
 		boss.canBeHurt = false;
 		damagedTimer = 0f;
-		src.PlayOneShot(damagedAud);
 		bossAnim.SetBool("DamageDealt", true);
 	}
 
@@ -33,6 +29,7 @@ public class DamagedState : State
 		if(damagedTimer >= boss.invinceFrames)
 		{
 			stateMachine.ChangeState<DecideState>();
+			boss.ChangeSection();
 		}
 	}
 

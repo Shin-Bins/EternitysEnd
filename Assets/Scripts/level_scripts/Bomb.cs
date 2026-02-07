@@ -66,14 +66,6 @@ public class Bomb : MonoBehaviour
         else{
             isActive = true;
         }
-        if(collision.gameObject.CompareTag("Boss"))
-        {
-            BossStats boss = collision.gameObject.GetComponent<BossStats>();
-            {
-                boss.Damaged();
-            }
-            Explode();
-        }
     }
     
     void OnCollisionExit(Collision collision)

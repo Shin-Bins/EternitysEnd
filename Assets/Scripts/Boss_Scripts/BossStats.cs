@@ -16,13 +16,39 @@ public class BossStats : MonoBehaviour
     public float holdAttack = 3f;//how long he holds his attackDelay
     public GameObject damZone;
 
+    [Header("Progression")]
+	private EndOneState sectionEnd;
+
+	public GameObject sectionOne;
+	public GameObject sectionTwo;
+	public GameObject sectionThree;
+
+	public GameObject wallOne;
+	public GameObject wallTwo;
+	public GameObject wallThree;
+	private Destructible wallOneDest;
+	private Destructible wallTwoDest;
+	private Destructible wallThreeDest;
+
+    private AudioSource src;
+	public AudioClip damagedAud;
+
     private StateMachine stateMachine;
 
     void Start()
     {
         currentHealth = maxHealth;
+        src = GetComponent<AudioSource>();
         stateMachine = GetComponent<StateMachine>();
         damZone.SetActive(false);
+
+        sectionEnd = GetComponent<EndOneState>();
+		wallOneDest = wallOne.GetComponent<Destructible>();
+		wallTwoDest = wallOne.GetComponent<Destructible>();
+		wallThreeDest = wallOne.GetComponent<Destructible>();
+		sectionOne.SetActive(false);
+		sectionTwo.SetActive(false);
+		sectionThree.SetActive(false);
     }
 
     public void DoDamage()
@@ -40,6 +66,7 @@ public class BossStats : MonoBehaviour
         if(canBeHurt)
         {
             currentHealth --;
+            src.PlayOneShot(damagedAud);
         }
         if(currentHealth <= 0)
         {
@@ -49,4 +76,56 @@ public class BossStats : MonoBehaviour
             stateMachine.ChangeState<DamagedState>();
         }
     }
+
+    public void ChangeSection()
+	{
+		if(currentHealth == 3)
+		{
+			PhaseTwo();
+		}
+		if(currentHealth == 2)
+		{
+			PhaseThree();
+		}
+		if(currentHealth == 1)
+		{
+			PhaseFour();
+		}
+	}
+
+	void PhaseTwo()
+	{
+		if(sectionOne != null)
+		{
+			wallOneDest.enabled = true;
+			sectionOne.SetActive(true);
+			wallOne.tag = "Destruct";
+			sectionEnd.SetTarget(wallOne);
+			stateMachine.ChangeState<EndOneState>();
+		}
+	}
+
+	void PhaseThree()
+	{
+		if(sectionTwo != null)
+		{
+			wallTwoDest.enabled = true;
+			sectionTwo.SetActive(true);
+			wallTwo.tag = "Destruct";
+			sectionEnd.SetTarget(wallTwo);
+			stateMachine.ChangeState<EndOneState>();
+		}
+	}
+
+	void PhaseFour()
+	{
+		if(sectionThree != null)
+		{
+			wallThreeDest.enabled = true;
+			sectionThree.SetActive(true);
+			wallThree.tag = "Destruct";
+			sectionEnd.SetTarget(wallThree);
+			stateMachine.ChangeState<EndOneState>();
+		}
+	}
 }

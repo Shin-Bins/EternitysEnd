@@ -1080,6 +1080,7 @@ MonoBehaviour:
   attackDelay: 10
   holdAttack: 3
   damZone: {fileID: 2832464398832228576}
+  damagedAud: {fileID: 8300000, guid: adf587f795023e14db221c094ed540ba, type: 3}
 --- !u!114 &8075462418417548326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837f456dab148544eb264e19bca372a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReadyAttackState
+  holdTimer: 0
 --- !u!114 &3115613968436711157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3966076f0ecc24297746af48cc0086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamagedState
-  damagedAud: {fileID: 8300000, guid: adf587f795023e14db221c094ed540ba, type: 3}
 --- !u!114 &7367896761772843357
 MonoBehaviour:
   m_ObjectHideFlags: 0

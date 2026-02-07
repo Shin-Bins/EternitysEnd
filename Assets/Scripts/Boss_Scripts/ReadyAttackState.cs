@@ -41,7 +41,7 @@ public class ReadyAttackState : State
 			}
 
 			holdTimer += Time.deltaTime;
-			if(holdTimer >= boss.holdAttack)
+			if(holdTimer >= boss.holdAttack * 0.9f)
 			{
 				bossAnim.SetBool("Attack", true);
 				stateMachine.ChangeState<AttackState>();
