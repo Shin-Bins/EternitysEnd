@@ -23,6 +23,12 @@ public class PhiastHealth : MonoBehaviour
     private PickUpSkull skully;
     public Image healthbar;
     private float healthdrop;
+    public GameObject deathmenu;
+    public GameObject deathscreen;
+    public GameObject pauseholder;
+    public GameObject skullrespawn;
+    public GameObject cuan;
+    
 
     void Start()
     {
@@ -32,9 +38,20 @@ public class PhiastHealth : MonoBehaviour
         controller = GetComponent<CharacterController>();
         skully = GetComponent<PickUpSkull>();
         src = GetComponent<AudioSource>();
+        pauseholder = GameObject.Find("HealthUI");
+        healthbar = pauseholder.GetComponent<Image>();
+        deathscreen = GameObject.Find("deadscreen");
+        skullrespawn = GameObject.Find("reset");
+        cuan = GameObject.Find("StCuan (1)");
         healthbar.enabled = false;
         healthdrop = 100;
         healthbar.fillAmount = healthdrop / 100f;
+        deathmenu.SetActive(false);
+        deathscreen.SetActive(false);
+
+        
+        
+        
         
     }
 
@@ -122,7 +139,13 @@ public class PhiastHealth : MonoBehaviour
     {
         Debug.Log("omae wa shindeiru");
         //we'll add in the death logic soon'
-        GameManager.Instance.Death();
+        //GameManager.Instance.Death();
+        deathmenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        gameObject.GetComponent<Pause>().enabled = false;
+        deathscreen.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
 
     private IEnumerator hurtdelay()
@@ -132,6 +155,18 @@ public class PhiastHealth : MonoBehaviour
         canBeHurt = true;
         yield return new WaitForSeconds(4f);
         healthbar.enabled = false;
+
+    }
+
+    public void respwanfromdeath()
+    {
+        currentHealth = maxHealth;
+        gameObject.SetActive(true);
+        deathmenu.SetActive(false);
+        deathscreen.SetActive(false);
+        Time.timeScale = 1f;
+        gameObject.GetComponent<Pause>().enabled = true;
+        cuan.transform.position = skullrespawn.transform.position;
 
     }
    

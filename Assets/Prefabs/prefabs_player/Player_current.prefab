@@ -1508,6 +1508,12 @@ MonoBehaviour:
   flashInterval: 0.2
   canBeHurt: 1
   hurtAud: {fileID: 8300000, guid: 93db6936e9365744eacf622c83a51161, type: 3}
+  healthbar: {fileID: 0}
+  deathmenu: {fileID: 0}
+  deathscreen: {fileID: 0}
+  pauseholder: {fileID: 0}
+  skullrespawn: {fileID: 0}
+  cuan: {fileID: 0}
 --- !u!95 &8225586486822378999
 Animator:
   serializedVersion: 7

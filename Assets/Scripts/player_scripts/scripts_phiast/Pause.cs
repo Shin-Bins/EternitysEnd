@@ -21,6 +21,13 @@ public class Pause : MonoBehaviour
             ispaused = false;
             pausemenu.SetActive(false);
         }
+
+        if (Time.timeScale == 0)
+        {
+            ispaused=true;
+            pausemenu.SetActive(true);
+
+        }
     }
 
     public void OnPause () 

@@ -19,6 +19,7 @@ TagManager:
   - Water
   - Destruct
   - HealthPack
+  - reset
   layers:
   - Default
   - TransparentFX

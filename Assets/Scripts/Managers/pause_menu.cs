@@ -6,12 +6,22 @@ using UnityEngine.SceneManagement;
 public class pause_menu : MonoBehaviour
 {
     Scene thisscene;
-    
+    GameObject phi;
+    GameObject skl;
+    GameObject resetpoint;
+    public static pause_menu Instance { get; private set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
          thisscene = SceneManager.GetActiveScene();
+        phi = GameObject.FindGameObjectWithTag("phiast");
+        skl = GameObject.FindGameObjectWithTag("skull");
+        resetpoint = GameObject.FindGameObjectWithTag("reset");
+        DontDestroyOnLoad(gameObject);
     }
+
+   
 
     public void unpause()
     {
@@ -27,5 +37,14 @@ public class pause_menu : MonoBehaviour
     public void quit()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void deathrestart()
+    {
+        GameManager.Instance.RespawnCheckpoint(phi.gameObject);
+        phi.GetComponent<PhiastHealth>().respwanfromdeath();
+        
+
+        
     }
 }
