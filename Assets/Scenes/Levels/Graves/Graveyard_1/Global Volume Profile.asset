@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.Vignette
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0.1751178, g: 0, b: 0.764151, a: 1}
@@ -99,14 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ShadowsMidtonesHighlights
   active: 1
   shadows:
-    m_OverrideState: 0
-    m_Value: {x: 0.4236741, y: 0, z: 1, w: 0.11456617}
+    m_OverrideState: 1
+    m_Value: {x: 0.10249901, y: 1, z: 0, w: 0.04451363}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.26435995, y: 0, z: 1, w: 1}
+    m_Value: {x: 0.58990204, y: 0.65318465, z: 1, w: 0.0000000017264788}
   highlights:
     m_OverrideState: 0
-    m_Value: {x: 0, y: 0.635705, z: 1, w: 1}
+    m_Value: {x: 0.13494301, y: 1, z: 0, w: 1}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -134,10 +134,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.35918283, y: 0, z: 1, w: -0.114566416}
+    m_Value: {x: 0.798511, y: 0.7649898, z: 1, w: -0.044513877}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.7966971, z: 0, w: 0.049099818}
+    m_Value: {x: 0.6929717, y: 0.8379857, z: 1, w: 0.014073552}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.8059425, z: 0, w: 0.20552781}
+    m_Value: {x: 0.6748622, y: 0.78925514, z: 1, w: -0.03965605}
