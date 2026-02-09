@@ -4,6 +4,7 @@ public class PhiastKiller : MonoBehaviour
 {
 
     public Transform bossTarget;
+    public AudioClip fire;
     private float speed = 20f;
     private bool shoot = false;
 
@@ -20,6 +21,7 @@ public class PhiastKiller : MonoBehaviour
     {
         if(!shoot)
         {
+            AudioSource.PlayClipAtPoint(fire, transform.position);
             shoot = true;
         }
     }

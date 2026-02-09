@@ -31,7 +31,8 @@ public class BossStats : MonoBehaviour
 	private Destructible wallThreeDest;
 
     private AudioSource src;
-	public AudioClip damagedAud;
+	public AudioClip wallDestruct;//this is for the progression walls smashing
+	public AudioClip damagedAud;//evil phiast being hurt
 
     private StateMachine stateMachine;
 
@@ -97,6 +98,7 @@ public class BossStats : MonoBehaviour
 			sectionOne.SetActive(true);
 			wallOne.tag = "Destruct";
 			Destructible dest = wallOne.AddComponent<Destructible>();
+			dest.destAud = wallDestruct;
 			sectionEnd.SetTarget(wallOne);
 			stateMachine.ChangeState<EndOneState>();
 		}
