@@ -354,8 +354,8 @@ GameObject:
   - component: {fileID: 4973727682991574547}
   - component: {fileID: 3176832367590904562}
   - component: {fileID: 1809651408475043000}
+  - component: {fileID: 8847282567923464727}
   - component: {fileID: 2772075942917066205}
-  - component: {fileID: 8414956844568115296}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -511,6 +511,45 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &8847282567923464727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019562278210697847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 72
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!114 &2772075942917066205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,15 +594,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!45 &8414956844568115296
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019562278210697847}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &1937960475283335039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,7 +946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000009760261
+      value: 0.00000021606684
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -924,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3600092
+      value: 0.36000156
       objectReference: {fileID: 0}
     - target: {fileID: 7176387790123844716, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x

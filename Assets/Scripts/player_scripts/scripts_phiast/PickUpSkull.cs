@@ -61,6 +61,15 @@ void OnTriggerEnter(Collider other)
 	}
 }
 
+void OnTriggerStay(Collider other)
+{
+	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
+	{
+		inRange = true;
+		obj = other;
+	}
+}
+
 void OnTriggerExit(Collider other)
 {
 	if(other.CompareTag("skull") || other.CompareTag("PickUp"))
@@ -87,6 +96,7 @@ void OnTriggerExit(Collider other)
         {
             trajectLine.enabled = false;
             if(endMarker != null) endMarker.gameObject.SetActive(false);
+			anim.SetBool("AimSkull", true);
         }
     }
 
@@ -169,7 +179,7 @@ public void OnThrow()
 
 		anim.SetBool("AimSkull", false);
 		anim.SetBool("IsHoldingSkull", false);
-		anim.SetBool("ThrowSkull", true);
+		anim.SetTrigger("SkullThrown");
 		CharacterManager.Instance.HandleHolding();
 	}
 }

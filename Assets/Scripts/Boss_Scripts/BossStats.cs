@@ -43,9 +43,6 @@ public class BossStats : MonoBehaviour
         damZone.SetActive(false);
 
         sectionEnd = GetComponent<EndOneState>();
-		wallOneDest = wallOne.GetComponent<Destructible>();
-		wallTwoDest = wallOne.GetComponent<Destructible>();
-		wallThreeDest = wallOne.GetComponent<Destructible>();
 		sectionOne.SetActive(false);
 		sectionTwo.SetActive(false);
 		sectionThree.SetActive(false);
@@ -97,9 +94,9 @@ public class BossStats : MonoBehaviour
 	{
 		if(sectionOne != null)
 		{
-			wallOneDest.enabled = true;
 			sectionOne.SetActive(true);
 			wallOne.tag = "Destruct";
+			Destructible dest = wallOne.AddComponent<Destructible>();
 			sectionEnd.SetTarget(wallOne);
 			stateMachine.ChangeState<EndOneState>();
 		}
@@ -109,9 +106,9 @@ public class BossStats : MonoBehaviour
 	{
 		if(sectionTwo != null)
 		{
-			wallTwoDest.enabled = true;
 			sectionTwo.SetActive(true);
 			wallTwo.tag = "Destruct";
+			Destructible dest = wallTwo.AddComponent<Destructible>();
 			sectionEnd.SetTarget(wallTwo);
 			stateMachine.ChangeState<EndOneState>();
 		}
@@ -121,9 +118,9 @@ public class BossStats : MonoBehaviour
 	{
 		if(sectionThree != null)
 		{
-			wallThreeDest.enabled = true;
 			sectionThree.SetActive(true);
 			wallThree.tag = "Destruct";
+			Destructible dest = wallThree.AddComponent<Destructible>();
 			sectionEnd.SetTarget(wallThree);
 			stateMachine.ChangeState<EndOneState>();
 		}

@@ -5,7 +5,6 @@ public class EndOneState : State
     protected StateMachine stateMachine;
 	private BossStats boss;
 	public GameObject currentTarget;
-	private float holdTimer;
 	private float rotationSpeed = 10f;
 	private bool facingTarget = false;
 
@@ -21,8 +20,7 @@ public class EndOneState : State
 
 	public override void Enter()
 	{
-		Debug.Log("readying state");
-		holdTimer = 0f;
+		Debug.Log("phase transition");
 		facingTarget = false;
 	}
 

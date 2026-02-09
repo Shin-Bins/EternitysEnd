@@ -264,13 +264,14 @@ public class EnemyPatrol : MonoBehaviour
 
             Debug.Log("I dropa da skull");
 		    CharacterManager.Instance.HandleHolding();
-            Stunned();
 	    }
+        Stunned();
     }
 
     void Stunned()
     {
         anim.SetBool("KnockedOut", true);
+        anim.SetBool("PlayerInRange", false);
         isStunned = true;
         stunTimer = stunTime;
         agent.isStopped = true;
