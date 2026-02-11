@@ -90,6 +90,7 @@ public class PhiastHealth : MonoBehaviour
             healthbar.enabled = true;
             healthdrop -= 33;
             healthbar.fillAmount = healthdrop / 100f;
+            gameObject.GetComponent<Knockback>().addimpact();
 
             StartCoroutine(FlashEffect());
             StartCoroutine(hurtdelay());

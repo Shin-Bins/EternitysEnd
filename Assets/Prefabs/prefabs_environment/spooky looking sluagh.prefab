@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &632206756631318871
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0972
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0972
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0972
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.33
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.95
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.36065313
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.93270004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 137.719
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_Name
+      value: spooky looking sluagh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6291342073825735831}
+  m_SourcePrefab: {fileID: 100100000, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+--- !u!1 &290312180984818694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d4b1d4a7b8029c94e8d4aaaaf02d29c0, type: 3}
+  m_PrefabInstance: {fileID: 632206756631318871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6291342073825735831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290312180984818694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3b7a305eba15e4d9ce1e859e653ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtPlayer
+  phist: {fileID: 0}

@@ -11,6 +11,9 @@ public class WeepingAngel : MonoBehaviour
     public float speed, damageDist;
     public Camera cam;
 
+    private bool isActive = false;
+    private float activationDist = 10f;
+
     private Animator anim;
     private AudioSource src;
     void Start()
@@ -22,6 +25,18 @@ public class WeepingAngel : MonoBehaviour
 
     void Update()
     {
+        if(!isActive)
+        {
+            float distToPhist = Vector3.Distance(transform.position, phiast.position);
+            if(distToPhist <= activationDist)
+            {
+                isActive = true;
+            }
+            else{
+                return;
+            }
+        }
+
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(cam);
 
         if(GeometryUtility.TestPlanesAABB(planes, this.gameObject.GetComponent<Renderer>().bounds))
