@@ -12,6 +12,7 @@ public class WeepingAngel : MonoBehaviour
     public Camera cam;
 
     private bool isActive = false;
+    private bool canHurt = false;
     private float activationDist = 10f;
 
     private Animator anim;
@@ -43,6 +44,7 @@ public class WeepingAngel : MonoBehaviour
         {
             ai.speed = 0f;
             ai.SetDestination(transform.position);
+            canHurt = false;
             anim.SetBool("OutofSight", false);
             Debug.Log("No spooky:(");
         }
@@ -51,6 +53,7 @@ public class WeepingAngel : MonoBehaviour
             dest = phiast.position;
             ai.destination = dest;
             ai.speed = speed;
+            canHurt = true;
             anim.SetBool("OutofSight", true);
             SwitchPose();
             Debug.Log("Spooky time");
@@ -67,10 +70,13 @@ public class WeepingAngel : MonoBehaviour
     {
         if(other.CompareTag("phiast"))
         {
-            PhiastHealth health = other.GetComponent<PhiastHealth>();
-            if(health != null)
+            if(canHurt)
             {
-                health.TakeDamage(transform.position);
+                PhiastHealth health = other.GetComponent<PhiastHealth>();
+                if (health != null)
+                {
+                    health.TakeDamage(transform.position);
+                }
             }
         }
     }
