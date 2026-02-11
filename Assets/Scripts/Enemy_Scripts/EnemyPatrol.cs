@@ -49,6 +49,10 @@ public class EnemyPatrol : MonoBehaviour
     public AudioClip attackAud;
     public AudioClip damageAud;
 
+    [Header("effects")]
+    public ParticleSystem smoke;
+    bool playonce = true;
+
     private Animator anim;
 
     public int index;
@@ -158,6 +162,14 @@ public class EnemyPatrol : MonoBehaviour
         {
             index = 1;
             timer = 0f;
+
+            if (playonce)
+            {
+                smoke.Play();
+                GameObject rob = GameObject.Find("Robed Boy");
+                rob.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                playonce = false;
+            }
         }
         else if (timer > 10f && (index == 1 || index == 2))
         {

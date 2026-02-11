@@ -14264,6 +14264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1242146470291398547, guid: 9a98a4bc71c391c44a249d50bcaea682, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1524236726317811235, guid: 9a98a4bc71c391c44a249d50bcaea682, type: 3}
       propertyPath: phist
       value: 
@@ -14272,6 +14276,10 @@ PrefabInstance:
       propertyPath: skull
       value: 
       objectReference: {fileID: 1988041840}
+    - target: {fileID: 1524236726317811235, guid: 9a98a4bc71c391c44a249d50bcaea682, type: 3}
+      propertyPath: smoke
+      value: 
+      objectReference: {fileID: 1981109906}
     - target: {fileID: 4818833110024963041, guid: 9a98a4bc71c391c44a249d50bcaea682, type: 3}
       propertyPath: m_Name
       value: Sluagh
@@ -23832,6 +23840,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!198 &1981109906 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8235479567187401215, guid: 9a98a4bc71c391c44a249d50bcaea682, type: 3}
+  m_PrefabInstance: {fileID: 1398801109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1988041840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2121122537432662164, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
