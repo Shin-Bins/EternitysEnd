@@ -1106,6 +1106,10 @@ PrefabInstance:
       value: 0.36000088
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9961947
+      objectReference: {fileID: 0}
+    - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.08715578
       objectReference: {fileID: 0}
@@ -1830,6 +1834,8 @@ PlayableDirector:
     value: {fileID: 151800052}
   - key: {fileID: 3938422936005079252, guid: b8992bf1986579b44a8a99f71f370486, type: 2}
     value: {fileID: 84960975}
+  - key: {fileID: -2839194213799311157, guid: b8992bf1986579b44a8a99f71f370486, type: 2}
+    value: {fileID: 1588857930}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &820121265
@@ -4647,7 +4653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 364564d7091fb77409a48b664fffa28f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1184c527a1c81a746bf128c3fb8044cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
