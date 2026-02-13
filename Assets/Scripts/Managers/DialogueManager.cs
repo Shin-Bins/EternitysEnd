@@ -164,7 +164,6 @@ public class DialogueManager : MonoBehaviour
 
     void UpdateSpeaker()
     {
-
           // Safety checks to prevent index out of bounds errors
         if (currentLines == null || currentLines.Length == 0)
         {
