@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class PhiastHealth : MonoBehaviour
 {
-    [SerializeField]private int maxHealth = 3;
-    [SerializeField]private int currentHealth;
+    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int currentHealth;
     [SerializeField] bool canBeHurt = true;
 
     private AudioSource src;
@@ -23,7 +23,7 @@ public class PhiastHealth : MonoBehaviour
     public GameObject pauseholder;
     private GameObject skullrespawn;
     private GameObject cuan;
-    
+
 
     void Start()
     {
@@ -34,18 +34,18 @@ public class PhiastHealth : MonoBehaviour
 
         pauseholder = GameObject.Find("HealthUI");
         healthbar = pauseholder.GetComponent<Image>();
-        healthHolder = GameObject.Find("Health");
+        
         deathscreen = GameObject.Find("deadscreen");
         skullrespawn = GameObject.Find("reset");
         cuan = GameObject.Find("StCuan (1)");
-        healthHolder.SetActive(false);
         healthbar.enabled = false;
         healthdrop = 100;
-
+        //RefreshPause();
         healthbar.fillAmount = healthdrop / 100f;
         deathmenu.SetActive(false);
-        deathscreen.SetActive(false);  
+        deathscreen.SetActive(false);
     }
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -95,7 +95,6 @@ public class PhiastHealth : MonoBehaviour
         if (currentHealth < 3)
         {
             currentHealth++;
-            healthHolder.SetActive(true);
             healthbar.enabled = true;
             healthdrop += 33;
             healthbar.fillAmount = healthdrop / 100f;
@@ -122,7 +121,6 @@ public class PhiastHealth : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         canBeHurt = true;
         yield return new WaitForSeconds(4f);
-        healthHolder.SetActive(false);
         healthbar.enabled = false;
 
     }
