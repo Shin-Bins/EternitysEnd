@@ -49,9 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   soundClips:
   - {fileID: 8300000, guid: ebc8d5bdd96b2e2489b226e1d0bdfc54, type: 3}
-  - {fileID: 8300000, guid: 96b9881c6b8e38b4488caa048a2dc693, type: 3}
-  - {fileID: 8300000, guid: 7dda6d6f16b7cff4d92584b1f9b44769, type: 3}
-  - {fileID: 8300000, guid: a3a4dddd14892da44bb23683dae518af, type: 3}
   minDelay: 20
   maxDelay: 75
 --- !u!82 &3447609533027948873
