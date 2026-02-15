@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class LookAtPlayer : MonoBehaviour
 {
-    public Transform phist;
+    public GameObject phist;
     private float rotSpeed = 10f;
 
+    void Start()
+    {
+        phist = GameObject.Find("Phiast_NLA");
+    }
     void Update()
     {
         Vector3 looker = phist.transform.position - transform.position;
