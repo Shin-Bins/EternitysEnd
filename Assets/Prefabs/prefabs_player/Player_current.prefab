@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 9019562278210697847}
   serializedVersion: 2
   m_LocalRotation: {x: -0.19796683, y: -0.00000004284084, z: 0.000000008381903, w: -0.98020875}
-  m_LocalPosition: {x: -0.00000071525574, y: 4.980483, z: -7.132637}
+  m_LocalPosition: {x: -0.00000059604645, y: 4.980483, z: -7.132637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -469,7 +469,7 @@ Camera:
   m_GameObject: {fileID: 9019562278210697847}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.12984176, g: 0.034264866, b: 0.6603774, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -946,7 +946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000009760261
+      value: 0.00000009685755
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -954,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3600092
+      value: 0.36000156
       objectReference: {fileID: 0}
     - target: {fileID: 7176387790123844716, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x

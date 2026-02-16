@@ -20,6 +20,7 @@ TagManager:
   - Destruct
   - HealthPack
   - reset
+  - killbox
   layers:
   - Default
   - TransparentFX

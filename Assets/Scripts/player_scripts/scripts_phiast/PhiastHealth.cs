@@ -23,6 +23,7 @@ public class PhiastHealth : MonoBehaviour
     public GameObject pauseholder;
     private GameObject skullrespawn;
     private GameObject cuan;
+    
 
 
     void Start()
@@ -32,7 +33,7 @@ public class PhiastHealth : MonoBehaviour
         skully = GetComponent<PickUpSkull>();
         src = GetComponent<AudioSource>();
 
-        pauseholder = GameObject.Find("HealthUI");
+        //pauseholder = GameObject.Find("HealthUI");
         healthbar = pauseholder.GetComponent<Image>();
         
         deathscreen = GameObject.Find("deadscreen");
