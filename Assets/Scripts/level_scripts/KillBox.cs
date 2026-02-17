@@ -12,7 +12,7 @@ public class KillBox : MonoBehaviour
 	public Transform checkpointpos;
 	CharacterController cha;
 	bool chec = false;
-	float fuckthis;
+	
 
     private void Start()
     {
@@ -21,8 +21,10 @@ public class KillBox : MonoBehaviour
 		par = GameObject.Find("Player_current");
 		respawnpoint = GameObject.Find("reset").transform;
 		cha = phis.GetComponent<CharacterController>();
-        checkpointpos = GameObject.Find("Checkpoint").transform;
-		 
+		
+
+
+
 
 
 
@@ -79,12 +81,6 @@ public class KillBox : MonoBehaviour
 
     }
 
-	public void OnTestbutton()
-	{
-
-        cha.enabled = false;
-        Physics.SyncTransforms();
-		cha.enabled = true;
-        Debug.Log("go");
-	}
+	
+	
 }
