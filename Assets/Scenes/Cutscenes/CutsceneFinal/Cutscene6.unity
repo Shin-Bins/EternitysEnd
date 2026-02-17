@@ -9249,6 +9249,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8365031214753246465, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+    - {fileID: 8272293338728071490, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
@@ -37160,7 +37161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e33f2c922c7d048969311f185044f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextScene: FinalCuscen
+  nextScene: FinalCutscen
 --- !u!65 &1386995289
 BoxCollider:
   m_ObjectHideFlags: 0
