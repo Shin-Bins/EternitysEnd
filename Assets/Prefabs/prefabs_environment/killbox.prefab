@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8706962451846201743}
   m_Layer: 0
   m_Name: killbox
-  m_TagString: Untagged
+  m_TagString: killbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.45, y: -4, z: 4.37882}
-  m_LocalScale: {x: 45.561, y: 1, z: 56.147}
+  m_LocalScale: {x: 98.42088, y: 1, z: 317.13327}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372777991291370004}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -124,3 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13dcb8dbc7772e3489790dcc68096209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KillBox
+  phis: {fileID: 0}
+  skull: {fileID: 0}
+  respawnpoint: {fileID: 0}
+  checkpoint: {fileID: 0}

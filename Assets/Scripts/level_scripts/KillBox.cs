@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,35 +7,80 @@ public class KillBox : MonoBehaviour
 
 	public GameObject phis;
 	public GameObject skull;
-	public GameObject respawnpoint;
+	public GameObject par;
+	public Transform respawnpoint;
+	public Transform checkpointpos;
 	CharacterController cha;
+	bool chec = false;
+	
 
     private void Start()
     {
 		phis = GameObject.Find("Phiast_NLA");
 		skull = GameObject.Find("StCuan (1)");
-		respawnpoint = GameObject.Find("reset");
+		par = GameObject.Find("Player_current");
+		respawnpoint = GameObject.Find("reset").transform;
 		cha = phis.GetComponent<CharacterController>();
+		
+
+
+
+
+
+
+
+
+
+
     }
 
 	
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
 {
 	if(other.CompareTag("phiast"))
 	{
 		PhiastHealth health = other.GetComponent<PhiastHealth>();
 		health.TakeDamage(transform.position);
-		cha.enabled = false;
-        GameManager.Instance.RespawnCheckpoint(other.gameObject);
-		skull.transform.position = respawnpoint.transform.position;
-		cha.enabled = true;
-         //skull.transform.position = respawnpoint.transform.position;//
-        Debug.Log("Got da phiastie");
+			if (chec == false)
+			{
+				GameManager.Instance.Death();
+			}
+			else
+			{
+				
+				
+				skull.transform.position = checkpointpos.transform.position;
+				StartCoroutine(phisreset());
+				Debug.Log("Got da phiastie");
+			}
 	}
 	if(other.CompareTag("skull"))
 	{
-            phis.transform.position = respawnpoint.transform.position;
-            GameManager.Instance.RespawnCheckpoint(other.gameObject);		
+            phis.transform.localPosition = checkpointpos.transform.position;
+            GameManager.Instance.RespawnCheckpoint(other.gameObject);
+			Physics.SyncTransforms();
 	}
 }
+
+    public void ac()
+    {
+		Debug.Log("check");
+		chec = true;
+		checkpointpos = GameObject.Find("Checkpoint").transform;
+    }
+
+	public IEnumerator phisreset()
+	{
+		yield return new WaitForSeconds(3);
+		cha.enabled = false;
+        phis.transform.localPosition = checkpointpos.transform.position;
+        Physics.SyncTransforms();
+        cha.enabled = true;
+		Debug.Log("reset");
+		
+
+    }
+
+	
+	
 }
