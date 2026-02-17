@@ -30,11 +30,29 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Graves/Graveyard_3.unity
     guid: 5be8da220c7d3a04c905c03a1a190324
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene3/Cutscene_3.unity
+    guid: b4664890024f5ce459a5a1340025f7fd
+  - enabled: 1
     path: Assets/Scenes/Levels/Graves/Graveyard_to_church.unity
-    guid: 58991655c85cd9447b4f13a2265de280
+    guid: 3979ffa23c023424e896f966a2fbca70
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene4/Cutscene_4.unity
+    guid: 1c77e8fd26fcc03438017f65fb7d15fc
   - enabled: 1
     path: Assets/Scenes/Levels/Torture-chamber/torture.unity
     guid: 99e73b92b15a3eb499ccaa1bcf537ba1
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/CutscenePreBoss/Cutscene5.unity
+    guid: a1ab9517926c1664c8c9b86704a4a898
+  - enabled: 1
+    path: Assets/Scenes/Levels/Boss/BossLevel.unity
+    guid: f57b9de85d5c3904c9823db02e8248ba
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/CutsceneFinal/Cutscene6.unity
+    guid: cf60c9faf7feb7649a3c1b54b607fae8
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/CutsceneEnding/FinalCutscen.unity
+    guid: 58991655c85cd9447b4f13a2265de280
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
