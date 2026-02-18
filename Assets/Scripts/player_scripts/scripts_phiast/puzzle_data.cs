@@ -21,7 +21,7 @@ public class puzzle_data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (button1.rednumber == 3 && button2.greennumber == 4 && button3.goldnumber == 1)
+      if (button1.rednumber == 3 && button2.greennumber == 0 && button3.goldnumber == 1)
         {
             puzzlesolved.Invoke();
             Debug.Log("solved");

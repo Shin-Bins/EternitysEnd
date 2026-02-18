@@ -8,6 +8,10 @@ public class EndOneState : State
 	private float rotationSpeed = 10f;
 	private bool facingTarget = false;
 
+	private bool waitForAttack = false;
+	private float animTimer = 0f;
+	private float attackLength = 5f;
+
 	private Animator bossAnim;
 	//the name of this is sketch but also I don't wanna redo everything xddd'
 	private void Awake()
@@ -33,6 +37,16 @@ public class EndOneState : State
 
 	public override void Tick()
 	{
+
+		if(waitForAttack)
+		{
+			animTimer+= Time.deltaTime;
+			if(animTimer >= attackLength)
+			{
+				stateMachine.ChangeState<DecideState>();
+				return;
+			}
+		}
 		if(currentTarget != null)
         {
             Vector3 direction = currentTarget.transform.position - transform.position;
@@ -50,7 +64,7 @@ public class EndOneState : State
                     facingTarget = true;
                     Debug.Log("Rotated to target! Attacking now!");
                     bossAnim.SetTrigger("SectionEnd");
-					stateMachine.ChangeState<DecideState>();
+					waitForAttack = true;
                 }
             }
 		}

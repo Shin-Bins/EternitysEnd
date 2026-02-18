@@ -36,11 +36,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Graves/Graveyard_to_church.unity
     guid: 3979ffa23c023424e896f966a2fbca70
   - enabled: 1
+    path: Assets/Scenes/Levels/Church/ChurchSean.unity
+    guid: 8f16b9ccd5ba50a40909e5bdbe94b89b
+  - enabled: 1
+    path: Assets/Scenes/Levels/Church/Church_Cutscene.unity
+    guid: 599c892e6d5e0ff45a9729115a5dc0e8
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/Cutscene4/Cutscene_4.unity
     guid: 1c77e8fd26fcc03438017f65fb7d15fc
   - enabled: 1
+    path: Assets/Scenes/Levels/Torture-chamber/torture_entrance.unity
+    guid: db94610076ce7ec48bd61981e25525b4
+  - enabled: 1
     path: Assets/Scenes/Levels/Torture-chamber/torture.unity
     guid: 99e73b92b15a3eb499ccaa1bcf537ba1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Torture-chamber/torture-maze.unity
+    guid: c8413c7008636974c92fa2664d110e19
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CutscenePreBoss/Cutscene5.unity
     guid: a1ab9517926c1664c8c9b86704a4a898
@@ -53,6 +65,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/CutsceneEnding/FinalCutscen.unity
     guid: 58991655c85cd9447b4f13a2265de280
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: fb8b42a68ccdd9147bf3cea2e4785d1a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
