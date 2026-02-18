@@ -5,8 +5,8 @@ using System;
 
 public class gold_switch : MonoBehaviour, IIinteractable
 {
-
     GameObject goldorb;
+    public AudioSource src;
 
     public int goldnumber;
 
@@ -21,6 +21,7 @@ public class gold_switch : MonoBehaviour, IIinteractable
         goldnumber++;
         Debug.Log(goldnumber);
         goldorb.transform.rotation *= Quaternion.Euler(0f, 45f, 0f);
+        src.Play();
     }
 
     void Update()

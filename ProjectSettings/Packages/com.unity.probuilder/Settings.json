@@ -124,7 +124,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
-                "value": "{\"m_Value\":{\"x\":-0.3892536163330078,\"y\":2.3676443099975588,\"z\":0.2781715393066406}}"
+                "value": "{\"m_Value\":{\"x\":2.147928237915039,\"y\":2.4802370071411135,\"z\":-1.6851310729980469}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -139,7 +139,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Stairs",
-                "value": "{\"m_Value\":{\"x\":11.678958892822266,\"y\":3.3245322704315187,\"z\":-7.526471138000488}}"
+                "value": "{\"m_Value\":{\"x\":-5.0,\"y\":13.451537132263184,\"z\":-27.295848846435548}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",

@@ -7,7 +7,7 @@ public class red_switch : MonoBehaviour, IIinteractable
 {
 
     GameObject redorb;
-    
+    public AudioSource src;
     public int rednumber;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +19,7 @@ public class red_switch : MonoBehaviour, IIinteractable
    public void Interaction()
     {
         rednumber++;
+        src.Play();
         Debug.Log(rednumber);
         redorb.transform.rotation *= Quaternion.Euler(0f, 45f, 0f);
     }

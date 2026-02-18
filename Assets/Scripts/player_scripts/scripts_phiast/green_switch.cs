@@ -7,7 +7,7 @@ public class green_switch : MonoBehaviour, IIinteractable
 {
 
     GameObject greenorb;
-
+    public AudioSource src;
     public int greennumber;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +19,7 @@ public class green_switch : MonoBehaviour, IIinteractable
     public void Interaction()
     {
         greennumber++;
+        src.Play();
         Debug.Log(greennumber);
         greenorb.transform.rotation *= Quaternion.Euler(0f, 45f, 0f);
     }

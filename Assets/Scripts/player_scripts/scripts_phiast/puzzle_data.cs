@@ -15,16 +15,13 @@ public class puzzle_data : MonoBehaviour
     {
         button1 = GameObject.Find("Button-1").GetComponent<red_switch>();
         button2 = GameObject.Find("Button-2").GetComponent<green_switch>();
-        button3 = GameObject.Find("Button-3").GetComponent<gold_switch>();
-        
-        
-        
+        button3 = GameObject.Find("Button-3").GetComponent<gold_switch>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (button1.rednumber == 3 && button2.greennumber == 2 && button3.goldnumber == 3)
+      if (button1.rednumber == 3 && button2.greennumber == 4 && button3.goldnumber == 1)
         {
             puzzlesolved.Invoke();
             Debug.Log("solved");

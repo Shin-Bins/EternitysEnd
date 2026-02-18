@@ -65,6 +65,10 @@ PrefabInstance:
       value: Pew (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 853979d91841f1e4a9580f075a607227, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 853979d91841f1e4a9580f075a607227, type: 3}
       propertyPath: m_TagString
       value: Wood
       objectReference: {fileID: 0}
