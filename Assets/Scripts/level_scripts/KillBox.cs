@@ -47,10 +47,10 @@ public class KillBox : MonoBehaviour
 			}
 			else
 			{
-				
-				
-				skull.transform.position = checkpointpos.transform.position;
-				StartCoroutine(phisreset());
+
+
+
+				GameManager.Instance.Death();
 				Debug.Log("Got da phiastie");
 			}
 	}
@@ -69,17 +69,7 @@ public class KillBox : MonoBehaviour
 		checkpointpos = GameObject.Find("Checkpoint").transform;
     }
 
-	public IEnumerator phisreset()
-	{
-		yield return new WaitForSeconds(3);
-		cha.enabled = false;
-        phis.transform.localPosition = checkpointpos.transform.position;
-        Physics.SyncTransforms();
-        cha.enabled = true;
-		Debug.Log("reset");
-		
-
-    }
+	
 
 	
 	
