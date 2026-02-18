@@ -28,7 +28,6 @@ public class DamagedState : State
 
 		if(damagedTimer >= boss.invinceFrames)
 		{
-			stateMachine.ChangeState<DecideState>();
 			boss.ChangeSection();
 		}
 	}

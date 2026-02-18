@@ -22,6 +22,8 @@ public class EndOneState : State
 	{
 		Debug.Log("phase transition");
 		facingTarget = false;
+    Debug.Log($"Target is: {currentTarget?.name} at position {currentTarget?.transform.position}");
+    Debug.Log($"Boss is at: {transform.position}");
 	}
 
 	public void SetTarget(GameObject target)
@@ -42,15 +44,16 @@ public class EndOneState : State
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
                 float angle = Quaternion.Angle(transform.rotation, targetRotation);
-                if(angle < 5f && !facingTarget)
+				Debug.Log($"Angle to target: {angle}");
+                if(angle < .1f && !facingTarget)
                 {
                     facingTarget = true;
                     Debug.Log("Rotated to target! Attacking now!");
                     bossAnim.SetTrigger("SectionEnd");
+					stateMachine.ChangeState<DecideState>();
                 }
             }
 		}
-		stateMachine.ChangeState<DecideState>();
 	}
 
 	public override void Exit()

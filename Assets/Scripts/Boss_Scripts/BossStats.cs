@@ -61,6 +61,8 @@ public class BossStats : MonoBehaviour
 
    public void Damaged()
     {
+		if(!canBeHurt) return;
+
         if(canBeHurt)
         {
             currentHealth --;
@@ -71,6 +73,7 @@ public class BossStats : MonoBehaviour
             stateMachine.ChangeState<DeathState>();
         }
         else{
+			ChangeSection(); 
             stateMachine.ChangeState<DamagedState>();
         }
     }
@@ -95,6 +98,7 @@ public class BossStats : MonoBehaviour
 	{
 		if(sectionOne != null)
 		{
+			Debug.Log("Phase two bby");
 			sectionOne.SetActive(true);
 			wallOne.tag = "Destruct";
 			Destructible dest = wallOne.AddComponent<Destructible>();

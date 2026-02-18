@@ -9206,6 +9206,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7708626405881610869, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.44874
@@ -27342,6 +27346,8 @@ PlayableDirector:
     value: {fileID: 949607448}
   - key: {fileID: -5784661752363829200, guid: 6ac2735b7272b8640b174f2cff4cbcda, type: 2}
     value: {fileID: 1033255253}
+  - key: {fileID: 7331961396980588813, guid: 6ac2735b7272b8640b174f2cff4cbcda, type: 2}
+    value: {fileID: 692033911}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &983812695
@@ -57764,6 +57770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReadyAttackState
   holdTimer: 0
+  swingAud: {fileID: 0}
 --- !u!1 &1210328425502706365
 GameObject:
   m_ObjectHideFlags: 0
@@ -57807,31 +57814,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000047683716
+      value: 0.0022292137
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1999989
+      value: 2.1965446
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36000156
+      value: 0.37192154
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9961947
+      value: 0.9968059
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.08715578
+      value: -0.07984894
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.0014741686
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.000052806732
       objectReference: {fileID: 0}
     - target: {fileID: 2236982217473362457, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58590,6 +58597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e2f81170138dd449144d29bba5409a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossDamage
+  hitAud: {fileID: 0}
 --- !u!1001 &7605931934206772212
 PrefabInstance:
   m_ObjectHideFlags: 0

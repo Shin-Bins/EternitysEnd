@@ -8,6 +8,8 @@ public class ReadyAttackState : State
 	private float rotationSpeed = 10f;
     public float holdTimer;
 	private Animator bossAnim;
+	private AudioSource src;
+	public AudioClip swingAud;
 
 	private void Awake()
 	{
@@ -15,6 +17,7 @@ public class ReadyAttackState : State
 		phiastLocal = GameObject.FindGameObjectWithTag("phiast").transform;
 		boss = GetComponent<BossStats>();
 		bossAnim = GetComponent<Animator>();
+		src = GetComponent<AudioSource>();
 	}
 
 	public override void Enter()
@@ -41,8 +44,9 @@ public class ReadyAttackState : State
 			}
 
 			holdTimer += Time.deltaTime;
-			if(holdTimer >= boss.holdAttack * 0.9f)
+			if(holdTimer >= boss.holdAttack)
 			{
+				src.PlayOneShot(swingAud);
 				bossAnim.SetBool("Attack", true);
 				stateMachine.ChangeState<AttackState>();
 			}
