@@ -3,6 +3,7 @@ using UnityEngine;
 public class BossDamage : MonoBehaviour
 {
 	protected StateMachine stateMachine;
+	public AudioClip hitAud;
 
 	void Start()
 	{
@@ -27,5 +28,7 @@ public class BossDamage : MonoBehaviour
 				dest.DestructObject();
 			}
 		}
+
+		AudioSource.PlayClipAtPoint(hitAud, transform.position);
 	}
 }

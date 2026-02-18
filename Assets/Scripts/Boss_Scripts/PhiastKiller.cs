@@ -32,9 +32,13 @@ public class PhiastKiller : MonoBehaviour
         if(other.CompareTag("Boss"))
         {
             BossStats boss = other.GetComponent<BossStats>();
+            if(boss != null)
             {
                 Debug.Log("Damaged");
                 boss.Damaged();
+            }
+            else{
+                Debug.Log("AHHH");
             }
             Destroy(gameObject);
         }
