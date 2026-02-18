@@ -13,7 +13,7 @@ public class WeepingAngel : MonoBehaviour
 
     private bool isActive = false;
     private bool canHurt = false;
-    private float activationDist = 10f;
+    private float activationDist = 15f;
 
     private Animator anim;
     private AudioSource src;
