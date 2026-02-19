@@ -21600,7 +21600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e33f2c922c7d048969311f185044f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextScene: Graveyard_to_church
+  nextScene: Cutscene_3
 --- !u!114 &1842007802
 MonoBehaviour:
   m_ObjectHideFlags: 0

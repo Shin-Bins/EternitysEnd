@@ -7841,7 +7841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e33f2c922c7d048969311f185044f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextScene: 
+  nextScene: ChurchSean
 --- !u!65 &690553732
 BoxCollider:
   m_ObjectHideFlags: 0
