@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image fadeOut;
     [SerializeField] private float fadeDuration = 0.5f;
 
+    private GameObject phiast;
+    private GameObject skull;
+
     public int nextsceneload;
  
      void Awake()
@@ -30,8 +33,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        nextsceneload = SceneManager.GetActiveScene().buildIndex + 1;
+    }
 
+    void Start()
+    {
+         phiast = GameObject.Find("Phiast_NLA");
+         skull = GameObject.Find("StCuan (1)");
     }
 
     public void SetCheckpoint(Vector3 position)
@@ -40,12 +47,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("Checkpoint set");
     }
     
-    public void RespawnCheckpoint(GameObject charToRespawn)
+    public void RespawnCheckpoint()
     {
         if(currentCheckpoint != Vector3.zero)
         {
-            charToRespawn.transform.position = currentCheckpoint;
-            Debug.Log("nodie");
+            /*CharacterController phiastChar = phiast.GetComponent<CharacterController>();
+            Rigidbody skullRB = skull.GetComponent<Rigidbody>();
+
+            phiastChar.enabled = false;
+            if (skullRB != null) 
+            skullRB.isKinematic = true;
+
+            phiast.transform.position = currentCheckpoint;
+            skull.transform.position = currentCheckpoint;
+            Physics.SyncTransforms();
+
+           // if (skullRB != null) 
+            //skullRB.isKinematic = false;
+            phiastChar.enabled = true;
+            Debug.Log("nodie");*/
+            StartCoroutine(RingoRoadagain());
 
         }
         else
@@ -53,6 +74,27 @@ public class GameManager : MonoBehaviour
             Death();
         }
     } 
+
+    IEnumerator RingoRoadagain()
+    {
+        CharacterController phiastChar = phiast.GetComponent<CharacterController>();
+        Rigidbody skullRB = skull.GetComponent<Rigidbody>();
+        
+
+        phiastChar.enabled = false;
+        skullRB.isKinematic = true;
+
+        skullRB.linearVelocity = Vector3.zero;
+        skullRB.angularVelocity = Vector3.zero;
+
+        phiast.transform.position = currentCheckpoint;
+        skull.transform.position = currentCheckpoint;
+
+        yield return null;
+
+        skullRB.isKinematic = false;
+        phiastChar.enabled = true;
+    }
    
     public void Death()
     {
@@ -111,15 +153,5 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void loadunlock()
-    {
-        SceneManager.LoadScene(nextsceneload);
-
-        if (nextsceneload > PlayerPrefs.GetInt("LevelAT"))
-        {
-            PlayerPrefs.SetInt("LevelAT", nextsceneload);
-        }
     }
 }

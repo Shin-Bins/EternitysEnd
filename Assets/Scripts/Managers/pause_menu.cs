@@ -42,11 +42,8 @@ public class pause_menu : MonoBehaviour
 
     public void deathrestart()
     {
-        GameManager.Instance.RespawnCheckpoint(phi.gameObject);
-        phi.GetComponent<PhiastHealth>().respwanfromdeath();
-        
-
-        
+        GameManager.Instance.RespawnCheckpoint(/*phi.gameObject*/);
+        //phi.GetComponent<PhiastHealth>().respwanfromdeath();
     }
 
     private void OnSceneLoaded(Scene thisscene, LoadSceneMode mode)

@@ -84,7 +84,6 @@ public class Bomb : MonoBehaviour
 
     void Explode()
     {
-
         src.Stop();
         AudioSource.PlayClipAtPoint(boomAud, transform.position);
 
@@ -96,9 +95,16 @@ public class Bomb : MonoBehaviour
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
-        foreach(Collider nearbyObject in colliders)
+        foreach(Collider blasted in colliders)
         {
-            Destructible dest = nearbyObject.GetComponent<Destructible>();
+            Destructible dest = blasted.GetComponent<Destructible>();
+            PhiastHealth health = blasted.GetComponent<PhiastHealth>();
+
+            if(health != null)
+            {
+		        health.TakeDamage(transform.position);
+            }
+
             if(dest != null)
             {
                 dest.DestructObject();

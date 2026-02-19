@@ -16,17 +16,29 @@ public class KillBox : MonoBehaviour
 
     private void Start()
     {
-		phis = GameObject.Find("Phiast_NLA");
+		/*phis = GameObject.Find("Phiast_NLA");
 		skull = GameObject.Find("StCuan (1)");
 		par = GameObject.Find("Player_current");
 		respawnpoint = GameObject.Find("reset").transform;
-		cha = phis.GetComponent<CharacterController>();
+		cha = phis.GetComponent<CharacterController>();*/
     }
 
 	
-    void OnTriggerExit(Collider other)
-{
-	if(other.CompareTag("phiast"))
+    void OnTriggerEnter(Collider other)
+	{
+
+		if (other.CompareTag("phiast"))
+		{
+			Debug.Log("Got da phiast");
+			//other.GetComponent<PhiastHealth>().TakeDamage(transform.position);
+			GameManager.Instance.RespawnCheckpoint();
+		}
+
+		if (other.CompareTag("skull"))
+		{
+			GameManager.Instance.RespawnCheckpoint();
+		}
+	/*if(other.CompareTag("phiast"))
 	{
 		PhiastHealth health = other.GetComponent<PhiastHealth>();
 		health.TakeDamage(transform.position);
@@ -45,15 +57,16 @@ public class KillBox : MonoBehaviour
             phis.transform.localPosition = checkpointpos.transform.position;
             GameManager.Instance.RespawnCheckpoint(other.gameObject);
 			Physics.SyncTransforms();
+	}*/
 	}
-}
 
-    public void ac()
+    /*public void ac()
     {
 		Debug.Log("check");
 		chec = true;
 		checkpointpos = GameObject.Find("Checkpoint").transform;
     }
+	*/
 
 	
 

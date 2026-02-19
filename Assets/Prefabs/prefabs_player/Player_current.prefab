@@ -946,7 +946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000009685755
+      value: 0.00000021606684
       objectReference: {fileID: 0}
     - target: {fileID: 317257349188384118, guid: 1267438603ad33b43964c08310c8b66e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1181,9 +1181,9 @@ MonoBehaviour:
   throwForceStep: 0.5
   upForceStep: 0.5
   minThrowForce: 1
-  maxThrowForce: 20
+  maxThrowForce: 12
   minUpForce: 1
-  maxUpForce: 20
+  maxUpForce: 12
   endMarker: {fileID: 2006592276553933716}
   collisionLayers:
     serializedVersion: 2
