@@ -21,17 +21,6 @@ public class KillBox : MonoBehaviour
 		par = GameObject.Find("Player_current");
 		respawnpoint = GameObject.Find("reset").transform;
 		cha = phis.GetComponent<CharacterController>();
-		
-
-
-
-
-
-
-
-
-
-
     }
 
 	
@@ -47,9 +36,6 @@ public class KillBox : MonoBehaviour
 			}
 			else
 			{
-
-
-
 				GameManager.Instance.Death();
 				Debug.Log("Got da phiastie");
 			}
