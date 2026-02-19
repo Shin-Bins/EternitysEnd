@@ -5319,6 +5319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &425898716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7708626405881610869, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+  m_PrefabInstance: {fileID: 425898713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &435642976
 Mesh:
   m_ObjectHideFlags: 0
@@ -13738,7 +13743,7 @@ PrefabInstance:
     - target: {fileID: 8259634449435259570, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pauseholder
       value: 
-      objectReference: {fileID: 1329410156}
+      objectReference: {fileID: 425898716}
     - target: {fileID: 8370172010728644489, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pausemenu
       value: 
@@ -15756,11 +15761,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6517025138199859451, guid: d18e73ba509d98849bc8d60f44b81e62, type: 3}
   m_PrefabInstance: {fileID: 1020413992}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1329410156 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8365031214753246465, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
-  m_PrefabInstance: {fileID: 425898713}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1338767854
 GameObject:

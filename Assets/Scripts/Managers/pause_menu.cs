@@ -19,6 +19,7 @@ public class pause_menu : MonoBehaviour
         skl = GameObject.FindGameObjectWithTag("skull");
         resetpoint = GameObject.FindGameObjectWithTag("reset");
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
    
@@ -46,5 +47,18 @@ public class pause_menu : MonoBehaviour
         
 
         
+    }
+
+    private void OnSceneLoaded(Scene thisscene, LoadSceneMode mode)
+    {
+        if (thisscene.name == "MainMenu") 
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
