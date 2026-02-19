@@ -46,10 +46,6 @@ public class GameManager : MonoBehaviour
         {
             charToRespawn.transform.position = currentCheckpoint;
             Debug.Log("nodie");
-            
-            
-
-
 
         }
         else
