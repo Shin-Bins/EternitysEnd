@@ -8905,7 +8905,7 @@ GameObject:
   - component: {fileID: 206226632}
   - component: {fileID: 206226631}
   - component: {fileID: 206226630}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: damaged floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19620,7 +19620,7 @@ PrefabInstance:
     - target: {fileID: 8259634449435259570, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pauseholder
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1540706997}
     - target: {fileID: 8370172010728644489, guid: 90ccc2d400dbdd0419890c9c83fe4c5e, type: 3}
       propertyPath: pausemenu
       value: 
@@ -19654,7 +19654,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088374734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf5157c264662a146bbb827d9be506b7, type: 3}
   m_Name: 
@@ -20447,7 +20447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1260437649
 Transform:
   m_ObjectHideFlags: 0
@@ -23109,6 +23109,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1540706997 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7708626405881610869, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+  m_PrefabInstance: {fileID: 425898713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1551770366
 PrefabInstance:
   m_ObjectHideFlags: 0
