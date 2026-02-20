@@ -866,7 +866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e33f2c922c7d048969311f185044f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NextLevel
-  nextScene: CutscenePreBoss
+  nextScene: Cutscene5
 --- !u!114 &370152455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4541,7 +4541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Here lies the Abyss
+  m_text: Phiast-Kebab
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d6ff8d2648042f459d04ce289a42998, type: 2}
   m_sharedMaterial: {fileID: 7618862874145206192, guid: 4d6ff8d2648042f459d04ce289a42998, type: 2}
@@ -6673,7 +6673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Phiast-Kebab
+  m_text: Here Lies The Abyss
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d6ff8d2648042f459d04ce289a42998, type: 2}
   m_sharedMaterial: {fileID: 7618862874145206192, guid: 4d6ff8d2648042f459d04ce289a42998, type: 2}
