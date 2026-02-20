@@ -33,9 +33,9 @@ public class PhiastHealth : MonoBehaviour
         skully = GetComponent<PickUpSkull>();
         src = GetComponent<AudioSource>();
 
-        //pauseholder = GameObject.Find("HealthUI");
+        pauseholder = GameObject.Find("HealthUI");
         healthbar = pauseholder.GetComponent<Image>();
-        
+        healthHolder = GameObject.Find("HealthHold");
         deathscreen = GameObject.Find("deadscreen");
         skullrespawn = GameObject.Find("reset");
         cuan = GameObject.Find("StCuan (1)");
@@ -43,6 +43,7 @@ public class PhiastHealth : MonoBehaviour
         healthdrop = 100;
         //RefreshPause();
         healthbar.fillAmount = healthdrop / 100f;
+        healthHolder.SetActive(false);
         deathmenu.SetActive(false);
         deathscreen.SetActive(false);
     }
@@ -77,6 +78,7 @@ public class PhiastHealth : MonoBehaviour
         {
             currentHealth--;
             healthbar.enabled = true;
+            healthHolder.SetActive(true);
             healthdrop -= 33;
             healthbar.fillAmount = healthdrop / 100f;
             gameObject.GetComponent<Knockback>().addimpact();
@@ -97,6 +99,7 @@ public class PhiastHealth : MonoBehaviour
         {
             currentHealth++;
             healthbar.enabled = true;
+            healthHolder.SetActive(true);
             healthdrop += 33;
             healthbar.fillAmount = healthdrop / 100f;
             StartCoroutine(hurtdelay());
@@ -123,7 +126,7 @@ public class PhiastHealth : MonoBehaviour
         canBeHurt = true;
         yield return new WaitForSeconds(4f);
         healthbar.enabled = false;
-
+        healthHolder.SetActive(false);
     }
 
     public void respwanfromdeath()

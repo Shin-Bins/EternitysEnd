@@ -1390,7 +1390,7 @@ MonoBehaviour:
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3831088509948183173}
     m_EaseInDuration: 0
-    m_EaseOutDuration: 0
+    m_EaseOutDuration: 59.41
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
     m_MixInCurve:
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 60.28333333333333
+    m_Start: 53.05
     m_ClipIn: 0
     m_Asset: {fileID: -1545996304115583944}
     m_Duration: 56.294421768707

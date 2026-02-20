@@ -119,3 +119,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
+  destAud: {fileID: 8300000, guid: e03830eefcf6d004aa4c66aebf0e1d72, type: 3}

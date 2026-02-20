@@ -552,6 +552,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""950df452-e6a7-432f-aaf4-41c9b644e974"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fbf7e032-8f1a-4f16-92de-2687c063289a"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",

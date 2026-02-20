@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            fadeOut = GameObject.FindWithTag("fadeout").GetComponent<Image>();
         }
         else
         {
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator FadeTransition(string sceneName)
     {
+        Time.timeScale = 1f;
         // Fade to black
         yield return StartCoroutine(Fade(1f));
         

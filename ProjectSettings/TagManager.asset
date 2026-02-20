@@ -21,6 +21,7 @@ TagManager:
   - HealthPack
   - reset
   - killbox
+  - fadeout
   layers:
   - Default
   - TransparentFX
