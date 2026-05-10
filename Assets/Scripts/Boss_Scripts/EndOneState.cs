@@ -68,6 +68,9 @@ public class EndOneState : State
                 }
             }
 		}
+		else{
+				stateMachine.ChangeState<DecideState>();
+		}
 	}
 
 	public override void Exit()

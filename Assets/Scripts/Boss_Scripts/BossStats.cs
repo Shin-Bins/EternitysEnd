@@ -30,6 +30,8 @@ public class BossStats : MonoBehaviour
 	private Destructible wallTwoDest;
 	private Destructible wallThreeDest;
 
+	public GameObject end;
+
     private AudioSource src;
 	public AudioClip wallDestruct;//this is for the progression walls smashing
 	public AudioClip damagedAud;//evil phiast being hurt
@@ -117,6 +119,7 @@ public class BossStats : MonoBehaviour
 			Destructible dest = wallTwo.AddComponent<Destructible>();
 			sectionEnd.SetTarget(wallTwo);
 			stateMachine.ChangeState<EndOneState>();
+			Invoke("Cleanup", 5f);
 		}
 	}
 
@@ -129,6 +132,16 @@ public class BossStats : MonoBehaviour
 			Destructible dest = wallThree.AddComponent<Destructible>();
 			sectionEnd.SetTarget(wallThree);
 			stateMachine.ChangeState<EndOneState>();
+			end.SetActive(true);
 		}
+	}
+
+	void CleanUp()
+	{
+		if(wallTwo != null)
+		{
+			wallTwo.SetActive(false);
+		}
+
 	}
 }

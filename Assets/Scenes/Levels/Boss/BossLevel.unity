@@ -170,6 +170,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &25082003
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &37740246
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3891,6 +3893,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4256809941847476686, guid: 9055c3a491f7c8f439798b3b28e69896, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4340348771145827382, guid: 9055c3a491f7c8f439798b3b28e69896, type: 3}
       propertyPath: m_Name
       value: lever
@@ -4134,6 +4140,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &190874206
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -14512,6 +14519,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &700727656
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -22677,6 +22685,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &911918428
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -33323,6 +33332,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1304553114
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -34731,6 +34741,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1337679109
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -45056,6 +45067,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1628304180
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -47945,6 +47957,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1838938619
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -49756,6 +49769,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1961878423
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -51985,6 +51999,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2002265314
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -53596,6 +53611,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2045573855
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -54818,6 +54834,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2076911215
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -56295,6 +56312,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2114885092
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -58400,6 +58418,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.5343055e-13
       objectReference: {fileID: 0}
+    - target: {fileID: 5051504991867220751, guid: 7c8a5847aa0bd0340a54eb0b50c9abfc, type: 3}
+      propertyPath: end
+      value: 
+      objectReference: {fileID: 1819115126}
     - target: {fileID: 5051504991867220751, guid: 7c8a5847aa0bd0340a54eb0b50c9abfc, type: 3}
       propertyPath: wallOne
       value: 
