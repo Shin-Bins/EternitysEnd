@@ -170,6 +170,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &25082003
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &37740246
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4326,6 +4328,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &190874206
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -9196,7 +9199,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1260437649}
     m_Modifications:
     - target: {fileID: 5091369299034408, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_Name
@@ -9212,15 +9215,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.44874
+      value: -0.0034599304
       objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.37212
+      value: -0.5651803
       objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.07923
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9257,6 +9260,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+--- !u!4 &425898714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9163896237374309081, guid: 3122da13f2b84454aac36bdedfab3dae, type: 3}
+  m_PrefabInstance: {fileID: 425898713}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &443361828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3996896954549477004, guid: 9055c3a491f7c8f439798b3b28e69896, type: 3}
@@ -14695,6 +14703,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &700727656
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -22775,6 +22784,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &911918428
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -31236,7 +31246,8 @@ Transform:
   m_LocalPosition: {x: -4.44528, y: 4.9373, z: -24.07923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 425898714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1270229943
@@ -33477,6 +33488,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1304553114
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -34811,6 +34823,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1337679109
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -44930,6 +44943,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1628304180
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -47666,6 +47680,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1838938619
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -49567,6 +49582,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &1961878423
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -51796,6 +51812,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2002265314
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -53403,6 +53420,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2045573855
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -54625,6 +54643,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2076911215
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -56135,6 +56154,7 @@ MonoBehaviour:
   destroyedModel: {fileID: 0}
   destructionVFX: {fileID: 0}
   destAud: {fileID: 0}
+  src: {fileID: 0}
 --- !u!33 &2114885092
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -59981,7 +60001,6 @@ SceneRoots:
   - {fileID: 983812700}
   - {fileID: 1833970387}
   - {fileID: 1393267884}
-  - {fileID: 425898713}
   - {fileID: 1260437649}
   - {fileID: 102416844}
   - {fileID: 633423956}
